@@ -1,38 +1,31 @@
 $(document).ready(function () {
-    /**
-     * Login 
-     * Created 15/02/2018 @ 12:12:30
-     * Author:Israel Rodríguez Sánchez
-     * Params @email/username @password
-     * return success, error, warning
-     */
-    $('#username').focus();
-    /** load block page till ajax start and finish */
+    $('#numeroEmpleado').focus();
+    /** Carga una bloque de espera en lo que termina de realizar el llamado*/
     $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     /**Check for user login */
     $("#loginForm").validate({
-        debug: false, 
+        debug: false,
         errorClass: 'text-danger',
         rules: {
-            username: "required",
+            numeroEmpleado: "required",
             password: "required"
         },
         messages: {
-            username: "Please specify your username or company email",
-            password: "A password is required."
+            numeroEmpleado: "Favor de ingresar su número de empleado",
+            password: "La contraseña es requerida"
         },
         submitHandler: function (form) {
             var dataString = $('#loginForm').serialize();
             $.ajax({
                 type: "POST",
-                url: "work/php/users/login/login.php",
+                url: "work/php/login/login.php",
                 data: dataString,
                 dataType: "json",
                 success: function (result) {
                     switch (result['data'].status) {
                         case 'success':
                             swal({
-                                title: "SCRM Says: ",
+                                title: "Mensaje de Mecanica: ",
                                 text: result['data'].message,
                                 icon: 'success',
                                 closeOnClickOutside: false,
@@ -42,14 +35,14 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Ok":
-                                        window.location = "dashboard.php";                                        
+                                        window.location = "dashboard.php";
                                         break;
                                 }
-                            });                            
+                            });
                             break;
                         case 'warning':
                             swal({
-                                title: "SCRM Says: ",
+                                title: "Mensaje de Mecanica: ",
                                 text: result['data'].message,
                                 icon: 'warning',
                                 closeOnClickOutside: false,
@@ -68,7 +61,7 @@ $(document).ready(function () {
                             break;
                         case 'error':
                             swal({
-                                title: "SCRM Says: ",
+                                title: "Mensaje de Mecanica: ",
                                 text: result['data'].message,
                                 icon: 'error',
                                 closeOnClickOutside: false,

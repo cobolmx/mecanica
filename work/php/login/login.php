@@ -1,23 +1,15 @@
 <?php
-require("../../../../config-db/class.db.local.php");
-require_once '../../functions/functions.php';
-$database       = new DB();
-$findme         = '@';
-// $login_ok = false;
-$username       = $_POST['username'];
+require("../../../config-db/class.db.local.php");
+// require_once '../../functions/functions.php';
+$db       = new DB();
+
+$numero_empleado = strtoupper($_POST['numeroEmpleado']);
 $login_password = $_POST['password'];
-$message        = "";
-switch (is_numeric(strpos($username, $findme))) {
-    case '1':
-        $sql_string = "email ='" . $username . "'";
-        break;
-    case '0':
-        $sql_string = "username = '" . $username . "'";
-        break;
-}
-$query = "SELECT id, username, password, salt, email FROM users WHERE active = 1 AND " . $sql_string;
-list($id, $username, $password, $salt, $email) = $database->get_row($query);
-$number = $database->num_rows($query);
+$mensaje        = "";
+
+$query =  "SELECT nombre, paterno, materno, salt, password FROM empleados WHERE activo = 1 AND CONCAT(identificador,id) = '".$numero_empleado."'"; 
+list($nombre, $paterno, $materno, $salt, $password) = $db->get_row($query);
+$number = $db->num_rows($query);
 if ($number) {
     $check_password = hash('sha256', $login_password . $salt);
     for ($round = 0; $round < 65536; $round++) {
@@ -25,44 +17,32 @@ if ($number) {
     }
     if ($check_password === $password) {
         unset($salt, $password);
-        $message                = "Credentials are accepted, please press Ok to continue.";
-        $_SESSION['username']   = $username;
-        $_SESSION['email']      = $email;
-        $_SESSION['login_time'] = time();
+        $mensaje                = "Las credenciales fueron aceptadas, presionar Ok para continuar.";
+        $_SESSION['numero_empleado']   = $numero_empleado;
         $data['data']           = array(
             'status' => 'success',
-            'message' => $message,
+            'message' => $mensaje,
             'debug' => $query
         );
-        $event                  = 'Login Success!';
-        event_log($email, $event, get_ip_address(), 'Login');
-        /**
-         * Flag online user
-         */
-        $update       = array(
-            'online' => 1
-        );
-        $where_clause = array(
-            'email' => $email
-        );
-        $updated      = $database->update('users', $update, $where_clause, 1);
+        // $event                  = 'Login Success!';
+        // event_log($email, $event, get_ip_address(), 'Login');        
         echo json_encode($data);
     } else {
-        $message      = "Incorrect username / password, please try again.";
+        $mensaje      = "El usuario / contraseña son incorrectas, intente de nuevo.";
         $data['data'] = array(
             'status' => 'warning',
-            'message' => $message,
+            'message' => $mensaje,
             'debug' => $query
         );
-        $event        = 'Login failed, username/password incorrect';
-        event_log($email, $event, get_ip_address(), 'Error');
+        // $event        = 'Login failed, username/password incorrect';
+        // event_log($email, $event, get_ip_address(), 'Error');
         echo json_encode($data);
     }
 } else {
-    $message      = "The user doesn't exist.";
+    $mensaje      = "El empleado no existe";
     $data['data'] = array(
         'status' => 'error',
-        'message' => $message,
+        'message' => $mensaje,
         'debug' => $query
     );
     echo json_encode($data);

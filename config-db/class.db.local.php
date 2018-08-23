@@ -25,7 +25,7 @@
 define('DB_HOST', '192.168.4.101'); // set database host  <-- production
 define('DB_USER', 'scrm'); // set database user
 define('DB_PASS', 'InterSolu3'); // set database password
-define('DB_NAME', 'scrm_v2_test'); // set database name <-- develop
+define('DB_NAME', 'lab'); // set database name <-- develop
 // define('DB_NAME', 'scrm'); // set database name <-- production
 define('SEND_ERRORS_TO', 'irodriguez@solucenterint.com'); //set email notification email address
 define('DISPLAY_DEBUG', true); //display db errors?
