@@ -25,6 +25,8 @@ date_default_timezone_set('America/Tijuana');
       <link href="vendors/animate.css/animate.min.css" rel="stylesheet">
       <!-- Custom Theme Style -->
       <link href="build/css/custom.min.css" rel="stylesheet">
+      <!-- Custom background mecanica -->
+      <link href="work/css/mecanica_custom.css" rel="stylesheet">
    </head>
    <body class="login">
       <div>
@@ -47,11 +49,11 @@ date_default_timezone_set('America/Tijuana');
                      </div>
                      <div class="clearfix"></div>
                      <div class="separator">
-                        <p class="change_link">New to site?
+                        <!-- <p class="change_link">New to site?
                            <a href="#signup" class="to_register"> Create Account </a>
                         </p>
                         <div class="clearfix"></div>
-                        <br />
+                        <br /> -->
                         <div>
                            <h1><i class="fa fa-black-tie"></i> Mecanica 1885</h1>
                            <p>©2018 Todos los derechos reservados.</p>
