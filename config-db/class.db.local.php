@@ -22,12 +22,12 @@
  ** FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  **------------------------------------------------------------------------------ */
 
-define('DB_HOST', '192.168.4.101'); // set database host  <-- production
-define('DB_USER', 'scrm'); // set database user
-define('DB_PASS', 'InterSolu3'); // set database password
-define('DB_NAME', 'lab'); // set database name <-- develop
+define('DB_HOST', 'localhost'); // set database host  <-- production
+define('DB_USER', 'mecanica_user'); // set database user
+define('DB_PASS', 'test'); // set database password
+define('DB_NAME', 'mecanica_db'); // set database name <-- develop
 // define('DB_NAME', 'scrm'); // set database name <-- production
-define('SEND_ERRORS_TO', 'irodriguez@solucenterint.com'); //set email notification email address
+define('SEND_ERRORS_TO', 'irodrigu@gmail.com'); //set email notification email address
 define('DISPLAY_DEBUG', true); //display db errors?
 header('Content-Type: text/html; charset=utf-8');
 date_default_timezone_set('America/Tijuana');

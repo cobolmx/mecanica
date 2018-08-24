@@ -19,6 +19,7 @@ if ($number) {
         unset($salt, $password);
         $mensaje                = "Las credenciales fueron aceptadas, presionar Ok para continuar.";
         $_SESSION['numero_empleado']   = $numero_empleado;
+        $_SESSION['nombre_empleado']   = $nombre. ' '.$paterno.' '.$materno; 
         $data['data']           = array(
             'status' => 'success',
             'message' => $mensaje,
