@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#numeroEmpleado').focus();
-    /** Carga una bloque de espera en lo que termina de realizar el llamado*/
+    /** Carga una bloque de espera en lo que termina de realizar el llamado*/    
     $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     /**Check for user login */
     $("#loginForm").validate({
@@ -25,16 +25,16 @@ $(document).ready(function () {
                     switch (result['data'].status) {
                         case 'success':
                             swal({
-                                title: "Mensaje de Mecanica: ",
+                                title: "Mensaje de Mecanica: ",                                
                                 text: result['data'].message,
                                 icon: 'success',
-                                closeOnClickOutside: false,
+                                closeOnClickOutside: false,                                
                                 buttons: {
-                                    Ok: true
+                                    Continuar: true,                                    
                                 }
                             }).then((value) => {
                                 switch (value) {
-                                    case "Ok":
+                                    case "Continuar":
                                         window.location = "dashboard.php";
                                         break;
                                 }
@@ -47,14 +47,14 @@ $(document).ready(function () {
                                 icon: 'warning',
                                 closeOnClickOutside: false,
                                 buttons: {
-                                    Ok: true
+                                    Continuar: true
                                 }
                             }).then((value) => {
                                 switch (value) {
-                                    case "Ok":
-                                        $('#username').val('');
+                                    case "Continuar":
+                                        $('#numeroEmpleado').val('');
                                         $('#password').val('');
-                                        $('#username').focus();
+                                        $('#numeroEmpleado').focus();
                                         break;
                                 }
                             });
@@ -66,14 +66,14 @@ $(document).ready(function () {
                                 icon: 'error',
                                 closeOnClickOutside: false,
                                 buttons: {
-                                    Ok: true
+                                    Continuar: true
                                 }
                             }).then((value) => {
                                 switch (value) {
-                                    case "Ok":
-                                        $('#username').val('');
+                                    case "Continuar":
+                                        $('#numeroEmpleado').val('');
                                         $('#password').val('');
-                                        $('#username').focus();
+                                        $('#numeroEmpleado').focus();
                                         break;
                                 }
                             });

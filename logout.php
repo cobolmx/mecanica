@@ -1,6 +1,6 @@
 <?php
 require("config-db/class.db.local.php");
-// include_once 'work/php/functions/functions.php';
+include_once 'work/php/funciones/funciones.php';
 // $database     = new DB();
 // $update       = array(
 //     'online' => 0
@@ -8,8 +8,8 @@ require("config-db/class.db.local.php");
 // $where_clause = array(
 //     'email' => $_SESSION['email']
 // );
-// $event        = 'Logout success';
-// event_log($_SESSION['email'], $event, get_ip_address(), 'Log out');
+$evento = 'Cierre de sesión';
+registro_bitacora($_SESSION['numero_empleado'], $evento, 'Cierre de sesión', obtener_ip());
 // $database->update('users', $update, $where_clause, 1);
 session_unset();
 session_destroy();
