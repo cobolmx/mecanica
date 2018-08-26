@@ -35,6 +35,7 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
+                                    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
                                         window.location = "dashboard.php";
                                         break;
                                 }

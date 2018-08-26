@@ -26,7 +26,10 @@ define('DB_HOST', 'localhost'); // set database host  <-- production
 define('DB_USER', 'mecanica_user'); // set database user
 define('DB_PASS', 'test'); // set database password
 define('DB_NAME', 'mecanica_db'); // set database name <-- develop
-// define('DB_NAME', 'scrm'); // set database name <-- production
+// define('DB_USER', 'u509393744_mechu'); // set database user
+// define('DB_PASS', 'r3jHkyQBsEAu'); // set database password
+// define('DB_NAME', 'u509393744_mecha'); // set database name <-- nube
+
 define('SEND_ERRORS_TO', 'irodrigu@gmail.com'); //set email notification email address
 define('DISPLAY_DEBUG', true); //display db errors?
 header('Content-Type: text/html; charset=utf-8');
@@ -44,7 +47,7 @@ class DB {
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $headers .= 'To: Admin <' . SEND_ERRORS_TO . '>' . "\r\n";
-        $headers .= 'From: SCRM Notify <scrm@solucenterint.com>' . "\r\n";
+        $headers .= 'From: Notificaciones de mecanica <mecanica1885@mecanica1885.com>' . "\r\n";
         $message = '<p>An error has occurred:</p>';
         $message .= '<p>Error at ' . date('Y-m-d H:i:s') . ': ';
         $message .= 'Query: ' . htmlentities($query) . '<br />';
