@@ -4,8 +4,11 @@ $(document).ready(function () {
     $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     /**Check for user login */
     $("#loginForm").validate({
-        debug: false,
-        errorClass: 'text-danger',
+        // debug: false,
+        errorClass: 'parsley-error', 
+        errorPlacement: function(error,element) {
+            return true;
+          }, 
         rules: {
             numeroEmpleado: "required",
             password: "required"

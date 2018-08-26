@@ -37,11 +37,11 @@ date_default_timezone_set('America/Tijuana');
                <section class="login_content">
                   <form id="loginForm">
                      <h1>Iniciar Sesión</h1>                     
-                     <div>                     
-                        <input type="text"  class="form-control has-error" placeholder="Número de empleado" name="numeroEmpleado" id="numeroEmpleado"/>                        
+                     <div class="form-group">                                         
+                        <input type="text"  class="form-control has-feedback " placeholder="Número de empleado" name="numeroEmpleado" id="numeroEmpleado"/>                                             
                      </div>
-                     <div>
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password"/>
+                     <div class="form-group">
+                        <input type="password" class="form-control has-feedback" placeholder="Contraseña" name="password" id="password"/>
                      </div>
                      <div>                        
                         <button class="btn btn-info btn-block" type="submit">Iniciar Sesión</button>
