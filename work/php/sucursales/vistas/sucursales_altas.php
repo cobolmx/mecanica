@@ -8,16 +8,16 @@
    <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
          <div class="x_title">
-            <h2>Datos de la sucursal</h2>
+            <h2>Información de la sucursal</h2>
             <div class="clearfix"></div>
          </div>
          <div class="x_content">
             <div class="panel-body">
-               <form class="form-material" id="sucursalForma" >
+               <form class="form-horizontal form-label-left" id="sucursalForma" >
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="sucursalNombre">Nombre de la sucursal</label>
-                        <input type="text" class="form-control" name="sucursalNombre" id="sucursalNombre" >
+                        <label for="sucursalNombre">Nombre sucursal</label>
+                        <input type="text" class="form-control" name="sucursalNombre" id="sucursalNombre">
                      </div>
                   </div>
                   <div class="col-md-9 col-xs-12">
@@ -45,6 +45,8 @@
                         <label for="sucursalActivo" >Activar</label>               
                         <select class="form-control" id="sucursalActivo" name="sucursalActivo" >
                            <option value="">Seleccione una opción</option>
+                           <option value="1">Sí</option>
+                           <option value="0">No</option>
                         </select>
                      </div>
                   </div>                 

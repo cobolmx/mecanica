@@ -12,7 +12,7 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {   "targets": [ 1 ],
-                "visible": false                
+                "visible": false                              
             }],
         "drawCallback": function ( settings ) {
             var api = this.api();

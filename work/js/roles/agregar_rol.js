@@ -1,28 +1,23 @@
 $(document).ready(function () {
-    $.get("work/php/sucursales/obtener/obtener_ciudades.php", function (data) {        
-        $('#sucursalCiudad').append(data);
-    });    
-    $('#sucursalNombre').focus();
+    
+    $('#rolNombre').focus();
 
     /**Check for user login */
-    $("#sucursalForma").validate({
+    $("#rolForma").validate({
         debug: true,
         errorClass: 'parsley-error',
         errorPlacement: function (error, element) {
             return true;
         },
         rules: {
-            sucursalNombre: "required",
-            sucursalDireccion: "required",
-            sucursalTelefono: "required",
-            sucursalCiudad: "required",
+            rolNombre: "required",            
             sucursalActivo: "required"
         },
         submitHandler: function (form) {
-            var dataString = $('#sucursalForma').serialize();
+            var dataString = $('#rolForma').serialize();
             $.ajax({
                 type: "POST",
-                url: "work/php/sucursales/insertar/agregar_sucursal.php",
+                url: "work/php/roles/insertar/agregar_rol.php",
                 data: dataString,
                 dataType: "json",
                 success: function (result) {
@@ -40,7 +35,7 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                        $('#main_area').load("work/php/sucursales/vistas/sucursales_altas.php");
+                                        $('#main_area').load("work/php/roles/vistas/roles_altas.php");
                                         break;
                                 }
                             });
@@ -57,8 +52,8 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                        $('#main_area').load("work/php/sucursales/vistas/sucursales_altas.php");
-                                        $('#sucursalCiudad').focus();
+                                        $('#main_area').load("work/php/roles/vistas/roles_altas.php");
+                                        $('#rolNombre').focus();
                                         break;
                                 }
                             });

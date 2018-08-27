@@ -7,19 +7,17 @@ foreach ($_POST as $key => $value) {
 }
 
 $data_insert = array(
-    'nombre_sucursal' => $_POST['sucursalNombre'],
-    'direccion' => $_POST['sucursalDireccion'],
-    'telefono' => $_POST['sucursalTelefono'],
-    'ciudad' => $_POST['sucursalCiudad'],
-    'activo' => $_POST['sucursalActivo'],
-    'fecha_de_registro' => Date('Y-m-d H:i:s')
+    'nombre' => $_POST['rolNombre'],
+    'descripcion' => $_POST['rolDescripcion'],    
+    'activo' => $_POST['rolActivo'],
+    'fecha_registro' => Date('Y-m-d H:i:s')
 );
-$add_query   = $database->insert('sucursales', $data_insert);
+$add_query   = $database->insert('roles', $data_insert);
 
 if ($add_query) {
-    $evento = 'Agregar sucursal';
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar sucursal', obtener_ip());
-    $message      = 'Se creo satisfactoriamente la sucursal: ' . $_POST['sucursalNombre'];
+    $evento = 'Agrego el rol de '.$_POST['rolNombre'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar rol', obtener_ip());
+    $message      = 'Se agrego satisfactoriamente el rol: ' . $_POST['rolNombre'];
     $data['data'] = array(
         'status' => 'success',
         'message' => $message
@@ -30,9 +28,9 @@ if ($add_query) {
     echo json_encode($data);
     
 } else {
-    $evento = 'Error al agregar sucursal';
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar sucursal', obtener_ip());
-    $message      = 'Ocurrio un error al agregar la sucursal: ' . $_POST['sucursalNombre'] . 'Favor de notificar al administrador del sistema';
+    $evento = 'Error al agregar rol: '.$_POST['rolNombre'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar rol', obtener_ip());
+    $message      = 'Ocurrio un error al agregar el rol: ' . $_POST['rolNombre'] . 'Favor de notificar al administrador del sistema.';
     $data['data'] = array(
         'status' => 'error',
         'message' => $message

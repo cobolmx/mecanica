@@ -21,11 +21,23 @@
  ** ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  ** FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  **------------------------------------------------------------------------------ */
-
+/**
+ * desde el trabajo 
+ */
+define('DB_HOST', '192.168.4.101'); // set database host  <-- production
+define('DB_USER', 'mecanica_user'); // set database user
+define('DB_PASS', 'test'); // set database password
+define('DB_NAME', 'lab'); // set database name <-- develop
+ /**
+  * casa
+  */
 define('DB_HOST', 'localhost'); // set database host  <-- production
 define('DB_USER', 'mecanica_user'); // set database user
 define('DB_PASS', 'test'); // set database password
 define('DB_NAME', 'mecanica_db'); // set database name <-- develop
+/**
+ * nube
+ */
 // define('DB_USER', 'u509393744_mechu'); // set database user
 // define('DB_PASS', 'r3jHkyQBsEAu'); // set database password
 // define('DB_NAME', 'u509393744_mecha'); // set database name <-- nube
