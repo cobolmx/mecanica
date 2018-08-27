@@ -13,4 +13,11 @@ $(document).ready(function () {
         $('#main_area').load("work/php/roles/vistas/roles_altas.php");
         e.preventDefault();
     });
+    /**
+     * EMPLEADOS
+     */
+    $("#empleadosAltas").off('click').click(function (e) {        
+        $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
+        e.preventDefault();
+    });
 });
