@@ -25,7 +25,8 @@
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+    <!-- data tables -->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -208,24 +209,26 @@
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- data tables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!-- FastClick -->
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- <script src="vendors/Chart.js/dist/Chart.min.js"></script> -->
     <!-- jQuery Sparklines -->
-    <script src="vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- <script src="vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script> -->
     <!-- Flot -->
-    <script src="vendors/Flot/jquery.flot.js"></script>
+    <!-- <script src="vendors/Flot/jquery.flot.js"></script>
     <script src="vendors/Flot/jquery.flot.pie.js"></script>
     <script src="vendors/Flot/jquery.flot.time.js"></script>
     <script src="vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="vendors/Flot/jquery.flot.resize.js"></script> -->
     <!-- Flot plugins -->
-    <script src="vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <!-- <script src="vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
     <script src="vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="vendors/flot.curvedlines/curvedLines.js"></script> -->
     <!-- DateJS -->
     <script src="vendors/DateJS/build/date.js"></script>
     <!-- bootstrap-daterangepicker -->
@@ -233,7 +236,15 @@
     <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>    
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
+    <!--Block UI-->
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>
+    <!-- jquery validate -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- carga menus-->
     <script src="work/js/menus/carga_menus.js"></script>
+    <!-- dashboard miscelanea -->
+    <script src="work/js/dashboard/dashboard.js"></script>
   </body>
 </html>
