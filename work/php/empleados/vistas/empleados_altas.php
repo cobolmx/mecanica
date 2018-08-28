@@ -73,6 +73,15 @@
                         <label for="empleadoNumeroSeguroSocial">Número de seguro social</label>
                         <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" >
                      </div>
+                  </div>  
+                  <div class="col-md-3 col-xs-12 xdisplay_inputx has-feedback daterangepicker_input">
+                     <div class="form-group">
+                        <label for="empleadoFechaIngreso">Fecha de ingreso</label>
+                        <input type="text" class="form-control has-feedback-left" id="empleadoFechaIngreso"  aria-describedby="inputSuccess2Status4">
+                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                <span id="inputSuccess2Status4" class="sr-only"></span>
+                        <!-- <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" > -->
+                     </div>
                   </div>                  
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
@@ -83,13 +92,8 @@
                            <option value="0">No</option>
                         </select>
                      </div>
-                  </div>    
-                  <div class="col-md-12 col-xs-12">
-                     <div class="form-group">
-                        <label for="empleadoCartaAntecedentesPenales">Carta de antecedentes penales</label>
-                        <input type="file" class="form-control" name="empleadoCartaAntecedentesPenales" id="empleadoCartaAntecedentesPenales">
-                     </div>
-                  </div>
+                  </div>   
+                              
                   <div class="col-md-12 col-xs-12">
                      <div class="form-group">
                         <label for="sucursalComentarios">Descripción</label>

@@ -3,10 +3,15 @@ $(document).ready(function () {
     //     $('#sucursalCiudad').append(data);
     // });    
     $('#empleadoNombre').focus();
-    $("#empleadoCartaAntecedentesPenales").fileinput({
-        language: 'es',
-        showUpload: false
+    moment.locale('es');
+    $('#empleadoFechaIngreso').daterangepicker({
+        singleDatePicker: true,
     });
+    // $("#empleadoCartaAntecedentesPenales").fileinput({
+    //     language: 'es',
+    //     showUpload: false,
+    //     browseOnZoneClick: false
+    // });
 
     /**Check for user login */
     $("#sucursalForma").validate({
