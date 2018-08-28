@@ -27,6 +27,9 @@
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- data tables -->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- file input -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -242,6 +245,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- file upload-->
+    <script src="vendors/file-upload/fileinput.min.js"></script>
+    <script src="vendors/file-upload/locales/es.js"></script>
     <!-- carga menus-->
     <script src="work/js/menus/carga_menus.js"></script>
     <!-- dashboard miscelanea -->

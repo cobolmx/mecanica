@@ -14,19 +14,19 @@
          <div class="x_content">
             <div class="panel-body">
                <form class="form-horizontal form-label-left" id="sucursalForma" >
-                  <div class="col-md-4 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoNombre">Nombre</label>
                         <input type="text" class="form-control" name="empleadoNombre" id="empleadoNombre">
                      </div>
                   </div>
-                  <div class="col-md-4 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoPaterno">Apellido paterno</label>
                         <input type="text" class="form-control" name="empleadoPaterno" >               
                      </div>
                   </div>
-                  <div class="col-md-4 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoMaterno">Apellido materno</label>
                         <input type="text" class="form-control" name="empleadoMaterno" >
@@ -52,10 +52,28 @@
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="empleadoTelefonoEmergencia">Correo electrónico</label>
+                        <label for="empleadoTelefonoEmergencia">Teléfono de emergencia</label>
                         <input type="text" class="form-control" name="empleadoTelefonoEmergencia" >
                      </div>
                   </div>
+                  <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="empleadoTelefonoEmergencia">Teléfono de emergencia</label>
+                        <input type="text" class="form-control" name="empleadoTelefonoEmergencia" >
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="empleadoRfc">RFC</label>
+                        <input type="text" class="form-control" name="empleadoRfc" >
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="empleadoNumeroSeguroSocial">Número de seguro social</label>
+                        <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" >
+                     </div>
+                  </div>                  
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="sucursalActivo" >Activar</label>               
@@ -65,7 +83,19 @@
                            <option value="0">No</option>
                         </select>
                      </div>
-                  </div>                 
+                  </div>    
+                  <div class="col-md-12 col-xs-12">
+                     <div class="form-group">
+                        <label for="empleadoCartaAntecedentesPenales">Carta de antecedentes penales</label>
+                        <input type="file" class="form-control" name="empleadoCartaAntecedentesPenales" id="empleadoCartaAntecedentesPenales">
+                     </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                     <div class="form-group">
+                        <label for="sucursalComentarios">Descripción</label>
+                        <textarea class="form-control" name="sucursalComentarios"  rows="4" ></textarea>
+                     </div>
+                  </div>              
                   <div class="col-xs-12">
                      <button class="btn btn-info pull-right" type="submit">
                      <span class="btn-label"><i class="fa fa-check" aria-hidden="true"></i>
@@ -78,4 +108,4 @@
       </div>
    </div>
 </div>
-<script src="work/js/sucursales/agregar_sucursal.js"></script>
+<script src="work/js/empleados/agregar_empleado.js"></script>
