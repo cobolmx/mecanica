@@ -5,10 +5,7 @@ $(document).ready(function () {
     /**Check for user login */
     $("#loginForm").validate({
         // debug: false,
-        errorClass: 'parsley-error', 
-        errorPlacement: function(error,element) {
-            return true;
-          }, 
+        errorClass: 'text-danger parsley-error',
         rules: {
             numeroEmpleado: "required",
             password: "required"

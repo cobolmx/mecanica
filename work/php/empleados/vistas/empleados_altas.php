@@ -35,52 +35,59 @@
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoCorreo">Correo electrónico</label>
-                        <input type="email" class="form-control" name="empleadoCorreo" >
+                        <input type="email" class="form-control" name="empleadoCorreo" id="empleadoCorreo">
+                     </div>
+                  </div>                  
+                  <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="sucursalCiudad">Ciudad</label>               
+                        <select class="form-control" id="empleadoCiudad" name="empleadoCiudad" >
+                           <option value="">Selecione una ciudad</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-9 col-xs-12">
+                     <div class="form-group">
+                        <label for="empleadoDomicilio">Domicilio</label>
+                        <input type="email" class="form-control" name="empleadoDomicilio" >
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoTelefonoCasa">Teléfono casa</label>
-                        <input type="text" class="form-control" name="empleadoTelefonoCasa" >
+                        <input type="text" class="form-control mascara-telefono" name="empleadoTelefonoCasa">
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoCelular">Teléfono celular</label>
-                        <input type="text" class="form-control" name="empleadoTelefonoCelular" >
+                        <input type="text" class="form-control mascara-telefono" name="empleadoTelefonoCelular" >
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoTelefonoEmergencia">Teléfono de emergencia</label>
-                        <input type="text" class="form-control" name="empleadoTelefonoEmergencia" >
+                        <input type="text" class="form-control mascara-telefono" name="empleadoTelefonoEmergencia" >
                      </div>
-                  </div>
-                  <div class="col-md-3 col-xs-12">
-                     <div class="form-group">
-                        <label for="empleadoTelefonoEmergencia">Teléfono de emergencia</label>
-                        <input type="text" class="form-control" name="empleadoTelefonoEmergencia" >
-                     </div>
-                  </div>
+                  </div>                  
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoRfc">RFC</label>
-                        <input type="text" class="form-control" name="empleadoRfc" >
+                        <input type="text" class="form-control" name="empleadoRfc" id="empleadoRfc" style="text-transform:uppercase">
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoNumeroSeguroSocial">Número de seguro social</label>
-                        <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" >
+                        <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" id="empleadoNumeroSeguroSocial" >
                      </div>
                   </div>  
                   <div class="col-md-3 col-xs-12 xdisplay_inputx has-feedback daterangepicker_input">
                      <div class="form-group">
-                        <label for="empleadoFechaIngreso">Fecha de ingreso</label>
-                        <input type="text" class="form-control has-feedback-left" id="empleadoFechaIngreso"  aria-describedby="inputSuccess2Status4">
+                        <label for="empleadoFechaIngreso">Fecha de ingreso a laborar</label>
+                        <input type="text" class="form-control has-feedback-left" id="empleadoFechaIngreso"  name="empleadoFechaIngreso">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status4" class="sr-only"></span>
-                        <!-- <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" > -->
+                                <span id="inputSuccess2Status4" class="sr-only"></span>                        
                      </div>
                   </div>                  
                   <div class="col-md-3 col-xs-12">
@@ -103,7 +110,7 @@
                   <div class="col-xs-12">
                      <button class="btn btn-info pull-right" type="submit">
                      <span class="btn-label"><i class="fa fa-check" aria-hidden="true"></i>
-                     </span> Agregar sucursal
+                     </span> Agregar empleado
                      </button>
                   </div>
                </form>
