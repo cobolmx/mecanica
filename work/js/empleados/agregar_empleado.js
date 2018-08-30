@@ -16,59 +16,34 @@ $(document).ready(function () {
             format: 'YYYY-MM-DD'
         }
 
-    });
-    // $("#empleadoCartaAntecedentesPenales").fileinput({
-    //     language: 'es',
-    //     showUpload: false,
-    //     browseOnZoneClick: false
-    // });
-
+    });    
     /**Check for user login */
-    $("#sucursalForma").validate({
-        onkeyup: false,
+    $("#empleadoForma").validate({
         debug: true,
-        // errorClass: 'parsley-error',        
         errorClass: 'text-danger parsley-error',
-        // errorPlacement: function (error, element) {
-        //     return true;
-        // },
+        errorPlacement: function() {
+            return true;
+        }, 
         rules: {
             empleadoNombre: "required",
             empleadoPaterno: "required",
             empleadoMaterno: "required",
             empleadoCorreo: {
                 required: true,
-                email: true,
-                remote: {
-                    url: "work/php/empleados/obtener/revisa_correo_empleado.php",
-                    type: 'POST',
-                    dataType: 'JSON',
-                    data: {
-                        function(data){
-                            return $('#empleadoCoreo').val();                         
-                    }
-                }
-            }
-        },
-        sucursalActivo: "required",
-        empleadoRfc: "required",
-        empleadoNumeroSeguroSocial: "required",
-        empleadoFechaIngreso: "required",
-        empleadoDomicilio: "required",
-        empleadoCiudad: "required"
-    },
-        messages: {
-            empleadoNombre: "cool",
-            empleadoCoreo: {
-                required: 'pon el correo',
-                remote: jQuery.validator.format("{0} is already taken.")
-            }
+                email: true                
+            },
+            sucursalActivo: "required",
+            empleadoRfc: "required",
+            empleadoNss: "required",
+            empleadoFechaIngreso: "required",
+            empleadoDomicilio: "required",
+            empleadoCiudad: "required"
         },
         submitHandler: function (form) {
-            var dataString = $('#sucursalForma').serialize();
+            var dataString = $('#empleadoForma').serialize();
             $.ajax({
                 type: "POST",
-                url: "work/php/empleados/insertar/agregar_empleado.php",
+                // url: "work/php/empleados/insertar/agregar_empleado.php",
                 data: dataString,
                 dataType: "json",
                 success: function (result) {

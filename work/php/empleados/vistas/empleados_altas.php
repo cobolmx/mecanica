@@ -13,7 +13,7 @@
          </div>
          <div class="x_content">
             <div class="panel-body">
-               <form class="form-horizontal form-label-left" id="sucursalForma" >
+               <form class="form-horizontal form-label-left" id="empleadoForma" >
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoNombre">Nombre</label>
@@ -79,7 +79,7 @@
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="empleadoNumeroSeguroSocial">Número de seguro social</label>
-                        <input type="text" class="form-control" name="empleadoNumeroSeguroSocial" id="empleadoNumeroSeguroSocial" >
+                        <input type="text" class="form-control" name="empleadoNss" id="empleadoNss" >
                      </div>
                   </div>  
                   <div class="col-md-3 col-xs-12 xdisplay_inputx has-feedback daterangepicker_input">

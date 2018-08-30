@@ -4,16 +4,15 @@ $(document).ready(function () {
     $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     /**Check for user login */
     $("#loginForm").validate({
-        // debug: false,
-        errorClass: 'text-danger parsley-error',
+        debug: true,
+        errorClass: 'parsley-error text-danger',
         rules: {
             numeroEmpleado: "required",
             password: "required"
         },
-        messages: {
-            numeroEmpleado: "Favor de ingresar su número de empleado",
-            password: "La contraseña es requerida"
-        },
+        errorPlacement: function() {
+            return true;
+        },   
         submitHandler: function (form) {
             var dataString = $('#loginForm').serialize();
             $.ajax({

@@ -26,23 +26,24 @@ function registro_bitacora($numero_empleado, $evento, $tipo_evento, $direccion_i
     $ejecutar_query      = $db->insert('bitacora_eventos', $insertar_info);
 }
 //revisa si ya existe un numero de seguro social o rfc
-// function revisa_dato_unico($tipo_a_revisar) {
-//     $databse = new DB();
-//     switch($tipo_a_revisar){
-//         case 'rfc': 
-//             $query
-        
-//         break;
-//         case 'nss': break;
-//     }
-
-//     $number   = $database->num_rows("SELECT username FROM users WHERE username ='" . $username . "'");
-//     if ($number >= 1) {
-//         return 'success';
-//     } else {
-//         return 'error';
-//     }
-// }
+// regresa existe si existe, no_existe si no y puede proceder
+function valida_dato_unico($tipo,$cadena) {
+    $databse = new DB();
+    $query = 'SELECT rfc FROM empleados rfc = "'.$cadena."'";
+    switch($tipo){
+        case 'rfc':            
+            $resultado = $database->num_rows($query);        
+        break;
+        case 'nss': 
+            $resultado = $database->num_rows($query);
+        break;
+    }    
+    if ($resultado == 0 ) {        
+        return 'no_existe';
+    } else {
+        return 'existe';
+    }
+}
 //funcion para obtener un ip publico o privado dependiendo si es intranet 
 function obtener_ip() {
     // Revisa el ip del proveedor de internet
