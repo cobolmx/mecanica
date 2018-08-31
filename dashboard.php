@@ -218,8 +218,10 @@
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
-    <!-- input mask -->
+    <!-- input mask -->    
     <script src="vendors/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <!-- Select 2 -->
+    <script src="vendors/select2/dist/js/select2.min.js"></script>
     <!-- Chart.js -->
     <!-- <script src="vendors/Chart.js/dist/Chart.min.js"></script> -->
     <!-- jQuery Sparklines -->

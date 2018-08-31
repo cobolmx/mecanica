@@ -25,10 +25,26 @@ function registro_bitacora($numero_empleado, $evento, $tipo_evento, $direccion_i
     );
     $ejecutar_query      = $db->insert('bitacora_eventos', $insertar_info);
 }
+/**
+ * funcion para encriptar contraseña
+ */
+function encriptar_password($unencryptedPassword) {
+    $salt     = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+    $password = hash('sha256', $unencryptedPassword . $salt);
+    
+    for ($round = 0; $round < 65536; $round++) {
+        $password = hash('sha256', $password . $salt);
+    }
+    $results = array(
+        $password,
+        $salt
+    );
+    return list($password, $salt) = $results;
+}
 //revisa si ya existe un numero de seguro social o rfc
 // regresa existe si existe, no_existe si no y puede proceder
 function valida_dato_unico($tipo,$cadena) {
-    $databse = new DB();
+    $database = new DB();
     $query = 'SELECT rfc FROM empleados rfc = "'.$cadena."'";
     switch($tipo){
         case 'rfc':            
