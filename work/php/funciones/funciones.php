@@ -44,14 +44,15 @@ function encriptar_password($unencryptedPassword) {
 //revisa si ya existe un numero de seguro social o rfc
 // regresa existe si existe, no_existe si no y puede proceder
 function valida_dato_unico($tipo,$cadena) {
-    $database = new DB();
-    $query = 'SELECT rfc FROM empleados rfc = "'.$cadena."'";
+    $database = new DB();    
     switch($tipo){
-        case 'rfc':            
-            $resultado = $database->num_rows($query);        
+        case 'rfc':
+        $query = "SELECT rfc FROM empleados WHERE rfc = '".$cadena."'";
+        $resultado = $database->num_rows($query);        
         break;
         case 'nss': 
-            $resultado = $database->num_rows($query);
+        $query = "SELECT numero_seguro_social FROM empleados WHERE numero_seguro_social = '".$cadena."'";
+        $resultado = $database->num_rows($query);
         break;
     }    
     if ($resultado == 0 ) {        

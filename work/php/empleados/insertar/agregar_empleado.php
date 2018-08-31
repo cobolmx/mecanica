@@ -6,9 +6,10 @@ foreach ($_POST as $key => $value) {
     $_POST[$key] = $database->filter($value);
 }
 
-$existe_rfc = valida_dato_unico('rfc', $_POST['empleadoRfc']);
+$existe_rfc = valida_dato_unico('rfc', strtoupper($_POST['empleadoRfc']));
+
 if ($existe_rfc == 'existe') {
-    $message = 'El RFC: ' . $_POST['empleadoRfc'];
+    $message = 'El RFC: ' . strtoupper($_POST['empleadoRfc'])." ya se ecuentra registrado";
     $data['data'] = array(
         'status' => 'exist',
         'message' => $message,
@@ -18,9 +19,9 @@ if ($existe_rfc == 'existe') {
     die();
 }
 
-$existe_nss = valida_dato_unico('nss', $_POST['empleadoNss']);
+$existe_nss = valida_dato_unico('nss', strtoupper($_POST['empleadoNss']));
 if ($existe_nss == 'existe') {
-    $message = 'El Número de seguro social: ' . $_POST['empleadoRfc'] . ' ya existe';
+    $message = 'El Número de seguro social: ' . strtoupper($_POST['empleadoNss']) . ' ya se encuentra registrado';
     $data['data'] = array(
         'status' => 'exist',
         'message' => $message,
@@ -60,31 +61,29 @@ $data_insert = array(
     'telefono_casa' => $_POST['empleadoTelefonoCasa'],
     'telefono_celular' => $_POST['empleadoTelefonoCelular'],
     'telefono_emergencia' => $_POST['empleadoTelefonoEmergencia'],
-    'rfc' => $_POST['empleadoRfc'],
-    'numero_seguro_social' => $_POST['empleadoNss'],
-    'fecha_ingreso' => $_POST['empleadoFechaIngreso'],
+    'rfc' => strtoupper($_POST['empleadoRfc']),
+    'numero_seguro_social' => strtoupper($_POST['empleadoNss']),
+    'fecha_de_ingreso' => $_POST['empleadoFechaIngreso'],
     'password' => $password,
     'salt' => $salt,
     'activo' => $_POST['empleadoActivo'],
     'comentarios' => $comentarios,
-    'fecha_de_registro' => Date('Y-m-d H:i:s')
+    'fecha_de_registro' => Date('Y-m-d H:i:s'),
+    'tipo_usuario' => $_POST['empleadoRol'],
+    'ciudad' => $_POST['empleadoCiudad'],
+    'imagen_perfil' => 'images/user.png'
 );
 
 $add_query = $database->insert('empleados', $data_insert);
 if ($add_query) {
-    // $event = 'Has succesfully created account for: ' . $name . ' ' . $last_name . ' ' . $maiden_last_name;
-    // event_log($_SESSION['email'], $event, get_ip_address(), 'Create user');
-    // $message      = 'Account succesfully created  for ' . $name . ' ' . $last_name . ' ' . $maiden_last_name . ' Information sent to email.';
+    $evento = 'Agrego un empleado al sistema: '.$_POST['empleadoNombre'].' '.$_POST['empleadoPaterno'].' '.$_POST['empleadoMaterno'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     $message = 'Se creó la cuenta de: ' . $_POST['empleadoNombre']. ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
         'status' => 'success',
         'message' => $message,
-    );
-    // $message = 'Your SCRM account has been created with the following username: '.$username.' and the following password: '.$unencrypted_password.'
-    // at the following link http://scrm.solucenterint.com.  Passwords are case sensitive.';
-    // send_email_notification($email,$name.' '.$last_name.' '.$maiden_last_name,'user-create',$message,$_SESSION['email'],$session_full_name);
-    echo json_encode($data);
-    // return 'success';
+    );    
+    echo json_encode($data);    
 } else {
     $message = 'Ocurrio un error al momento de crear la  cuenta de: ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
@@ -92,5 +91,7 @@ if ($add_query) {
         'message' => $message
         
     );
+    $evento = 'Ocurrio un error al agregar al empleado: '.$_POST['empleadoNombre'].' '.$_POST['empleadoPaterno'].' '.$_POST['empleadoMaterno'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     echo json_encode($data);
 }

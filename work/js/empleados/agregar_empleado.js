@@ -113,7 +113,7 @@ $(document).ready(function () {
                                 switch (value) {
                                     case "Continuar":
                                         // $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
-                                        $('#'+result['data'].focus+"'").focus();
+                                        $('#'+result['data'].focus).focus();
                                         break;
                                 }
                             });

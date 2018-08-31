@@ -7,8 +7,8 @@ $numero_empleado = strtoupper($_POST['numeroEmpleado']);
 $login_password  = $_POST['password'];
 $mensaje         = "";
 
-$query = "SELECT nombre, paterno, materno, salt, password, nombre_sucursal, ciudad, tipo_usuario FROM empleados WHERE activo = 1 AND CONCAT(identificador,id) = '" . $numero_empleado . "'";
-list($nombre, $paterno, $materno, $salt, $password, $sucursal, $ciudad, $tipo_usuario) = $db->get_row($query);
+$query = "SELECT nombre, paterno, materno, salt, password, nombre_sucursal, ciudad, tipo_usuario, imagen_perfil FROM empleados WHERE activo = 1 AND CONCAT(identificador,id) = '" . $numero_empleado . "'";
+list($nombre, $paterno, $materno, $salt, $password, $sucursal, $ciudad, $tipo_usuario, $imagen_perfil) = $db->get_row($query);
 $number = $db->num_rows($query);
 if ($number) {
     $check_password = hash('sha256', $login_password . $salt);
@@ -23,6 +23,7 @@ if ($number) {
         $_SESSION['nombre_sucursal'] = $sucursal;
         $_SESSION['ciudad']          = $ciudad;
         $_SESSION['tipo_usuario']    = $tipo_usuario;
+        $_SESSION['imagen_perfil']   = $imagen_perfil;
         $data['data']                = array(
             'status' => 'success',
             'message' => $mensaje,

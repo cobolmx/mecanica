@@ -93,20 +93,20 @@
                         </div>
                         <div class="col-md-3 col-xs-12">
                             <div class="form-group">
-                                <label for="empleadoPassword">Password</label>
+                                <label for="empleadoPassword">Contraseña</label>
                                 <input type="text" class="form-control" name="empleadoPassword" id="empleadoPassword" >
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
                             <div class="form-group">
-                                <label for="empleadoPassword2">Repeat password</label>
+                                <label for="empleadoPassword2">Repetir contraseña</label>
                                 <input type="text" class="form-control" name="empleadoPassword2">
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
                             <div class="form-group">
                                 <label for="id_label_single"></label>
-                                <label for="empleadoRol">Ciudad</label>
+                                <label for="empleadoRol">Rol del empleado</label>
                                 <select class="form-control" id="empleadoRol" name="empleadoRol">
                                     <option value="">Selecione un rol</option>
                                 </select>

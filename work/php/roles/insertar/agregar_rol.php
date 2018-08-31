@@ -21,12 +21,8 @@ if ($add_query) {
     $data['data'] = array(
         'status' => 'success',
         'message' => $message
-    );
-    // $message      = 'Your SCRM account has been created with the following username: ' . $username . ' and the following password: ' . $unencrypted_password . '
-    // at the following link http://scrm.solucenterint.com.  Passwords are case sensitive.';
-    // send_email_notification($email, $name . ' ' . $last_name . ' ' . $maiden_last_name, 'user-create', $message, $_SESSION['email'], $session_full_name);
-    echo json_encode($data);
-    
+    );    
+    echo json_encode($data);    
 } else {
     $evento = 'Error al agregar rol: '.$_POST['rolNombre'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar rol', obtener_ip());

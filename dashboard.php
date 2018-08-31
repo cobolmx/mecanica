@@ -48,7 +48,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo $_SESSION['imagen_perfil'];?>" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span></span>
@@ -93,7 +93,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt=""><?php echo $_SESSION['nombre_empleado'];?>
+                    <!-- <img src="images/img.jpg" alt=""> -->
+                    <img src="<?php echo $_SESSION['imagen_perfil'];?>" alt="">
+                    <?php echo $_SESSION['nombre_empleado'];?>                    
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
