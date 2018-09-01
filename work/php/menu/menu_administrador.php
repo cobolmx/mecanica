@@ -6,7 +6,8 @@
             <a><i class="fa fa-user"></i> Empleados <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                <li><a href="#" id="empleadosAltas">Altas</a></li>
-               <li><a href="#" id="empleadosBajas">Bajas</a></li>
+               <li><a href="#" id="empleadosModificaciones">Modificar empleado</a></li>
+               <li><a href="#" id="empleadosBajas">Bajas</a></li>               
                <li>
                   <a>Reportes<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">

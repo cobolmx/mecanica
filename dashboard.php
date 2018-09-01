@@ -31,7 +31,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <!-- Custom Theme Style -->
-    <link href="build/css/custom.min.css" rel="stylesheet">
+    <!-- <link href="build/css/custom.min.css" rel="stylesheet"> -->
+    <link href="build/css/custom.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -52,8 +53,7 @@
               </div>
               <div class="profile_info">
                 <span></span>
-                <h5><?php echo $_SESSION['nombre_empleado']; ?></h5>
-                
+                <h5><?php echo $_SESSION['nombre_empleado']; ?></h5>                
               </div>
             </div>
             <!-- /menu profile quick info -->

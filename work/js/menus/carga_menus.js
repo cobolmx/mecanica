@@ -20,4 +20,8 @@ $(document).ready(function () {
         $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
         e.preventDefault();
     });
+    $("#empleadosModificaciones").off('click').click(function (e) {        
+        $('#main_area').load("work/php/empleados/vistas/empleados_modificaciones.php");
+        e.preventDefault();
+    });
 });

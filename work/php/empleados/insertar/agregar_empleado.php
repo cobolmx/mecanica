@@ -71,7 +71,9 @@ $data_insert = array(
     'fecha_de_registro' => Date('Y-m-d H:i:s'),
     'tipo_usuario' => $_POST['empleadoRol'],
     'ciudad' => $_POST['empleadoCiudad'],
-    'imagen_perfil' => 'images/user.png'
+    'imagen_perfil' => 'images/user.png',
+    'domicilio' => $_POST['empleadoDomicilio'],
+    'sucursal' => $_POST['empleadoSucursal']
 );
 
 $add_query = $database->insert('empleados', $data_insert);

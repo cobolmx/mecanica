@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 30/08/2018 23:00:34
+ Date: 01/09/2018 00:36:50
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -43,6 +43,12 @@ INSERT INTO `bitacora_eventos` VALUES (5, 'E0001', '::1', 'Inicio de sesion corr
 INSERT INTO `bitacora_eventos` VALUES (6, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-08-30 22:42:31');
 INSERT INTO `bitacora_eventos` VALUES (7, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-30 22:42:36');
 INSERT INTO `bitacora_eventos` VALUES (8, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-08-30 23:00:07');
+INSERT INTO `bitacora_eventos` VALUES (9, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-31 20:43:33');
+INSERT INTO `bitacora_eventos` VALUES (10, 'E0001', '::1', 'Ocurrio un error al agregar al empleado: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:53:49');
+INSERT INTO `bitacora_eventos` VALUES (11, 'E0001', '::1', 'Ocurrio un error al agregar al empleado: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:54:04');
+INSERT INTO `bitacora_eventos` VALUES (12, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:54:52');
+INSERT INTO `bitacora_eventos` VALUES (13, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-01 00:19:10');
+INSERT INTO `bitacora_eventos` VALUES (14, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-01 00:36:39');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
@@ -115,14 +121,17 @@ CREATE TABLE `empleados`  (
   `imagen_perfil` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `documento_antidoping` int(11) NULL DEFAULT NULL,
   `documento_antecedentes` int(11) NULL DEFAULT NULL,
+  `domicilio` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `sucursal` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT 'Nombre de la sucursal',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`, `identificador`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of empleados
 -- ----------------------------
-INSERT INTO `empleados` VALUES (0001, 'E', 'Israel', 'Rodríguez', 'Sánchez', 'irodrigu@gmail.com', '(664) 404-7203', NULL, '(664) 404-7203', '2018-08-30 21:35:43', 1, '30528f068bcfa2dfafb2f1a6ebcaa28f85ff8e94a79ed52d079c589eb78ed691', '3bba8d155137568', 'Administrador', 'Matriz', 'Tijuana', 'ROSI-770426-S38', NULL, NULL, '2018-08-30', 'images/user.png', 0, 0);
+INSERT INTO `empleados` VALUES (0001, 'E', 'Israel', 'Rodríguez', 'Sánchez', 'irodrigu@gmail.com', '(664) 404-7203', NULL, '(664) 404-7203', '2018-08-30 21:35:43', 1, '30528f068bcfa2dfafb2f1a6ebcaa28f85ff8e94a79ed52d079c589eb78ed691', '3bba8d155137568', 'Administrador', 'Matriz', 'Tijuana', 'ROSI-770426-S38', NULL, NULL, '2018-08-30', 'images/user.png', 0, 0, NULL, NULL);
+INSERT INTO `empleados` VALUES (0005, 'E', 'Lucero Margarita', 'Cruz', 'Anaya', 'lucero.cruz.anaya@gmail.com', '(446) 565 4646', '(465) 654 6546', '(465) 465 4654', '2018-09-01 00:19:10', 1, '34e50de8a4d17d2e06629bb596fd6776323f6533912837c23604df0d9f16b443', '21eddae9462e1b86', 'Mostrador', NULL, 'Tijuana', 'FDFA-446464-646', 'NSS:64-65-49-8646-5', 'tedfa', '2018-09-01', 'images/user.png', NULL, NULL, 'conocido', 'Sucursal');
 
 -- ----------------------------
 -- Table structure for roles

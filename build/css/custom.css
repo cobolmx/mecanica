@@ -862,7 +862,7 @@ a:focus {
     border: 1px solid rgba(221, 226, 232, 0.49);
     border-left: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    color: #93A2B2;
+    color: rgb(255, 255, 255); //modificacion
     margin-bottom: 0 !important
 }
 .toggle {

@@ -11,8 +11,7 @@
                 <h2>Información del empleado</h2>
                 <div class="clearfix"></div>
             </div>
-            <div class="x_content">
-                <div class="panel-body">
+            <div class="x_content">                
                     <form class="form-horizontal form-label-left" id="empleadoForma">
                         <div class="col-md-3 col-xs-12">
                             <div class="form-group">
@@ -37,16 +36,7 @@
                                 <label for="empleadoCorreo">Correo electrónico</label>
                                 <input type="email" class="form-control" name="empleadoCorreo" id="empleadoCorreo">
                             </div>
-                        </div>
-                        <div class="col-md-3 col-xs-12">
-                            <div class="form-group">
-                                <label for="id_label_single"></label>
-                                <label for="empleadoCiudad">Ciudad</label>
-                                <select class="form-control" id="empleadoCiudad" name="empleadoCiudad">
-                                    <option value="">Selecione una ciudad</option>
-                                </select>
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="col-md-9 col-xs-12">
                             <div class="form-group">
                                 <label for="empleadoDomicilio">Domicilio</label>
@@ -104,11 +94,26 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
-                            <div class="form-group">
-                                <label for="id_label_single"></label>
+                            <div class="form-group">                                
                                 <label for="empleadoRol">Rol del empleado</label>
                                 <select class="form-control" id="empleadoRol" name="empleadoRol">
                                     <option value="">Selecione un rol</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <div class="form-group">                                
+                                <label for="empleadoCiudad">Ciudad</label>
+                                <select class="form-control" id="empleadoCiudad" name="empleadoCiudad">
+                                    <option value="">Selecione una ciudad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <div class="form-group">                                
+                                <label for="empleadoSucursal">Sucursal</label>
+                                <select class="form-control" id="empleadoSucursal" name="empleadoSucursal">
+                                    <option value="">Selecione una sucursal</option>
                                 </select>
                             </div>
                         </div>
@@ -125,7 +130,7 @@
 
                         <div class="col-md-12 col-xs-12">
                             <div class="form-group">
-                                <label for="empleadoComentarios">Descripción</label>
+                                <label for="empleadoComentarios">Comentarios</label>
                                 <textarea class="form-control" name="empleadoComentarios" rows="4"></textarea>
                             </div>
                         </div>
@@ -135,8 +140,7 @@
                      </span> Agregar empleado
                             </button>
                         </div>
-                    </form>
-                </div>
+                    </form>                
             </div>
         </div>
     </div>
