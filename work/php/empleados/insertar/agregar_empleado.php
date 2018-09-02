@@ -9,7 +9,7 @@ foreach ($_POST as $key => $value) {
 $existe_rfc = valida_dato_unico('rfc', strtoupper($_POST['empleadoRfc']));
 
 if ($existe_rfc == 'existe') {
-    $message = 'El RFC: ' . strtoupper($_POST['empleadoRfc'])." ya se ecuentra registrado";
+    $message = 'El RFC: ' . strtoupper($_POST['empleadoRfc']) . " ya se ecuentra registrado";
     $data['data'] = array(
         'status' => 'exist',
         'message' => $message,
@@ -22,7 +22,7 @@ if ($existe_rfc == 'existe') {
 $existe_correo = valida_dato_unico('correo', strtoupper($_POST['empleadoCorreo']));
 
 if ($existe_correo == 'existe') {
-    $message = 'El correo eléctronico: ' . strtoupper($_POST['empleadoCorreo'])." ya se ecuentra registrado";
+    $message = 'El correo eléctronico: ' . strtoupper($_POST['empleadoCorreo']) . " ya se ecuentra registrado";
     $data['data'] = array(
         'status' => 'exist',
         'message' => $message,
@@ -91,22 +91,56 @@ $data_insert = array(
 
 $add_query = $database->insert('empleados', $data_insert);
 if ($add_query) {
-    $evento = 'Agrego un empleado al sistema: '.$_POST['empleadoNombre'].' '.$_POST['empleadoPaterno'].' '.$_POST['empleadoMaterno'];
+    $id_insertado = 'E' . str_pad($database->lastid(), 4, '0', STR_PAD_LEFT);
+
+    $directorio_antecedentes = '../../../../documentos/antecedentes_no_penales/' . $id_insertado;
+    $directorio_antecedentes_bd = 'documentos/antecedentes_no_penales/' . $id_insertado;
+    if (!file_exists($directorio_antecedentes)) {
+        mkdir($directorio_antecedentes, 0777);
+    }
+    $directorio_antidoping = '../../../../documentos/antidoping/' . $id_insertado;
+    $directorio_antidoping_db = 'documentos/antidoping/' . $id_insertado;
+    if (!file_exists($directorio_antidoping)) {
+        mkdir($directorio_antidoping, 0777);
+    }
+    $directorio_contrato = '../../../../documentos/contrato/' . $id_insertado;
+    $directorio_contrato_db = 'documentos/contrato/' . $id_insertado;
+    if (!file_exists($directorio_contrato)) {
+        mkdir($directorio_contrato, 0777);
+    }
+    $directorio_imagen_perfil = '../../../../documentos/imagen_perfil/' . $id_insertado;
+    $directorio_imagen_perfil_db = 'documentos/imagen_perfil/' . $id_insertado;
+    if (!file_exists($directorio_imagen_perfil)) {
+        mkdir($directorio_imagen_perfil, 0777);
+    }
+    /**actualiza los paths para almacenar documentos imagen de perfil, antidoping, antecedentes no penales y contratos */
+    $update = array(
+        'path_antecedentes_penales' => $directorio_antecedentes_bd,
+        'path_contratos' => $directorio_contrato_db,
+        'path_antidoping' => $directorio_antidoping_db
+    );
+    $where_clause = array(
+        'CONCAT(identificador,id)' => $id_insertado
+    );
+    $updated = $database->update('empleados', $update, $where_clause, 1);
+
+    $evento = 'Agrego un empleado al sistema: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
-    $message = 'Se creó la cuenta de: ' . $_POST['empleadoNombre']. ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
+    $message = 'Se creó la cuenta de: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
         'status' => 'success',
         'message' => $message,
-    );    
-    echo json_encode($data);    
+        "path" => $directorio_antecedentes
+    );
+    echo json_encode($data);
 } else {
     $message = 'Ocurrio un error al momento de crear la  cuenta de: ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
         'status' => 'error',
         'message' => $message
-        
+
     );
-    $evento = 'Ocurrio un error al agregar al empleado: '.$_POST['empleadoNombre'].' '.$_POST['empleadoPaterno'].' '.$_POST['empleadoMaterno'];
+    $evento = 'Ocurrio un error al agregar al empleado: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     echo json_encode($data);
 }
