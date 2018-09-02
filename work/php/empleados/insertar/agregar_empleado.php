@@ -19,6 +19,19 @@ if ($existe_rfc == 'existe') {
     die();
 }
 
+$existe_correo = valida_dato_unico('correo', strtoupper($_POST['empleadoCorreo']));
+
+if ($existe_correo == 'existe') {
+    $message = 'El correo eléctronico: ' . strtoupper($_POST['empleadoCorreo'])." ya se ecuentra registrado";
+    $data['data'] = array(
+        'status' => 'exist',
+        'message' => $message,
+        'focus' => "empleadoCorreo",
+    );
+    echo json_encode($data);
+    die();
+}
+
 $existe_nss = valida_dato_unico('nss', strtoupper($_POST['empleadoNss']));
 if ($existe_nss == 'existe') {
     $message = 'El Número de seguro social: ' . strtoupper($_POST['empleadoNss']) . ' ya se encuentra registrado';

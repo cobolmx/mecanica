@@ -6,18 +6,19 @@ foreach ($_POST as $key => $value) {
     $_POST[$key] = $database->filter($value);
 }
 $search_info = $_POST['searchInfo'];
-$query       = "SELECT CONCAT(identificador,id) as numero_empleado, nombre, paterno, materno, rfc, numero_seguro_social, ciudad, domicilio,
+$query = "SELECT CONCAT(identificador,id) as numero_empleado, nombre, paterno, materno, rfc, numero_seguro_social, ciudad, domicilio,
                        telefono_casa, telefono_celular, telefono_emergencia, fecha_de_ingreso, tipo_usuario, activo, comentarios,
-                       CONCAT(nombre,' ',paterno,' ',materno) as nombre_completo
+                       CONCAT(nombre,' ',paterno,' ',materno) as nombre_completo, correo_electronico, nombre_sucursal
                 FROM empleados
                 WHERE
                     CONCAT(identificador,id) ='" . $search_info . "' OR rfc ='" . $search_info . "' OR numero_seguro_social = '" . $search_info . "'";
 
-list($numero_empleado, $nombre, $paterno, $materno, $rfc, $numero_seguro_social, $ciudad, $domicilio, $telefono_casa, $telefono_celular, $telefono_emergencia, $fecha_ingreso, $tipo_usuario, $activo, $comentarios) = $database->get_row($query);
+list($numero_empleado, $nombre, $paterno, $materno, $rfc, $numero_seguro_social, $ciudad, $domicilio, $telefono_casa, $telefono_celular, 
+$telefono_emergencia, $fecha_ingreso, $tipo_usuario, $activo, $comentarios, $nombre_completo, $correo_electronico, $nombre_sucursal) = $database->get_row($query);
 $number = $database->num_rows($query);
 
 if ($number >= 1) {
-    $message      = 'Información del empleado encontrada';
+    $message = 'Información del empleado encontrada';
     $data['data'] = array(
         'status' => 'success',
         'numero_empleado' => $numero_empleado,
@@ -34,13 +35,17 @@ if ($number >= 1) {
         'fecha_ingreso' => $fecha_ingreso,
         'tipo_usuario' => $tipo_usuario,
         'activo' => $activo,
-        'comentarios' => $comentarios
+        'comentarios' => $comentarios,
+        'correo_electronico' => $correo_electronico,
+        'sucursal' => $nombre_sucursal,
+        'nombre_completo' => $nombre_completo,
+        'message' => $message
     );
     echo json_encode($data);
 } else {
-    $message      = 'Informacion del empleado no encontrada.';
+    $message = 'Informacion del empleado no encontrada.';
     $data['data'] = array(
-        'status' => 'warning',        
+        'status' => 'warning',
         'numero_empleado' => '',
         'nombre' => '',
         'paterno' => '',
@@ -55,7 +60,11 @@ if ($number >= 1) {
         'fecha_ingreso' => '',
         'tipo_usuario' => '',
         'activo' => '',
-        'comentarios' => ''
+        'comentarios' => '',
+        'correo_electronico' => '',
+        'sucursal' => '',
+        'nombre_completo' => '',
+        'message' => $message
     );
     echo json_encode($data);
 }

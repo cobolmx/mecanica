@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#btnActualiza').prop('disabled', true);
     /**obtenemos el listado de las ciudades */
     $.get("work/php/sucursales/obtener/obtener_ciudades.php", function (data) {
         $('#empleadoCiudad').append(data);
@@ -6,11 +7,17 @@ $(document).ready(function () {
     $.get("work/php/empleados/obtener/obtener_rol.php", function (data) {
         $('#empleadoRol').append(data);
     });
+    $('#empleadoCiudad').on('change', function () {
+        $('#empleadoSucursal').find('option').remove().end().append('<option value="">Selecione una sucursal</option>');
+        $.get("work/php/empleados/obtener/obtener_sucursal.php", { ciudad: this.value }, function (data) {
+            $('#empleadoSucursal').append(data);
+        });
+    });
     /**mascaras para los numero de telefono y seguro social */
     $('.mascara-telefono').inputmask('(999) 999 9999');
     $('#empleadoNss').inputmask('NSS:99-99-99-9999-9');
     $('#empleadoRfc').inputmask('aaaa-999999-***');
-
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     // $('#empleadoNombre').focus();
     $("#searchForm").validate({
         debug: false,
@@ -19,13 +26,12 @@ $(document).ready(function () {
             searchInfo: {
                 required: true
             }
-        },  
-        errorPlacement: function() {
+        },
+        errorPlacement: function () {
             return false;
-        },     
+        },
         submitHandler: function (form) {
             var dataString = $('#searchForm').serialize();
-            console.log('fired');
             $.ajax({
                 type: "POST",
                 url: "work/php/empleados/obtener/obtener_empleado.php",
@@ -39,6 +45,9 @@ $(document).ready(function () {
                     $('#empleadoCorreo').val('');
                     $('#empleadoRfc').val('');
                     $('#empleadoNss').val('');
+                    $('#empleadoCorreoOriginal').val('');
+                    $('#empleadoRfcOriginal').val('');
+                    $('#empleadoNssOriginal').val('');
                     $('#empleadoCiudad').val('').change();
                     $('#empleadoTelefonoCasa').val('');
                     $('#empleadoTelefonoCelular').val('');
@@ -48,6 +57,7 @@ $(document).ready(function () {
                     $('#empleadoRol').val('').change();
                     $('#empleadoActivar').val('').change();
                     $('#empleadoComentarios').val('');
+                    $('#empleadoDomicilio').val('');
                     switch (result['data'].status) {
                         case 'success':
                             swal({
@@ -61,20 +71,31 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                    $('#empleadoNombreCompleto').text(result['data'].nombre + ' ' + result['data'].paterno + ' ' + result['data'].materno);
-                                        // $('#updateInfo').prop('disabled', false);
-                                        // $('#name').val(result['data'].name);
-                                        // $('#lastName').val(result['data'].last_name);
-                                        // $('#maidenLastName').val(result['data'].maiden_last_name);
-                                        // $('#username').val(result['data'].username);
-                                        // $('#email').val(result['data'].email);
-                                        // $('#oldEmail').val(result['data'].email);
-                                        // $('#employeeNunber').val(result['data'].employee_number);
-                                        // $('#selectDepartment').val(result['data'].id_department).change();
-                                        // $('#selectRole').val(result['data'].id_role).change();
-                                        // $('#selectOffice').val(result['data'].id_office).change();
-                                        // $('#cardImage').attr('src', result['data'].avatar);
-                                        // $('#fullName').text(result['data'].name + ' ' + result['data'].last_name + ' ' + result['data'].maiden_last_name);
+                                        $('#empleadoNombreCompleto').text('Información de: ' + result['data'].nombre_completo);
+                                        $('#empleadoNumeroEmpleado').val(result['data'].numero_empleado);
+                                        $('#empleadoNombre').val(result['data'].nombre);
+                                        $('#empleadoPaterno').val(result['data'].paterno);
+                                        $('#empleadoMaterno').val(result['data'].materno);
+                                        $('#empleadoCorreo').val(result['data'].correo_electronico);
+                                        $('#empleadoRfc').val(result['data'].rfc);
+                                        $('#empleadoNss').val(result['data'].nss);
+                                        $('#empleadoCorreoOriginal').val(result['data'].correo_electronico);
+                                        $('#empleadoRfcOriginal').val(result['data'].rfc);
+                                        $('#empleadoNssOriginal').val(result['data'].nss);
+                                        $('#empleadoTelefonoCasa').val(result['data'].telefono_casa);
+                                        $('#empleadoTelefonoCelular').val(result['data'].telefono_celular);
+                                        $('#empleadoTelefonoEmergencia').val(result['data'].telefono_emergencia);
+                                        $('#empleadoFechaIngreso').val(result['data'].fecha_ingreso);
+                                        $('#empleadoCiudad').val(result['data'].ciudad).change();
+                                        $('#empleadoDomicilio').val(result['data'].domicilio);
+                                        /** delay para cargar el chainded select */
+                                        setTimeout(function () {
+                                            $('#empleadoSucursal').val(result['data'].sucursal).change();
+                                        }, 100);
+                                        $('#empleadoRol').val(result['data'].tipo_usuario).change();
+                                        $('#empleadoActivo').val(result['data'].activo).change();
+                                        $('#empleadoComentarios').val(result['data'].comentarios);
+                                        $('#btnActualiza').prop('disabled', false);
                                         break;
                                 }
                             });
@@ -141,12 +162,8 @@ $(document).ready(function () {
             empleadoFechaIngreso: "required",
             empleadoDomicilio: "required",
             empleadoCiudad: "required",
-            empleadoPassword: {
-                required: true,
-                minlength: 6
-            },
             empleadoPassword2: {
-                required: true,
+                // required: true,
                 minlength: 6,
                 equalTo: '#empleadoPassword'
             },
@@ -162,13 +179,7 @@ $(document).ready(function () {
             empleadoNss: "Este campo es obligatorio!",
             empleadoDomicilio: "Este campo es obligatorio!",
             empleadoActivo: "Este campo es obligatorio!",
-            empleadoPassword: {
-                required: "Este campo es obligatorio!",
-                minlength: "La contraseña debe de ser al menos de 6 caracteres.",
-                equalTo: "Las contraseñas no coinciden."
-            },
             empleadoPassword2: {
-                required: "Este campo es obligatorio!",
                 minlength: "La contraseña debe de ser al menos de 6 caracteres.",
                 equalTo: "Las contraseñas no coinciden."
             }
@@ -177,7 +188,7 @@ $(document).ready(function () {
             var dataString = $('#empleadoForma').serialize();
             $.ajax({
                 type: "POST",
-                url: "work/php/empleados/insertar/agregar_empleado.php",
+                url: "work/php/empleados/actualiza/actualiza_empleado.php",
                 data: dataString,
                 dataType: "json",
                 success: function (result) {
@@ -195,7 +206,7 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                        $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
+                                        $('#main_area').load("work/php/empleados/vistas/empleados_modificaciones.php");
                                         break;
                                 }
                             });
@@ -212,7 +223,6 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                        // $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
                                         $('#' + result['data'].focus).focus();
                                         break;
                                 }
@@ -230,8 +240,8 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
-                                        $('#main_area').load("work/php/empleados/vistas/empleados_altas.php");
-                                        $('#empleadoNombre').focus();
+                                        $('#main_area').load("work/php/empleados/vistas/empleados_modificaciones.php");
+                                        $('#searchInfo').focus();
                                         break;
                                 }
                             });

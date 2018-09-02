@@ -54,6 +54,10 @@ function valida_dato_unico($tipo,$cadena) {
         $query = "SELECT numero_seguro_social FROM empleados WHERE numero_seguro_social = '".$cadena."'";
         $resultado = $database->num_rows($query);
         break;
+        case 'correo': 
+        $query = "SELECT correo_electronico FROM empleados WHERE correo_electronico = '".$cadena."'";
+        $resultado = $database->num_rows($query);
+        break;
     }    
     if ($resultado == 0 ) {        
         return 'no_existe';
