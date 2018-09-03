@@ -17,11 +17,11 @@ if ($number) {
     }
     if ($check_password === $password) {
         unset($salt, $password);
-        $mensaje                     = "Que gusto de verte de nuevo " . $nombre . ' ' . $paterno . ' ' . $materno;
+        $mensaje                     = "Que gusto de verte de nuevo " . html_entity_decode($nombre, ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($paterno, ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($materno, ENT_QUOTES, "UTF-8");
         $_SESSION['numero_empleado'] = $numero_empleado;
-        $_SESSION['nombre_empleado'] = $nombre . ' ' . $paterno . ' ' . $materno;
-        $_SESSION['nombre_sucursal'] = $sucursal;
-        $_SESSION['ciudad']          = $ciudad;
+        $_SESSION['nombre_empleado'] = html_entity_decode($nombre, ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($paterno, ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($materno, ENT_QUOTES, "UTF-8");
+        $_SESSION['nombre_sucursal'] = html_entity_decode($sucursal, ENT_QUOTES, "UTF-8");
+        $_SESSION['ciudad']          = html_entity_decode($ciudad, ENT_QUOTES, "UTF-8");
         $_SESSION['tipo_usuario']    = $tipo_usuario;
         $_SESSION['imagen_perfil']   = $imagen_perfil;
         $data['data']                = array(

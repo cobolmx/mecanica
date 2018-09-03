@@ -9,7 +9,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Información del empleado</h2>
-                <div class="clearfix"></div>
+                <div class="clearfix"></div>                
             </div>
             <div class="x_content">                
                     <form class="form-horizontal form-label-left" id="empleadoForma">
@@ -127,11 +127,22 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-md-12 col-xs-12">
                             <div class="form-group">
                                 <label for="empleadoComentarios">Comentarios</label>
                                 <textarea class="form-control" name="empleadoComentarios" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="empleadoAntidoping">Carta antidoping</label>
+                                <input type="file" class="form-control" name="empleadoAntidoping" id="empleadoAntidoping" accept="application/pdf">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="empleadoAntecedentes">Carta antecedentes no penales</label>
+                                <input type="file" class="form-control" name="empleadoAntecedentes" id="empleadoAntecedentes" accept="application/pdf">
                             </div>
                         </div>
                         <div class="col-xs-12">

@@ -92,7 +92,7 @@ $data_insert = array(
 $add_query = $database->insert('empleados', $data_insert);
 if ($add_query) {
     $id_insertado = 'E' . str_pad($database->lastid(), 4, '0', STR_PAD_LEFT);
-
+    usleep(10000);
     $directorio_antecedentes = '../../../../documentos/antecedentes_no_penales/' . $id_insertado;
     $directorio_antecedentes_bd = 'documentos/antecedentes_no_penales/' . $id_insertado;
     if (!file_exists($directorio_antecedentes)) {
@@ -123,14 +123,29 @@ if ($add_query) {
         'CONCAT(identificador,id)' => $id_insertado
     );
     $updated = $database->update('empleados', $update, $where_clause, 1);
-
+    /**
+     * Sube archivos antidoping y antecedentes penales
+     */
+    if($_FILES['empleadoAntidoping']['error'] != 0) {
+       $status_upload = 'Error con el archivo: '.$_FILES['empleadoAntidoping']['name'] ;
+    } else{
+        $target_path = $directorio_antidoping . "/".$_FILES['empleadoAntidoping']['name'];
+        move_uploaded_file($_FILES['empleadoAntidoping']['tmp_name'], $target_path);
+    }
+    if($_FILES['empleadoAntecedentes']['error'] != 0) {
+        $status_upload = 'Error con el archivo: '.$_FILES['empleadoAntecedentes']['name'] ;
+     } else{
+        $target_path = $directorio_antecedentes . "/".$_FILES['empleadoAntecedentes']['name'];
+         move_uploaded_file($_FILES['empleadoAntecedentes']['tmp_name'], $target_path);
+     }
+    
+        
     $evento = 'Agrego un empleado al sistema: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     $message = 'Se creó la cuenta de: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
         'status' => 'success',
-        'message' => $message,
-        "path" => $directorio_antecedentes
+        'message' => $message        
     );
     echo json_encode($data);
 } else {

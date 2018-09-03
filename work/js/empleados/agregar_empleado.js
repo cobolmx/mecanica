@@ -81,14 +81,17 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-            var dataString = $('#empleadoForma').serialize();
+            // var dataString = $('#empleadoForma').serialize();
+            var formData = new FormData($('#empleadoForma')[0]);
             $.ajax({
                 type: "POST",
                 url: "work/php/empleados/insertar/agregar_empleado.php",
-                data: dataString,
+                data: formData,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 success: function (result) {
-                    console.log(result['data'].status);
+                    // console.log(result['data'].status);
                     switch (result['data'].status) {
                         case 'success':
                             swal({
