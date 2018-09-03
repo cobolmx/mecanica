@@ -8,17 +8,25 @@ foreach ($_POST as $key => $value) {
 $search_info = $_POST['searchInfo'];
 $query = "SELECT CONCAT(identificador,id) as numero_empleado, nombre, paterno, materno, rfc, numero_seguro_social, ciudad, domicilio,
                        telefono_casa, telefono_celular, telefono_emergencia, fecha_de_ingreso, tipo_usuario, activo, comentarios,
-                       CONCAT(nombre,' ',paterno,' ',materno) as nombre_completo, correo_electronico, nombre_sucursal
+                       CONCAT(nombre,' ',paterno,' ',materno) as nombre_completo, correo_electronico, nombre_sucursal, fecha_expiracion,
+                       path_antecedentes_penales, path_antidoping
                 FROM empleados
                 WHERE
                     CONCAT(identificador,id) ='" . $search_info . "' OR rfc ='" . $search_info . "' OR numero_seguro_social = '" . $search_info . "'";
 
 list(
     $numero_empleado, $nombre, $paterno, $materno, $rfc, $numero_seguro_social, $ciudad, $domicilio, $telefono_casa, $telefono_celular,
-    $telefono_emergencia, $fecha_ingreso, $tipo_usuario, $activo, $comentarios, $nombre_completo, $correo_electronico, $nombre_sucursal
+    $telefono_emergencia, $fecha_ingreso, $tipo_usuario, $activo, $comentarios, $nombre_completo, $correo_electronico, $nombre_sucursal,
+    $fecha_expiracion, $path_antecedentes_penales, $path_antidoping
 ) = $database->get_row($query);
 $number = $database->num_rows($query);
-
+$cadena_documentos = '';
+if (!empty($path_antecedentes_penales)) {
+    $cadena_documentos .= '<tr><td><strong>Carta Antecedetes penales</strong></td><td><button class=\"btn btn-success btn-xs\"><i class=\"fa fa-eye\" aria-hidden="true"></i></button></td></tr>';
+}
+if (!empty($path_antidoping)) {
+    $cadena_documentos .= '<tr><td><strong>Carta Antidoping<\/strong><\/td><td><button class=\"btn btn-danger btn-xs\"><i class="fa fa-times" aria-hidden="true"></i></button></td></tr>';
+}
 if ($number >= 1) {
     $message = 'Información del empleado encontrada';
     $data['data'] = array(
@@ -41,7 +49,9 @@ if ($number >= 1) {
         'correo_electronico' => $correo_electronico,
         'sucursal' => html_entity_decode($nombre_sucursal, ENT_QUOTES, "UTF-8"),
         'nombre_completo' => html_entity_decode($nombre_completo, ENT_QUOTES, "UTF-8"),
-        'message' => html_entity_decode($message, ENT_QUOTES, "UTF-8")
+        'message' => html_entity_decode($message, ENT_QUOTES, "UTF-8"),
+        'fecha_expiracion' => $fecha_expiracion,
+        'cadena_documentos' => htmlspecialchars($cadena_documentos, ENT_QUOTES)
     );
     echo json_encode($data);
 } else {
@@ -66,6 +76,8 @@ if ($number >= 1) {
         'correo_electronico' => '',
         'sucursal' => '',
         'nombre_completo' => '',
+        'fecha_expiracion' => '',
+        'cadena_documentos' => '',
         'message' => $message
     );
     echo json_encode($data);

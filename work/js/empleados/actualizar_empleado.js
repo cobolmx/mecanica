@@ -58,6 +58,7 @@ $(document).ready(function () {
                     $('#empleadoActivar').val('').change();
                     $('#empleadoComentarios').val('');
                     $('#empleadoDomicilio').val('');
+                    $('#empleadoFechaFinContrato').val('');
                     switch (result['data'].status) {
                         case 'success':
                             swal({
@@ -71,6 +72,7 @@ $(document).ready(function () {
                             }).then((value) => {
                                 switch (value) {
                                     case "Continuar":
+                                        var listadoDocumentos;
                                         $('#empleadoNombreCompleto').text('Información de: ' + result['data'].nombre_completo);
                                         $('#empleadoNumeroEmpleado').val(result['data'].numero_empleado);
                                         $('#empleadoNombre').val(result['data'].nombre);
@@ -95,7 +97,31 @@ $(document).ready(function () {
                                         $('#empleadoRol').val(result['data'].tipo_usuario).change();
                                         $('#empleadoActivo').val(result['data'].activo).change();
                                         $('#empleadoComentarios').val(result['data'].comentarios);
+                                        $('#empleadoFechaFinContrato').val(result['data'].fecha_expiracion);
                                         $('#btnActualiza').prop('disabled', false);
+                                        $('tablaDocumentos').append(result['data'].cadena_documentos);
+                                        // $('#tablaDocumentos').append(
+                                        //    '<tr>' + '<td class="col-md-11">Carta antidoping</td>'
+                                        //     + '<td class="col-md-1">' 
+                                        //     + '<button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >'
+                                        //     + '<span class="fa fa-eye"></span>'
+                                        //     + '</button>'
+                                        //     + '<button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >'
+                                        //     + '<span class="fa fa-times"></span>'
+                                        //     + '</button>'
+                                        //     + '</td>'
+                                        //     + '</tr>'
+                                        //     + '<tr>'
+                                        //     + '<td class="col-md-11">Carta antecedentes no penales</td>'
+                                        //     + '<td class="col-md-1">'
+                                        //     + '<button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >'
+                                        //     + '<span class="fa fa-eye"></span>'
+                                        //     + '</button>'
+                                        //     + '<button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >'
+                                        //     + '<span class="fa fa-times"></span>'
+                                        //     + '</button>'
+                                        //     + '</td>'
+                                        //     + '</tr>');
                                         break;
                                 }
                             });

@@ -65,6 +65,8 @@ if (empty($_POST['empleadoComentarios'])) {
     $comentarios = $_POST['empleadoComentarios'];
 }
 list($password, $salt) = encriptar_password($_POST['empleadoPassword']);
+$fecha_expiracion = strtotime('+1 year', strtotime($_POST['empleadoFechaIngreso']));
+$fecha_expiracion =  date('Y-m-d',$fecha_expiracion);
 $data_insert = array(
     'identificador' => 'E',
     'nombre' => $_POST['empleadoNombre'],
@@ -86,7 +88,8 @@ $data_insert = array(
     'ciudad' => $_POST['empleadoCiudad'],
     'imagen_perfil' => 'images/user.png',
     'domicilio' => $_POST['empleadoDomicilio'],
-    'sucursal' => $_POST['empleadoSucursal']
+    'sucursal' => $_POST['empleadoSucursal'],
+    'fecha_expiracion' => $fecha_expiracion
 );
 
 $add_query = $database->insert('empleados', $data_insert);
@@ -113,39 +116,45 @@ if ($add_query) {
     if (!file_exists($directorio_imagen_perfil)) {
         mkdir($directorio_imagen_perfil, 0777);
     }
+
+    /**
+     * Sube archivos antidoping y antecedentes penales
+     */
+    if ($_FILES['empleadoAntidoping']['error'] != 0) {
+        $status_upload = 'Error con el archivo: ' . $_FILES['empleadoAntidoping']['name'];
+        $exitoAntidoping = 0;
+    } else {
+        $target_path = $directorio_antidoping . "/" . $_FILES['empleadoAntidoping']['name'];
+        move_uploaded_file($_FILES['empleadoAntidoping']['tmp_name'], $target_path);
+        $exitoAntidoping = 1;
+    }
+    if ($_FILES['empleadoAntecedentes']['error'] != 0) {
+        $status_upload = 'Error con el archivo: ' . $_FILES['empleadoAntecedentes']['name'];
+        $exitoAntecedentes = 0;
+    } else {
+        $target_path = $directorio_antecedentes . "/" . $_FILES['empleadoAntecedentes']['name'];
+        move_uploaded_file($_FILES['empleadoAntecedentes']['tmp_name'], $target_path);
+        $exitoAntecedentes = 1;
+    }
     /**actualiza los paths para almacenar documentos imagen de perfil, antidoping, antecedentes no penales y contratos */
     $update = array(
-        'path_antecedentes_penales' => $directorio_antecedentes_bd,
+        'path_antecedentes_penales' => $directorio_antecedentes_bd.'/'.$_FILES['empleadoAntecedentes']['name'],
         'path_contratos' => $directorio_contrato_db,
-        'path_antidoping' => $directorio_antidoping_db
+        'path_antidoping' => $directorio_antidoping_db.'/'.$_FILES['empleadoAntidoping']['name'],
+        'documento_antidoping' => $exitoAntidoping,
+        'documento_antecedentes' => $exitoAntecedentes
     );
     $where_clause = array(
         'CONCAT(identificador,id)' => $id_insertado
     );
     $updated = $database->update('empleados', $update, $where_clause, 1);
-    /**
-     * Sube archivos antidoping y antecedentes penales
-     */
-    if($_FILES['empleadoAntidoping']['error'] != 0) {
-       $status_upload = 'Error con el archivo: '.$_FILES['empleadoAntidoping']['name'] ;
-    } else{
-        $target_path = $directorio_antidoping . "/".$_FILES['empleadoAntidoping']['name'];
-        move_uploaded_file($_FILES['empleadoAntidoping']['tmp_name'], $target_path);
-    }
-    if($_FILES['empleadoAntecedentes']['error'] != 0) {
-        $status_upload = 'Error con el archivo: '.$_FILES['empleadoAntecedentes']['name'] ;
-     } else{
-        $target_path = $directorio_antecedentes . "/".$_FILES['empleadoAntecedentes']['name'];
-         move_uploaded_file($_FILES['empleadoAntecedentes']['tmp_name'], $target_path);
-     }
-    
-        
+
     $evento = 'Agrego un empleado al sistema: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     $message = 'Se creó la cuenta de: ' . $_POST['empleadoNombre'] . ' ' . $_POST['empleadoPaterno'] . ' ' . $_POST['empleadoMaterno'];
     $data['data'] = array(
         'status' => 'success',
-        'message' => $message        
+        'message' => $message
     );
     echo json_encode($data);
 } else {

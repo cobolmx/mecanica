@@ -78,6 +78,18 @@
                      <input type="text" class="form-control" name="empleadoNss" id="empleadoNss">
                      <input type="hidden" class="form-control" name="empleadoNssOriginal" id="empleadoNssOriginal">
                   </div>
+               </div>               
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="empleadoFechaIngreso">Fecha de ingreso a laborar</label>
+                     <input type="text" class="form-control" id="empleadoFechaIngreso" READONLY>
+                  </div>
+               </div>
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="empleadoFechaFinContrato">Fecha de fin de contrato</label>
+                     <input type="text" class="form-control" id="empleadoFechaFinContrato" READONLY>
+                  </div>
                </div>
                <div class="col-md-3 col-xs-12">
                   <div class="form-group">
@@ -113,12 +125,7 @@
                      <input type="text" class="form-control mascara-telefono" name="empleadoTelefonoEmergencia" id="empleadoTelefonoEmergencia">
                   </div>
                </div>
-               <div class="col-md-3 col-xs-12">
-                  <div class="form-group">
-                     <label for="empleadoFechaIngreso">Fecha de ingreso</label>
-                     <input type="text" class="form-control" id="empleadoFechaIngreso" READONLY>
-                  </div>
-               </div>
+               
                <div class="col-md-3 col-xs-12">
                   <div class="form-group">
                      <label for="id_label_single"></label>
@@ -154,6 +161,48 @@
                   <div class="form-group">
                      <label for="empleadoComentarios">Comentarios</label>
                      <textarea class="form-control" name="empleadoComentarios" rows="4" id="empleadoComentarios"></textarea>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12">
+                  <div class="x_panel">
+                     <div class="x_title">
+                        <h2>Lista de documentos</h2>
+                        <div class="clearfix"></div>
+                     </div>
+                     <div class="x_content">
+                        <table class="table table-condensed" id="listaDocumentos">
+                           <thead>
+                              <tr>
+                                 <th class="col-md-11">Documento</th>
+                                 <th class="col-md-1">Accion</th>
+                              </tr>
+                           </thead>
+                           <tbody id='tablaDocumentos'>
+                              <!-- <tr>
+                                 <td class="col-md-11">Carta antidoping</td>
+                                 <td class="col-md-1">
+                                    <button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                     <span class="fa fa-eye"></span>
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                     <span class="fa fa-times"></span>
+                                    </button>
+                                 </td>
+                              </tr>
+                              <tr>
+                              <td class="col-md-11">Carta antecedentes no penales</td>
+                                 <td class="col-md-1">
+                                    <button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                     <span class="fa fa-eye"></span>
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                     <span class="fa fa-times"></span>
+                                    </button>
+                                 </td>
+                              </tr> -->
+                           </tbody>
+                        </table>
+                     </div>
                   </div>
                </div>
                <div class="col-xs-12">
