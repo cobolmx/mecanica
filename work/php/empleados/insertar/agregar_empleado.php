@@ -99,22 +99,22 @@ if ($add_query) {
     $directorio_antecedentes = '../../../../documentos/antecedentes_no_penales/' . $id_insertado;
     $directorio_antecedentes_bd = 'documentos/antecedentes_no_penales/' . $id_insertado;
     if (!file_exists($directorio_antecedentes)) {
-        mkdir($directorio_antecedentes, 0777);
+        mkdir($directorio_antecedentes, 0777,true);
     }
     $directorio_antidoping = '../../../../documentos/antidoping/' . $id_insertado;
     $directorio_antidoping_db = 'documentos/antidoping/' . $id_insertado;
     if (!file_exists($directorio_antidoping)) {
-        mkdir($directorio_antidoping, 0777);
+        mkdir($directorio_antidoping, 0777,true);
     }
     $directorio_contrato = '../../../../documentos/contrato/' . $id_insertado;
     $directorio_contrato_db = 'documentos/contrato/' . $id_insertado;
     if (!file_exists($directorio_contrato)) {
-        mkdir($directorio_contrato, 0777);
+        mkdir($directorio_contrato, 0777,true);
     }
     $directorio_imagen_perfil = '../../../../documentos/imagen_perfil/' . $id_insertado;
     $directorio_imagen_perfil_db = 'documentos/imagen_perfil/' . $id_insertado;
     if (!file_exists($directorio_imagen_perfil)) {
-        mkdir($directorio_imagen_perfil, 0777);
+        mkdir($directorio_imagen_perfil, 0777,true);
     }
 
     /**

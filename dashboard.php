@@ -245,7 +245,8 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
     <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>    
     <!-- Custom Theme Scripts -->
-    <script src="build/js/custom.min.js"></script>
+    <!-- <script src="build/js/custom.min.js"></script> -->
+    <script src="build/js/custom.js"></script>
     <!--Block UI-->
     <script src="vendors/blockUI/jquery.blockUI.js"></script>
     <!-- jquery validate -->

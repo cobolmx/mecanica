@@ -1,5 +1,5 @@
 <?php
-require("../../../../config-db/class.db.local.php");
+require "../../../../config-db/class.db.local.php";
 require_once '../../funciones/funciones.php';
 $database = new DB();
 foreach ($_POST as $key => $value) {
@@ -20,13 +20,7 @@ list(
     $fecha_expiracion, $path_antecedentes_penales, $path_antidoping
 ) = $database->get_row($query);
 $number = $database->num_rows($query);
-$cadena_documentos = '';
-if (!empty($path_antecedentes_penales)) {
-    $cadena_documentos .= '<tr><td><strong>Carta Antecedetes penales</strong></td><td><button class=\"btn btn-success btn-xs\"><i class=\"fa fa-eye\" aria-hidden="true"></i></button></td></tr>';
-}
-if (!empty($path_antidoping)) {
-    $cadena_documentos .= '<tr><td><strong>Carta Antidoping<\/strong><\/td><td><button class=\"btn btn-danger btn-xs\"><i class="fa fa-times" aria-hidden="true"></i></button></td></tr>';
-}
+
 if ($number >= 1) {
     $message = 'Información del empleado encontrada';
     $data['data'] = array(
@@ -51,7 +45,8 @@ if ($number >= 1) {
         'nombre_completo' => html_entity_decode($nombre_completo, ENT_QUOTES, "UTF-8"),
         'message' => html_entity_decode($message, ENT_QUOTES, "UTF-8"),
         'fecha_expiracion' => $fecha_expiracion,
-        'cadena_documentos' => htmlspecialchars($cadena_documentos, ENT_QUOTES)
+        'path_antecedentes' => $path_antecedentes_penales,
+        'path_antidoping' => $path_antidoping,
     );
     echo json_encode($data);
 } else {
@@ -77,9 +72,9 @@ if ($number >= 1) {
         'sucursal' => '',
         'nombre_completo' => '',
         'fecha_expiracion' => '',
-        'cadena_documentos' => '',
-        'message' => $message
+        'path_antecedentes' => '',
+        'path_antidoping' => '',
+        'message' => $message,
     );
     echo json_encode($data);
 }
-?>

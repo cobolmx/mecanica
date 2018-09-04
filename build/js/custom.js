@@ -70,7 +70,7 @@ var setContentHeight = function () {
 };
 
   $SIDEBAR_MENU.find('a').on('click', function(ev) {
-	  console.log('clicked - sidebar_menu');
+	  // console.log('clicked - sidebar_menu');
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -1848,7 +1848,7 @@ if (typeof NProgress != 'undefined') {
 			
 		function init_CustomNotification() {
 			
-			console.log('run_customtabs');
+			// console.log('run_customtabs');
 			
 			if( typeof (CustomTabs) === 'undefined'){ return; }
 			console.log('init_CustomTabs');
@@ -1963,7 +1963,7 @@ if (typeof NProgress != 'undefined') {
 		
 		function init_charts() {
 			
-				console.log('run_charts  typeof [' + typeof (Chart) + ']');
+				// console.log('run_charts  typeof [' + typeof (Chart) + ']');
 			
 				if( typeof (Chart) === 'undefined'){ return; }
 				
@@ -5010,7 +5010,7 @@ if (typeof NProgress != 'undefined') {
 		init_flot_chart();
 		init_sidebar();
 		init_wysiwyg();
-		init_InputMask();
+		// init_InputMask();
 		init_JQVmap();
 		init_cropper();
 		init_knob();
@@ -5018,10 +5018,10 @@ if (typeof NProgress != 'undefined') {
 		init_ColorPicker();
 		init_TagsInput();
 		init_parsley();
-		init_daterangepicker();
-		init_daterangepicker_right();
-		init_daterangepicker_single_call();
-		init_daterangepicker_reservation();
+		// init_daterangepicker();
+		// init_daterangepicker_right();
+		// init_daterangepicker_single_call();
+		// init_daterangepicker_reservation();
 		init_SmartWizard();
 		init_EasyPieChart();
 		init_charts();
@@ -5030,13 +5030,13 @@ if (typeof NProgress != 'undefined') {
 		init_skycons();
 		init_select2();
 		init_validator();
-		init_DataTables();
+		// init_DataTables();
 		init_chart_doughnut();
 		init_gauge();
 		init_PNotify();
 		init_starrr();
 		init_calendar();
-		init_compose();
+		// init_compose();
 		init_CustomNotification();
 		init_autosize();
 		init_autocomplete();

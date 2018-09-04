@@ -13,6 +13,7 @@ $(document).ready(function () {
             $('#empleadoSucursal').append(data);
         });
     });
+    $('#tablaDocumentos').find('tr').remove().end();
     /**mascaras para los numero de telefono y seguro social */
     $('.mascara-telefono').inputmask('(999) 999 9999');
     $('#empleadoNss').inputmask('NSS:99-99-99-9999-9');
@@ -99,29 +100,24 @@ $(document).ready(function () {
                                         $('#empleadoComentarios').val(result['data'].comentarios);
                                         $('#empleadoFechaFinContrato').val(result['data'].fecha_expiracion);
                                         $('#btnActualiza').prop('disabled', false);
-                                        $('tablaDocumentos').append(result['data'].cadena_documentos);
-                                        // $('#tablaDocumentos').append(
-                                        //    '<tr>' + '<td class="col-md-11">Carta antidoping</td>'
-                                        //     + '<td class="col-md-1">' 
-                                        //     + '<button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >'
-                                        //     + '<span class="fa fa-eye"></span>'
-                                        //     + '</button>'
-                                        //     + '<button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >'
-                                        //     + '<span class="fa fa-times"></span>'
-                                        //     + '</button>'
-                                        //     + '</td>'
-                                        //     + '</tr>'
-                                        //     + '<tr>'
-                                        //     + '<td class="col-md-11">Carta antecedentes no penales</td>'
-                                        //     + '<td class="col-md-1">'
-                                        //     + '<button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >'
-                                        //     + '<span class="fa fa-eye"></span>'
-                                        //     + '</button>'
-                                        //     + '<button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >'
-                                        //     + '<span class="fa fa-times"></span>'
-                                        //     + '</button>'
-                                        //     + '</td>'
-                                        //     + '</tr>');
+                                        if (result['data'].path_antecedentes != '') {
+                                            $('#tablaDocumentos').append(
+                                                '<tr><td><strong>Carta Antecedetes penales</strong></td><td><button id="verPdfAntecedentes" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td></tr>'
+                                            );
+                                            $("#verPdfAntecedentes").off('click').click(function (e) {                                                        
+                                                window.open(result['data'].path_antecedentes,'_blank');
+                                                e.preventDefault();
+                                            });
+                                        }
+                                        if (result['data'].path_antidoping != '') {
+                                            $('#tablaDocumentos').append(
+                                                '<tr><td><strong>Carta Antidoping</strong></td><td><button id="verPdfAntidoping" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td></tr>'
+                                            );
+                                            $("#verPdfAntidoping").off('click').click(function (e) {                                                        
+                                                window.open(result['data'].path_antidoping,'_blank');
+                                                e.preventDefault();
+                                            });
+                                        }
                                         break;
                                 }
                             });

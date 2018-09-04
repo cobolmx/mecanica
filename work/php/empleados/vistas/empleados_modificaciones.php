@@ -174,32 +174,10 @@
                            <thead>
                               <tr>
                                  <th class="col-md-11">Documento</th>
-                                 <th class="col-md-1">Accion</th>
+                                 <th class="col-md-1 text-center">Accion</th>
                               </tr>
                            </thead>
-                           <tbody id='tablaDocumentos'>
-                              <!-- <tr>
-                                 <td class="col-md-11">Carta antidoping</td>
-                                 <td class="col-md-1">
-                                    <button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                     <span class="fa fa-eye"></span>
-                                    </button>
-                                    <button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                     <span class="fa fa-times"></span>
-                                    </button>
-                                 </td>
-                              </tr>
-                              <tr>
-                              <td class="col-md-11">Carta antecedentes no penales</td>
-                                 <td class="col-md-1">
-                                    <button class="btn btn-primary btn-xs " data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                     <span class="fa fa-eye"></span>
-                                    </button>
-                                    <button class="btn btn-danger btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                     <span class="fa fa-times"></span>
-                                    </button>
-                                 </td>
-                              </tr> -->
+                           <tbody id='tablaDocumentos'>                        
                            </tbody>
                         </table>
                      </div>
