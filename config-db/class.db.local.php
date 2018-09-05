@@ -24,17 +24,17 @@
 /**
  * desde el trabajo 
  */
-// define('DB_HOST', '192.168.4.101'); // set database host  <-- production
-// define('DB_USER', 'mecanica_user'); // set database user
-// define('DB_PASS', 'test'); // set database password
-// define('DB_NAME', 'lab'); // set database name <-- develop
+define('DB_HOST', '192.168.4.101'); // set database host  <-- production
+define('DB_USER', 'mecanica_user'); // set database user
+define('DB_PASS', 'test'); // set database password
+define('DB_NAME', 'lab'); // set database name <-- develop
  /**
   * casa
   */
-define('DB_HOST', 'localhost'); // set database host  <-- production
-define('DB_USER', 'mecanica_user'); // set database user
-define('DB_PASS', 'test'); // set database password
-define('DB_NAME', 'mecanica_db'); // set database name <-- develop
+// define('DB_HOST', 'localhost'); // set database host  <-- production
+// define('DB_USER', 'mecanica_user'); // set database user
+// define('DB_PASS', 'test'); // set database password
+// define('DB_NAME', 'mecanica_db'); // set database name <-- develop
 /**
  * nube
  */
