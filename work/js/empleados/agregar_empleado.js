@@ -30,10 +30,7 @@ $(document).ready(function () {
     /**Check for user login */
     $("#empleadoForma").validate({
         debug: false,
-        errorClass: 'text-danger parsley-error',
-        // errorPlacement: function() {
-        //     return false;
-        // }, 
+        errorClass: 'text-danger parsley-error',     
         rules: {
             empleadoNombre: "required",
             empleadoPaterno: "required",
@@ -90,8 +87,7 @@ $(document).ready(function () {
                 dataType: "json",
                 contentType: false,
                 processData: false,
-                success: function (result) {
-                    // console.log(result['data'].status);
+                success: function (result) {                    
                     switch (result['data'].status) {
                         case 'success':
                             swal({

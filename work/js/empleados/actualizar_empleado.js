@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#btnActualiza').prop('disabled', true);
+    $('#verPdfAntecedentes,#verPdfAntidoping').prop('disabled', true);
     /**obtenemos el listado de las ciudades */
     $.get("work/php/sucursales/obtener/obtener_ciudades.php", function (data) {
         $('#empleadoCiudad').append(data);
@@ -13,13 +14,14 @@ $(document).ready(function () {
             $('#empleadoSucursal').append(data);
         });
     });
-    $('#tablaDocumentos').find('tr').remove().end();
+    // $('#tablaDocumentos').find('tr').remove().end();
     /**mascaras para los numero de telefono y seguro social */
     $('.mascara-telefono').inputmask('(999) 999 9999');
     $('#empleadoNss').inputmask('NSS:99-99-99-9999-9');
     $('#empleadoRfc').inputmask('aaaa-999999-***');
+
     $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
-    // $('#empleadoNombre').focus();
+
     $("#searchForm").validate({
         debug: false,
         errorClass: 'text-danger parsley-error',
@@ -101,20 +103,16 @@ $(document).ready(function () {
                                         $('#empleadoFechaFinContrato').val(result['data'].fecha_expiracion);
                                         $('#btnActualiza').prop('disabled', false);
                                         if (result['data'].path_antecedentes != '') {
-                                            $('#tablaDocumentos').append(
-                                                '<tr><td><strong>Carta Antecedetes penales</strong></td><td><button id="verPdfAntecedentes" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td></tr>'
-                                            );
-                                            $("#verPdfAntecedentes").off('click').click(function (e) {                                                        
-                                                window.open(result['data'].path_antecedentes,'_blank');
+                                            $('#verPdfAntecedentes').prop('disabled', false);
+                                            $("#verPdfAntecedentes").off('click').click(function (e) {
+                                                window.open(result['data'].path_antecedentes, '_blank');
                                                 e.preventDefault();
                                             });
                                         }
-                                        if (result['data'].path_antidoping != '') {
-                                            $('#tablaDocumentos').append(
-                                                '<tr><td><strong>Carta Antidoping</strong></td><td><button id="verPdfAntidoping" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td></tr>'
-                                            );
-                                            $("#verPdfAntidoping").off('click').click(function (e) {                                                        
-                                                window.open(result['data'].path_antidoping,'_blank');
+                                        if (result['data'].path_antecedentes != '') {
+                                            $('#verPdfAntidoping').prop('disabled', false);
+                                            $("#verPdfAntidoping").off('click').click(function (e) {
+                                                window.open(result['data'].path_antidoping, '_blank');
                                                 e.preventDefault();
                                             });
                                         }
@@ -167,9 +165,6 @@ $(document).ready(function () {
     $("#empleadoForma").validate({
         debug: false,
         errorClass: 'text-danger parsley-error',
-        // errorPlacement: function() {
-        //     return false;
-        // }, 
         rules: {
             empleadoNombre: "required",
             empleadoPaterno: "required",
@@ -184,8 +179,7 @@ $(document).ready(function () {
             empleadoFechaIngreso: "required",
             empleadoDomicilio: "required",
             empleadoCiudad: "required",
-            empleadoPassword2: {
-                // required: true,
+            empleadoPassword2: {                
                 minlength: 6,
                 equalTo: '#empleadoPassword'
             },
@@ -207,14 +201,16 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-            var dataString = $('#empleadoForma').serialize();
+            // var dataString = $('#empleadoForma').serialize();
+            var formData = new FormData($('#empleadoForma')[0]);
             $.ajax({
                 type: "POST",
                 url: "work/php/empleados/actualiza/actualiza_empleado.php",
-                data: dataString,
+                data: formData,
                 dataType: "json",
-                success: function (result) {
-                    console.log(result['data'].status);
+                contentType: false,
+                processData: false,
+                success: function (result) {                    
                     switch (result['data'].status) {
                         case 'success':
                             swal({

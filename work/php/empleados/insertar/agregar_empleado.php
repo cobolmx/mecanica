@@ -7,7 +7,6 @@ foreach ($_POST as $key => $value) {
 }
 
 $existe_rfc = valida_dato_unico('rfc', strtoupper($_POST['empleadoRfc']));
-
 if ($existe_rfc == 'existe') {
     $message = 'El RFC: ' . strtoupper($_POST['empleadoRfc']) . " ya se ecuentra registrado";
     $data['data'] = array(
@@ -20,7 +19,6 @@ if ($existe_rfc == 'existe') {
 }
 
 $existe_correo = valida_dato_unico('correo', strtoupper($_POST['empleadoCorreo']));
-
 if ($existe_correo == 'existe') {
     $message = 'El correo eléctronico: ' . strtoupper($_POST['empleadoCorreo']) . " ya se ecuentra registrado";
     $data['data'] = array(

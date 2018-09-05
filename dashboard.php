@@ -33,6 +33,8 @@
     <!-- Custom Theme Style -->
     <!-- <link href="build/css/custom.min.css" rel="stylesheet"> -->
     <link href="build/css/custom.css" rel="stylesheet">
+    <!-- custom css -->
+    <link href="work/css/mecanica_custom.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">

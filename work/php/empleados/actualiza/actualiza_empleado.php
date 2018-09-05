@@ -9,10 +9,8 @@ foreach ($_POST as $key => $value) {
 
 if (strcasecmp($_POST['empleadoRfc'], $_POST['empleadoRfcOriginal']) == 0) {
     $empleadoRfc = $_POST['empleadoRfc'];
-    
 } else {
     $existe_rfc = valida_dato_unico('rfc', strtoupper($_POST['empleadoRfc']));
-    echo 'coinciden';
     if ($existe_rfc == 'existe') {
         $message = 'El RFC: ' . strtoupper($_POST['empleadoRfc']) . " ya se ecuentra registrado";
         $data['data'] = array(
@@ -24,6 +22,7 @@ if (strcasecmp($_POST['empleadoRfc'], $_POST['empleadoRfcOriginal']) == 0) {
         die();
     }
 }
+
 if (strcasecmp($_POST['empleadoNss'], $_POST['empleadoNssOriginal']) == 0) {
     $empleadoNss = $_POST['empleadoNss'];
 } else {
@@ -55,6 +54,39 @@ if (strcasecmp($_POST['empleadoCorreo'], $_POST['empleadoCorreoOriginal']) == 0)
         die();
     }
 }
+if ($_FILES['empleadoAntecedentes']['error'] == 0) {
+    $directorio_antecedentes = '../../../../documentos/antecedentes_no_penales/' . $_POST['empleadoNumeroEmpleado'];
+    $target_path = $directorio_antecedentes . "/" . $_FILES['empleadoAntecedentes']['name'];
+    if (file_exists($target_path)) {
+        chmod($target_path, 0755);
+        unlink($target_path);
+    }
+    move_uploaded_file($_FILES['empleadoAntecedentes']['tmp_name'], $target_path);
+    $arrayAntecedentes = array(
+        'path_antecedentes_penales' => 'documentos/antecedentes_no_penales/' . $_POST['empleadoNumeroEmpleado'] . '/' . $_FILES['empleadoAntecedentes']['name']
+    );
+    $exitoAntecedentes = 1;
+} else {
+    $arrayAntecedentes = array();
+    $exitoAntecedentes = 0;
+}
+if ($_FILES['empleadoAntidoping']['error'] == 0) {
+    $directorio_antidoping = '../../../../documentos/antidoping/' . $_POST['empleadoNumeroEmpleado'];
+    $target_path = $directorio_antidoping . "/" . $_FILES['empleadoAntidoping']['name'];
+    if (file_exists($target_path)) {
+        chmod($target_path, 0755);
+        unlink($target_path);
+    }
+    move_uploaded_file($_FILES['empleadoAntidoping']['tmp_name'], $target_path);
+    $arrayAntidoping = array(
+        'path_antidoping' => 'documentos/antidoping/' . $_POST['empleadoNumeroEmpleado'] . '/' . $_FILES['empleadoAntidoping']['name']
+    );
+    $exitoAntidoping = 1;
+} else {
+    $arrayAntidoping = array();
+    $exitoAntidoping = 0;
+}
+/** ruta de los documentos */
 
 if (empty($_POST['empleadoTelefonoCasa'])) {
     $telefono_casa = '';
@@ -76,11 +108,12 @@ if (empty($_POST['empleadoComentarios'])) {
 } else {
     $comentarios = $_POST['empleadoComentarios'];
 }
+
 if (!empty($_POST['empleadoPassword'])) {
     $password = $_POST['empleadoPassword'];
     list($encrypted_password, $salt) = encriptar_password($password);
-    $update = array(
-        'nombre' =>  $_POST['empleadoNombre'],
+    $temp = array(
+        'nombre' => $_POST['empleadoNombre'],
         'paterno' => $_POST['empleadoPaterno'],
         'materno' => $_POST['empleadoMaterno'],
         'correo_electronico' => $_POST['empleadoCorreo'],
@@ -96,13 +129,17 @@ if (!empty($_POST['empleadoPassword'])) {
         'activo' => $_POST['empleadoActivo'],
         'comentarios' => $_POST['empleadoComentarios'],
         'password' => $encrypted_password,
-        'salt' => $salt
+        'salt' => $salt,
+        'documento_antidoping' => $exitoAntidoping,
+        'documento_antecedentes' => $exitoAntecedentes
     );
+    $update = array_merge($temp, $arrayAntecedentes, $arrayAntidoping);
+
     $evento = 'Se actualizo información de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8") . ' con el número de empleado: ' . $_POST['empleadoNumeroEmpleado'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     $message = 'Se creó la cuenta de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8");
 } else {
-    $update = array(
+    $temp = array(
         'nombre' => $_POST['empleadoNombre'],
         'paterno' => $_POST['empleadoPaterno'],
         'materno' => $_POST['empleadoMaterno'],
@@ -117,8 +154,12 @@ if (!empty($_POST['empleadoPassword'])) {
         'telefono_emergencia' => $_POST['empleadoTelefonoCelular'],
         'tipo_usuario' => $_POST['empleadoRol'],
         'activo' => $_POST['empleadoActivo'],
-        'comentarios' => $_POST['empleadoComentarios']
+        'comentarios' => $_POST['empleadoComentarios'],
+        'documento_antidoping' => $exitoAntidoping,
+        'documento_antecedentes' => $exitoAntecedentes
     );
+    $update = array_merge($temp, $arrayAntecedentes, $arrayAntidoping);
+
     $evento = 'Se actualizo información de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8") . ' con el número de empleado: ' . $_POST['empleadoNumeroEmpleado'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
     $message = 'Se creó la cuenta de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8");
@@ -128,10 +169,11 @@ $where_clause = array(
 );
 $updated = $database->update('empleados', $update, $where_clause, 1);
 
-if ($updated == '1') {    
+if ($updated == '1') {
     $data['data'] = array(
         'status' => 'success',
-        'message' => $message
+        'message' => $message,
+        'query' => $exitoAntecedentes . ' antidoping: ' . $exitoAntidoping
     );
     echo json_encode($data);
 } else {

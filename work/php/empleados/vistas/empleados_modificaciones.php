@@ -78,7 +78,7 @@
                      <input type="text" class="form-control" name="empleadoNss" id="empleadoNss">
                      <input type="hidden" class="form-control" name="empleadoNssOriginal" id="empleadoNssOriginal">
                   </div>
-               </div>               
+               </div>
                <div class="col-md-3 col-xs-12">
                   <div class="form-group">
                      <label for="empleadoFechaIngreso">Fecha de ingreso a laborar</label>
@@ -125,7 +125,6 @@
                      <input type="text" class="form-control mascara-telefono" name="empleadoTelefonoEmergencia" id="empleadoTelefonoEmergencia">
                   </div>
                </div>
-               
                <div class="col-md-3 col-xs-12">
                   <div class="form-group">
                      <label for="id_label_single"></label>
@@ -173,11 +172,36 @@
                         <table class="table table-condensed" id="listaDocumentos">
                            <thead>
                               <tr>
-                                 <th class="col-md-11">Documento</th>
-                                 <th class="col-md-1 text-center">Accion</th>
+                                 <th class="col-md-6">Documento</th>
+                                 <th class="col-md-3 text-center">Accion</th>
+                                 <th class="col-md-3 text-center">Actualizar documentos</th>
                               </tr>
                            </thead>
-                           <tbody id='tablaDocumentos'>                        
+                           <tbody id='tablaDocumentos'>
+                              <tr>
+                                 <td><strong>Carta antecedentes penales</strong></td>
+                                 <td><button id="verPdfAntecedentes" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td>
+                                 <td>
+                                    <div class="form-group">                                
+                                       <label class="btn-bs-file btn btn-xs btn-warning btn-block">
+                                       Subir carta antecedentes
+                                       <input type="file" class="form-control" name="empleadoAntecedentes" id="empleadoAntecedentes" accept="application/pdf">
+                                       </label>
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td><strong>Carta Antidoping</strong></td>
+                                 <td><button id="verPdfAntidoping" class="btn btn-success btn-xs btn-block " ><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td>
+                                 <td>
+                                    <div class="form-group">                                                           
+                                       <label class="btn-bs-file btn btn-xs btn-warning btn-block"> 
+                                       Subir carta antidoping
+                                       <input type="file" class="form-control" name="empleadoAntidoping" id="empleadoAntidoping" accept="application/pdf"> 
+                                       </label>
+                                    </div>
+                                 </td>
+                              </tr>
                            </tbody>
                         </table>
                      </div>
