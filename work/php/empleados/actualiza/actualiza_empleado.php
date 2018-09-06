@@ -162,7 +162,7 @@ if (!empty($_POST['empleadoPassword'])) {
 
     $evento = 'Se actualizo información de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8") . ' con el número de empleado: ' . $_POST['empleadoNumeroEmpleado'];
     registro_bitacora($_SESSION['numero_empleado'], $evento, 'Agregar empleado', obtener_ip());
-    $message = 'Se creó la cuenta de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8");
+    $message = 'Se actualizo información de: ' . html_entity_decode($_POST['empleadoNombre'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoPaterno'], ENT_QUOTES, "UTF-8") . ' ' . html_entity_decode($_POST['empleadoMaterno'], ENT_QUOTES, "UTF-8");
 }
 $where_clause = array(
     'CONCAT(identificador,id)' => $_POST['empleadoNumeroEmpleado']

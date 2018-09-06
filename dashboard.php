@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mecanica 1885 | Sucursal <?php echo $_SESSION['sucursal'];?> </title>
+    <title>TestLab | Sucursal <?php echo $_SESSION['sucursal'];?> </title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- data tables -->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!-- file input -->
+    <!-- file input -->  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <!-- Custom Theme Style -->
@@ -43,7 +43,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="dashboard.php" class="site_title"><i class="fa fa-black-tie"></i> <span>Mecanica 1885</span></a>
+              <a href="dashboard.php" class="site_title"><i class="fa fa-black-tie"></i> <span>Test Lab</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -62,7 +62,19 @@
             <br />
 
             <!-- sidebar menu -->
-            <?php include("work/php/menu/menu_administrador.php");?>
+            <?php
+              switch (strtoupper($_SESSION['tipo_usuario'])) {
+                  case 'ADMINISTRADOR':
+                      include("work/php/menu/menu_administrador.php");
+                      break;
+                  case 'MOSTRADOR': 
+                      include("work/php/menu/menu_mostrador.php");
+                      break;
+                  case 'CAJERO': break;
+                  case 'CAPTURISTA': break;
+                }          
+              ?>
+            <?php ;?>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -101,18 +113,12 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
-                    <!-- <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li> -->
-                    <li><a href="javascript:;">Ayuda</a></li>
-                    <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                    <li><a href="#"><i class="fa fa-user pull-right" aria-hidden="true"></i>Perfil</a></li>
+                    <li><a href="#"><i class="fa fa-key pull-right" aria-hidden="true"></i>Cambiar contraseña</a></li>                    
+                    <li><a href="javascript:;"><i class="fa fa-question pull-right" aria-hidden="true"></i>Ayuda</a></li>
+                    <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a></li>
                   </ul>
                 </li>
-
                 <!-- <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
@@ -204,7 +210,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Mecanica 1885 - Derechos reservados &copy; <?php echo date("Y");?>
+            TestLab - Derechos reservados &copy; <?php echo date("Y");?>
           </div>
           <div class="clearfix"></div>
         </footer>

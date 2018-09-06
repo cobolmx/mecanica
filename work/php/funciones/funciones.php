@@ -41,6 +41,10 @@ function encriptar_password($unencryptedPassword) {
     );
     return list($password, $salt) = $results;
 }
+/**
+ * funcion para cambiar contraseña personal * 
+ */
+
 //revisa si ya existe un numero de seguro social o rfc
 // regresa existe si existe, no_existe si no y puede proceder
 function valida_dato_unico($tipo,$cadena) {

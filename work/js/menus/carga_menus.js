@@ -24,4 +24,11 @@ $(document).ready(function () {
         $('#main_area').load("work/php/empleados/vistas/empleados_modificaciones.php");
         e.preventDefault();
     });
+    /**
+     * usuarios
+     */
+    $("#usuarioPassword").off('click').click(function (e) {        
+        $('#main_area').load("work/php/usuario/vistas/usuario_password.php");
+        e.preventDefault();
+    });
 });
