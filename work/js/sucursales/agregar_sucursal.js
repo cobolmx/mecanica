@@ -3,7 +3,7 @@ $(document).ready(function () {
         $('#sucursalCiudad').append(data);
     });    
     $('#sucursalNombre').focus();
-
+    $('#sucursalTelefono').inputmask('(999) 999 9999');
     /**Check for user login */
     $("#sucursalForma").validate({
         debug: true,

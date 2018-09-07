@@ -168,8 +168,8 @@
                         <h2>Lista de documentos</h2>
                         <div class="clearfix"></div>
                      </div>
-                     <div class="x_content">
-                        <table class="table table-condensed" id="listaDocumentos">
+                     <div class="x_content table-responsive">
+                        <table class="table table-condensed " id="listaDocumentos">
                            <thead>
                               <tr>
                                  <th class="col-md-6">Documento</th>

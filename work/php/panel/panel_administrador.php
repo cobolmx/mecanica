@@ -33,7 +33,7 @@
     </div>
 </div>
 <!-- detalles -->
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-4">
         <div class="x_panel">
             <div class="x_title">
@@ -63,23 +63,23 @@
                 </article>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- fin tablero-->
     <!-- sucursales -->
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
                 <h2>Lista de sucursales</h2>                
                 <div class="clearfix"></div>
             </div>
-            <div class="x_content">
-                <table class="table table-condensed" id="listaSucursales">
+            <div class="x_content table-responsive">
+                <table class="table table-condensed table-striped" id="listaSucursales">
                     <thead>
                         <tr>                            
-                            <th>Nombre</th>
-                            <th>Ciudad</th>
-                            <th>Direccion</th>
-                            <th>Teléfono</th>
+                            <th class="col-md-2">Nombre</th>
+                            <th class="col-md-2">Ciudad</th>
+                            <th class="col-md-6">Direccion</th>
+                            <th class="col-md-2">Teléfono</th>
                         </tr>
                     </thead>                  
                 </table>

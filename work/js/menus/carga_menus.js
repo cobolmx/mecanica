@@ -31,4 +31,16 @@ $(document).ready(function () {
         $('#main_area').load("work/php/usuario/vistas/usuario_password.php");
         e.preventDefault();
     });
+    /**
+     * Inventarios
+     */
+    $("#inventarioAltas").off('click').click(function (e) {        
+        $('#main_area').load("work/php/inventario/vistas/inventario_altas.php");
+        e.preventDefault();
+    });
+    //categorias
+    $("#categoriaAltas").off('click').click(function (e) {        
+        $('#main_area').load("work/php/inventario/vistas/categoria_altas.php");
+        e.preventDefault();
+    });
 });
