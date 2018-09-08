@@ -43,4 +43,9 @@ $(document).ready(function () {
         $('#main_area').load("work/php/inventario/vistas/categoria_altas.php");
         e.preventDefault();
     });
+     //Modelos
+     $("#modeloAltas").off('click').click(function (e) {        
+        $('#main_area').load("work/php/inventario/vistas/modelo_altas.php");
+        e.preventDefault();
+    });
 });

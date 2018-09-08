@@ -7,16 +7,17 @@ foreach ($_POST as $key => $value) {
 }
 
 $data_insert = array(
-    'nombre' => $_POST['categoriaNombre'],
-    'descripcion' => $_POST['categoriaDescripcion'],
-    'activo' => $_POST['categoriaActivo'],    
+    'id_categoria' => $_POST['modeloCategoria'],
+    'nombre' => $_POST['modeloNombre'],
+    'descripcion' => $_POST['modeloDescripcion'],
+    'activo' => $_POST['modeloActivo'],    
     'fecha_registro' => Date('Y-m-d H:i:s')
 );
-$add_query   = $database->insert('articulos_categoria', $data_insert);
+$add_query   = $database->insert('articulos_modelo', $data_insert);
 
 if ($add_query) {
-    $evento = 'Se agrego la categoría: '.$_POST['categoriaNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-categoria', obtener_ip());
+    $evento = 'Se agrego el modelo: '.$_POST['modeloNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-modelo', obtener_ip());
     $message      = 'Se agrego satisfactoriamente la siguiente categoría: ' . $_POST['categoriaNombre'];
     $data['data'] = array(
         'status' => 'success',
@@ -28,9 +29,9 @@ if ($add_query) {
     echo json_encode($data);
     
 } else {
-    $evento = 'Ocurrio un error al agregar la categoría: '.$_POST['categoriaNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-categoria-error', obtener_ip());
-    $message      = 'Ocurrio un error al agregar la categoría: ' . $_POST['categoriaNombre'] . 'Favor de notificar al administrador del sistema.';
+    $evento = 'Ocurrio un error al agregar el modelo: '.$_POST['modeloNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-modelo-error', obtener_ip());
+    $message      = 'Ocurrio un error al agregar modelo: ' . $_POST['modeloNombre'] . 'Favor de notificar al administrador del sistema.';
     $data['data'] = array(
         'status' => 'error',
         'message' => $message

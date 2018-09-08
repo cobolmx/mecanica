@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 06/09/2018 22:59:36
+ Date: 08/09/2018 11:34:30
 */
 
 SET NAMES utf8mb4;
@@ -28,12 +28,33 @@ CREATE TABLE `articulos_categoria`  (
   `activo` int(11) NULL DEFAULT NULL,
   `fecha_registro` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos_categoria
 -- ----------------------------
 INSERT INTO `articulos_categoria` VALUES (1, 'Destornillador', 'Destornillador', 1, '2018-09-06 21:42:03');
+INSERT INTO `articulos_categoria` VALUES (2, 'Monitor', 'Monitor de computadora', 1, '2018-09-08 10:23:37');
+INSERT INTO `articulos_categoria` VALUES (3, 'Teclados', 'Teclados para computadoras', 1, '2018-09-08 10:27:20');
+
+-- ----------------------------
+-- Table structure for articulos_modelo
+-- ----------------------------
+DROP TABLE IF EXISTS `articulos_modelo`;
+CREATE TABLE `articulos_modelo`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Auto incrementable de tabla modelo',
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Nombre del modelo del articulo',
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Descripcion del modelo del arituclo',
+  `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha cuando se registro el modelo del articulo',
+  `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
+  `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of articulos_modelo
+-- ----------------------------
+INSERT INTO `articulos_modelo` VALUES (1, 'Acer', 'Monitor de 22&quot;', '2018-09-08 11:20:42', 1, 2);
 
 -- ----------------------------
 -- Table structure for bitacora_eventos
@@ -48,7 +69,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 116 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -168,6 +189,12 @@ INSERT INTO `bitacora_eventos` VALUES (112, 'E0001', '192.168.0.5', 'Inicio de s
 INSERT INTO `bitacora_eventos` VALUES (113, 'E0001', '::1', 'agregar-categoria-error', 'agregar-categoria-error', '2018-09-06 21:41:28');
 INSERT INTO `bitacora_eventos` VALUES (114, 'E0001', '::1', 'agregar-categoria', 'agregar-categoria', '2018-09-06 21:42:03');
 INSERT INTO `bitacora_eventos` VALUES (115, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 22:58:56');
+INSERT INTO `bitacora_eventos` VALUES (116, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-08 10:23:04');
+INSERT INTO `bitacora_eventos` VALUES (117, 'E0001', '::1', 'agregar-categoria', 'agregar-categoria', '2018-09-08 10:23:37');
+INSERT INTO `bitacora_eventos` VALUES (118, 'E0001', '::1', 'Se agrego la categoría: Teclados por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-08 10:27:20');
+INSERT INTO `bitacora_eventos` VALUES (119, 'E0001', '::1', 'Ocurrio un error al agregar el modelo: Acer por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo-error', '2018-09-08 11:18:12');
+INSERT INTO `bitacora_eventos` VALUES (120, 'E0001', '::1', 'Se agrego el modelo: Acer por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-08 11:20:42');
+INSERT INTO `bitacora_eventos` VALUES (121, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-08 11:33:58');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
@@ -248,13 +275,12 @@ CREATE TABLE `empleados`  (
   `fecha_expiracion` date NULL DEFAULT NULL COMMENT 'Fecha cuando expira el contrato',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`, `identificador`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of empleados
 -- ----------------------------
 INSERT INTO `empleados` VALUES (0001, 'E', 'Israel', 'Rodr&iacute;guez', 'S&aacute;nchez', 'irodrigu@gmail.com', '(664) 404 7203', '(664) 404 7203', '(664) 404 7203', '2018-08-30 21:35:43', 1, '30528f068bcfa2dfafb2f1a6ebcaa28f85ff8e94a79ed52d079c589eb78ed691', '3bba8d155137568', 'Administrador', 'Matriz', 'Tijuana', 'ROSI-770426-S38', 'NSS:11-11-11-1111-1', 'fdafadfa2233', '2018-08-30', 'images/user.png', 0, 1, 'conocido 1234', 'Matriz', '', NULL, NULL, '2019-08-30');
-INSERT INTO `empleados` VALUES (0002, 'E', 'Lucero Margarita', 'Cruz', 'Anaya', 'lucero.cruz.anaya@gmail.com', '(465) 465 4654', '(654) 654 6546', '(654) 654 6546', '2018-09-06 20:13:38', 1, 'b9428ef4f7adf4bf1f04eb8834d525a1e8c23b8848a321f7e26a278a343ce144', '2d28b7f351e06608', 'Mostrador', NULL, 'Tijuana', 'FDSA-564654-654', 'NSS:32-13-21-6546-5', 'ffadfadf', '2018-09-06', 'images/user.png', 1, 1, 'conocido 1234', 'Sucursal', 'documentos/antecedentes_no_penales/E0002/antecedentes_penales.pdf', 'documentos/contrato/E0002', 'documentos/antidoping/E0002/anti_doping.pdf', '2019-09-06');
 
 -- ----------------------------
 -- Table structure for roles
