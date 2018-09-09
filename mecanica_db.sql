@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 08/09/2018 11:34:30
+ Date: 08/09/2018 12:01:38
 */
 
 SET NAMES utf8mb4;
@@ -28,14 +28,7 @@ CREATE TABLE `articulos_categoria`  (
   `activo` int(11) NULL DEFAULT NULL,
   `fecha_registro` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of articulos_categoria
--- ----------------------------
-INSERT INTO `articulos_categoria` VALUES (1, 'Destornillador', 'Destornillador', 1, '2018-09-06 21:42:03');
-INSERT INTO `articulos_categoria` VALUES (2, 'Monitor', 'Monitor de computadora', 1, '2018-09-08 10:23:37');
-INSERT INTO `articulos_categoria` VALUES (3, 'Teclados', 'Teclados para computadoras', 1, '2018-09-08 10:27:20');
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for articulos_modelo
@@ -49,12 +42,7 @@ CREATE TABLE `articulos_modelo`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
   `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of articulos_modelo
--- ----------------------------
-INSERT INTO `articulos_modelo` VALUES (1, 'Acer', 'Monitor de 22&quot;', '2018-09-08 11:20:42', 1, 2);
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for bitacora_eventos
@@ -69,132 +57,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of bitacora_eventos
--- ----------------------------
-INSERT INTO `bitacora_eventos` VALUES (1, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-30 21:37:07');
-INSERT INTO `bitacora_eventos` VALUES (2, 'E0001', '::1', 'Agrego el rol de Mostrador', 'Agregar rol', '2018-08-30 21:38:13');
-INSERT INTO `bitacora_eventos` VALUES (3, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-30 22:18:34');
-INSERT INTO `bitacora_eventos` VALUES (4, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-08-30 22:39:12');
-INSERT INTO `bitacora_eventos` VALUES (5, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-30 22:39:17');
-INSERT INTO `bitacora_eventos` VALUES (6, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-08-30 22:42:31');
-INSERT INTO `bitacora_eventos` VALUES (7, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-30 22:42:36');
-INSERT INTO `bitacora_eventos` VALUES (8, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-08-30 23:00:07');
-INSERT INTO `bitacora_eventos` VALUES (9, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-08-31 20:43:33');
-INSERT INTO `bitacora_eventos` VALUES (10, 'E0001', '::1', 'Ocurrio un error al agregar al empleado: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:53:49');
-INSERT INTO `bitacora_eventos` VALUES (11, 'E0001', '::1', 'Ocurrio un error al agregar al empleado: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:54:04');
-INSERT INTO `bitacora_eventos` VALUES (12, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-08-31 23:54:52');
-INSERT INTO `bitacora_eventos` VALUES (13, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-01 00:19:10');
-INSERT INTO `bitacora_eventos` VALUES (14, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-01 00:36:39');
-INSERT INTO `bitacora_eventos` VALUES (15, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-01 11:22:26');
-INSERT INTO `bitacora_eventos` VALUES (16, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-01 14:29:21');
-INSERT INTO `bitacora_eventos` VALUES (17, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-01 14:29:45');
-INSERT INTO `bitacora_eventos` VALUES (18, 'E0001', '::1', 'Agrego un empleado al sistema: Jose Antonio Martinez Pacheco', 'Agregar empleado', '2018-09-01 17:10:19');
-INSERT INTO `bitacora_eventos` VALUES (19, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 18:39:32');
-INSERT INTO `bitacora_eventos` VALUES (20, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 18:42:14');
-INSERT INTO `bitacora_eventos` VALUES (21, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 18:45:30');
-INSERT INTO `bitacora_eventos` VALUES (22, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 18:48:04');
-INSERT INTO `bitacora_eventos` VALUES (23, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 19:12:42');
-INSERT INTO `bitacora_eventos` VALUES (24, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-01 19:30:48');
-INSERT INTO `bitacora_eventos` VALUES (25, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 11:14:11');
-INSERT INTO `bitacora_eventos` VALUES (26, 'E0001', '::1', 'Se actualizo información de: Israel Rodr&iacute;guez S&aacute;nchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-02 11:24:08');
-INSERT INTO `bitacora_eventos` VALUES (27, 'E0001', '::1', 'Se actualizo información de: Israel Rodríguez Sánchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-02 11:30:31');
-INSERT INTO `bitacora_eventos` VALUES (28, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 11:57:17');
-INSERT INTO `bitacora_eventos` VALUES (29, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 12:06:05');
-INSERT INTO `bitacora_eventos` VALUES (30, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 13:50:14');
-INSERT INTO `bitacora_eventos` VALUES (31, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 13:53:21');
-INSERT INTO `bitacora_eventos` VALUES (32, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 13:54:51');
-INSERT INTO `bitacora_eventos` VALUES (33, 'E0001', '::1', 'Agrego un empleado al sistema: Daniel Ramirez Cruz', 'Agregar empleado', '2018-09-02 13:56:46');
-INSERT INTO `bitacora_eventos` VALUES (34, 'E0001', '::1', 'Agrego un empleado al sistema: Daniel Ramirez Cruz', 'Agregar empleado', '2018-09-02 13:58:57');
-INSERT INTO `bitacora_eventos` VALUES (35, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:00:40');
-INSERT INTO `bitacora_eventos` VALUES (36, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:07:19');
-INSERT INTO `bitacora_eventos` VALUES (37, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:12:37');
-INSERT INTO `bitacora_eventos` VALUES (38, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:20:39');
-INSERT INTO `bitacora_eventos` VALUES (39, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:26:24');
-INSERT INTO `bitacora_eventos` VALUES (40, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 14:30:05');
-INSERT INTO `bitacora_eventos` VALUES (41, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-02 14:31:43');
-INSERT INTO `bitacora_eventos` VALUES (42, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 16:04:21');
-INSERT INTO `bitacora_eventos` VALUES (43, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 16:05:17');
-INSERT INTO `bitacora_eventos` VALUES (44, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-02 16:12:19');
-INSERT INTO `bitacora_eventos` VALUES (45, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 16:12:24');
-INSERT INTO `bitacora_eventos` VALUES (46, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-02 16:14:23');
-INSERT INTO `bitacora_eventos` VALUES (47, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 16:18:07');
-INSERT INTO `bitacora_eventos` VALUES (48, 'E0001', '::1', 'Agrego un empleado al sistema: Daniel Ramirez Cruz', 'Agregar empleado', '2018-09-02 17:16:58');
-INSERT INTO `bitacora_eventos` VALUES (49, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 17:28:18');
-INSERT INTO `bitacora_eventos` VALUES (50, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 17:31:57');
-INSERT INTO `bitacora_eventos` VALUES (51, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 17:51:56');
-INSERT INTO `bitacora_eventos` VALUES (52, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-02 19:13:55');
-INSERT INTO `bitacora_eventos` VALUES (53, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 19:20:06');
-INSERT INTO `bitacora_eventos` VALUES (54, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 19:24:12');
-INSERT INTO `bitacora_eventos` VALUES (55, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 20:02:30');
-INSERT INTO `bitacora_eventos` VALUES (56, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-02 20:29:06');
-INSERT INTO `bitacora_eventos` VALUES (57, 'E0001', '::1', 'Se actualizo información de: Israel Rodríguez Sánchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-02 20:42:50');
-INSERT INTO `bitacora_eventos` VALUES (58, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-04 20:27:00');
-INSERT INTO `bitacora_eventos` VALUES (59, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-04 20:28:03');
-INSERT INTO `bitacora_eventos` VALUES (60, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:25:56');
-INSERT INTO `bitacora_eventos` VALUES (61, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:27:23');
-INSERT INTO `bitacora_eventos` VALUES (62, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:29:08');
-INSERT INTO `bitacora_eventos` VALUES (63, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:29:52');
-INSERT INTO `bitacora_eventos` VALUES (64, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:35:33');
-INSERT INTO `bitacora_eventos` VALUES (65, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:38:04');
-INSERT INTO `bitacora_eventos` VALUES (66, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:40:06');
-INSERT INTO `bitacora_eventos` VALUES (67, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:43:05');
-INSERT INTO `bitacora_eventos` VALUES (68, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:43:37');
-INSERT INTO `bitacora_eventos` VALUES (69, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:44:55');
-INSERT INTO `bitacora_eventos` VALUES (70, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:45:39');
-INSERT INTO `bitacora_eventos` VALUES (71, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:46:25');
-INSERT INTO `bitacora_eventos` VALUES (72, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:49:13');
-INSERT INTO `bitacora_eventos` VALUES (73, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:49:36');
-INSERT INTO `bitacora_eventos` VALUES (74, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:52:48');
-INSERT INTO `bitacora_eventos` VALUES (75, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-04 23:59:19');
-INSERT INTO `bitacora_eventos` VALUES (76, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:01:56');
-INSERT INTO `bitacora_eventos` VALUES (77, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:02:30');
-INSERT INTO `bitacora_eventos` VALUES (78, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:03:42');
-INSERT INTO `bitacora_eventos` VALUES (79, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:04:25');
-INSERT INTO `bitacora_eventos` VALUES (80, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:05:46');
-INSERT INTO `bitacora_eventos` VALUES (81, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:06:15');
-INSERT INTO `bitacora_eventos` VALUES (82, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:07:29');
-INSERT INTO `bitacora_eventos` VALUES (83, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:08:04');
-INSERT INTO `bitacora_eventos` VALUES (84, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:09:00');
-INSERT INTO `bitacora_eventos` VALUES (85, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:09:13');
-INSERT INTO `bitacora_eventos` VALUES (86, 'E0001', '::1', 'Se actualizo información de: Israel Rodríguez Sánchez con el número de empleado: E0001', 'Agregar empleado', '2018-09-05 00:09:57');
-INSERT INTO `bitacora_eventos` VALUES (87, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:10:54');
-INSERT INTO `bitacora_eventos` VALUES (88, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:11:19');
-INSERT INTO `bitacora_eventos` VALUES (89, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:12:00');
-INSERT INTO `bitacora_eventos` VALUES (90, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:12:55');
-INSERT INTO `bitacora_eventos` VALUES (91, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:13:42');
-INSERT INTO `bitacora_eventos` VALUES (92, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-05 00:14:07');
-INSERT INTO `bitacora_eventos` VALUES (93, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-05 00:14:20');
-INSERT INTO `bitacora_eventos` VALUES (94, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:14:40');
-INSERT INTO `bitacora_eventos` VALUES (95, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:18:24');
-INSERT INTO `bitacora_eventos` VALUES (96, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:19:03');
-INSERT INTO `bitacora_eventos` VALUES (97, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:20:05');
-INSERT INTO `bitacora_eventos` VALUES (98, 'E0001', '::1', 'Se actualizo información de: Lucero Margarita Cruz Anaya con el número de empleado: E0002', 'Agregar empleado', '2018-09-05 00:20:28');
-INSERT INTO `bitacora_eventos` VALUES (99, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-05 00:21:22');
-INSERT INTO `bitacora_eventos` VALUES (100, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 20:12:34');
-INSERT INTO `bitacora_eventos` VALUES (101, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-06 20:13:38');
-INSERT INTO `bitacora_eventos` VALUES (102, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 20:13:52');
-INSERT INTO `bitacora_eventos` VALUES (103, 'E0002', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 20:13:57');
-INSERT INTO `bitacora_eventos` VALUES (104, 'E0002', '::1', 'Lucero Margarita Cruz Anaya acabas de actualizar tu contraseña', 'Actualizar contraseña', '2018-09-06 20:14:12');
-INSERT INTO `bitacora_eventos` VALUES (105, 'E0002', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 20:14:15');
-INSERT INTO `bitacora_eventos` VALUES (106, 'E0002', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 20:14:20');
-INSERT INTO `bitacora_eventos` VALUES (107, 'E0002', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 20:14:24');
-INSERT INTO `bitacora_eventos` VALUES (108, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 20:14:29');
-INSERT INTO `bitacora_eventos` VALUES (109, 'E0001', '192.168.0.5', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 21:07:50');
-INSERT INTO `bitacora_eventos` VALUES (110, 'E0001', '192.168.0.5', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 21:12:31');
-INSERT INTO `bitacora_eventos` VALUES (111, 'E0001', '192.168.0.5', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 21:13:13');
-INSERT INTO `bitacora_eventos` VALUES (112, 'E0001', '192.168.0.5', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-06 21:13:18');
-INSERT INTO `bitacora_eventos` VALUES (113, 'E0001', '::1', 'agregar-categoria-error', 'agregar-categoria-error', '2018-09-06 21:41:28');
-INSERT INTO `bitacora_eventos` VALUES (114, 'E0001', '::1', 'agregar-categoria', 'agregar-categoria', '2018-09-06 21:42:03');
-INSERT INTO `bitacora_eventos` VALUES (115, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-06 22:58:56');
-INSERT INTO `bitacora_eventos` VALUES (116, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-08 10:23:04');
-INSERT INTO `bitacora_eventos` VALUES (117, 'E0001', '::1', 'agregar-categoria', 'agregar-categoria', '2018-09-08 10:23:37');
-INSERT INTO `bitacora_eventos` VALUES (118, 'E0001', '::1', 'Se agrego la categoría: Teclados por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-08 10:27:20');
-INSERT INTO `bitacora_eventos` VALUES (119, 'E0001', '::1', 'Ocurrio un error al agregar el modelo: Acer por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo-error', '2018-09-08 11:18:12');
-INSERT INTO `bitacora_eventos` VALUES (120, 'E0001', '::1', 'Se agrego el modelo: Acer por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-08 11:20:42');
-INSERT INTO `bitacora_eventos` VALUES (121, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-08 11:33:58');
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales

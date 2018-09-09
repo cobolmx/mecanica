@@ -7,18 +7,18 @@ foreach ($_POST as $key => $value) {
 }
 
 $data_insert = array(
-    'id_marca' => $_POST['modeloMarca'],
-    'nombre' => $_POST['modeloNombre'],
-    'descripcion' => $_POST['modeloDescripcion'],
-    'activo' => $_POST['modeloActivo'],    
+    'id_categoria' => $_POST['marcaCategoria'],
+    'nombre' => $_POST['marcaNombre'],
+    'descripcion' => $_POST['marcaDescripcion'],
+    'activo' => $_POST['marcaActivo'],    
     'fecha_registro' => Date('Y-m-d H:i:s')
 );
-$add_query   = $database->insert('articulos_modelo', $data_insert);
+$add_query   = $database->insert('articulos_marca', $data_insert);
 
 if ($add_query) {
-    $evento = 'Se agrego el modelo: '.$_POST['modeloNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-modelo', obtener_ip());
-    $message      = 'Se agrego satisfactoriamente el siguiente modelo: ' . $_POST['modeloNombre'];
+    $evento = 'Se agrego el marca: '.$_POST['marcaNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-marca', obtener_ip());
+    $message      = 'Se agrego satisfactoriamente la siguiente marca: ' . $_POST['marcaNombre'];
     $data['data'] = array(
         'status' => 'success',
         'message' => $message
@@ -29,9 +29,9 @@ if ($add_query) {
     echo json_encode($data);
     
 } else {
-    $evento = 'Ocurrio un error al agregar el modelo: '.$_POST['modeloNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
-    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-modelo-error', obtener_ip());
-    $message      = 'Ocurrio un error al agregar modelo: ' . $_POST['modeloNombre'] . 'Favor de notificar al administrador del sistema.';
+    $evento = 'Ocurrio un error al agregar la marca: '.$_POST['marcaNombre'].' por el usuario: '.$_SESSION['nombre_empleado'];
+    registro_bitacora($_SESSION['numero_empleado'], $evento, 'agregar-marca-error', obtener_ip());
+    $message      = 'Ocurrio un error al agregar la marca: ' . $_POST['marcaNombre'] . 'Favor de notificar al administrador del sistema.';
     $data['data'] = array(
         'status' => 'error',
         'message' => $message

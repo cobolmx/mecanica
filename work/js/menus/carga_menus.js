@@ -27,7 +27,7 @@ $(document).ready(function () {
     /**
      * usuarios
      */
-    $("#usuarioPassword").off('click').click(function (e) {        
+    $("#usuarioPassword,#usuarioPasswordDrop").off('click').click(function (e) {        
         $('#main_area').load("work/php/usuario/vistas/usuario_password.php");
         e.preventDefault();
     });
@@ -41,6 +41,11 @@ $(document).ready(function () {
     //categorias
     $("#categoriaAltas").off('click').click(function (e) {        
         $('#main_area').load("work/php/inventario/vistas/categoria_altas.php");
+        e.preventDefault();
+    });
+    //Marcas
+    $("#marcaAltas").off('click').click(function (e) {        
+        $('#main_area').load("work/php/inventario/vistas/marca_altas.php");
         e.preventDefault();
     });
      //Modelos

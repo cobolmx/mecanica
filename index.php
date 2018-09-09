@@ -14,7 +14,7 @@ date_default_timezone_set('America/Tijuana');
       <meta charset="utf-8">    
       <meta name="description" content="Mecanica 1885 |Derechos reservados @ 2018">
       <meta name="author" content="Israel Rodríguez Sánchez">
-      <title>Mecanica 1885 | Inicio sesión </title>
+      <title>TestLab | Inicio sesión </title>
       <!-- Bootstrap -->
       <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- Font Awesome -->
@@ -55,7 +55,7 @@ date_default_timezone_set('America/Tijuana');
                         <div class="clearfix"></div>
                         <br /> -->
                         <div>
-                           <h1><i class="fa fa-black-tie"></i> Mecanica 1885</h1>
+                           <h1><i class="fa fa-black-tie"></i> TestLab</h1>
                            <p>©2018 Todos los derechos reservados.</p>
                         </div>
                      </div>

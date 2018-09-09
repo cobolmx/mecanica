@@ -116,7 +116,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="#"><i class="fa fa-user pull-right" aria-hidden="true"></i>Perfil</a></li>
-                    <li><a href="#"><i class="fa fa-key pull-right" aria-hidden="true"></i>Cambiar contraseña</a></li>                    
+                    <li><a href="#" id="usuarioPasswordDrop"><i class="fa fa-key pull-right" aria-hidden="true"></i>Cambiar contraseña</a></li>                    
                     <li><a href="javascript:;"><i class="fa fa-question pull-right" aria-hidden="true"></i>Ayuda</a></li>
                     <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a></li>
                   </ul>
