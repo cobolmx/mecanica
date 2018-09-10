@@ -42,28 +42,44 @@ function encriptar_password($unencryptedPassword) {
     return list($password, $salt) = $results;
 }
 /**
+ * funcion para obtener informacion del articulo
+ */
+function obtener_articulo($id_categoria, $id_marca, $id_modelo) {
+    $database = new DB();
+    $query    = 'SELECT ca.nombre as categoria, ma.nombre as marca, m.nombre as modelo
+                 FROM articulos_modelo m
+                 JOIN articulos_marca ma
+                 ON m.id_marca = ma.id
+                 JOIN articulos_categoria ca
+                 ON ca.id = ma.id_categoria
+                 WHERE ca.id = "'.$id_categoria.'" AND ma.id="'.$id_marca.'" AND m.id="'.$id_modelo.'"';
+                 //'" . $id_categoria . "' AND ma.id = '" . $id_marca . "' AND m.id = '" . $id_modelo."';
+    return list($categoria,$marca,$modelo) = $database->get_row($query);
+    
+}
+/**
  * funcion para cambiar contraseña personal * 
  */
 
 //revisa si ya existe un numero de seguro social o rfc
 // regresa existe si existe, no_existe si no y puede proceder
-function valida_dato_unico($tipo,$cadena) {
-    $database = new DB();    
-    switch($tipo){
+function valida_dato_unico($tipo, $cadena) {
+    $database = new DB();
+    switch ($tipo) {
         case 'rfc':
-        $query = "SELECT rfc FROM empleados WHERE rfc = '".$cadena."'";
-        $resultado = $database->num_rows($query);        
-        break;
-        case 'nss': 
-        $query = "SELECT numero_seguro_social FROM empleados WHERE numero_seguro_social = '".$cadena."'";
-        $resultado = $database->num_rows($query);
-        break;
-        case 'correo': 
-        $query = "SELECT correo_electronico FROM empleados WHERE correo_electronico = '".$cadena."'";
-        $resultado = $database->num_rows($query);
-        break;
-    }    
-    if ($resultado == 0 ) {        
+            $query     = "SELECT rfc FROM empleados WHERE rfc = '" . $cadena . "'";
+            $resultado = $database->num_rows($query);
+            break;
+        case 'nss':
+            $query     = "SELECT numero_seguro_social FROM empleados WHERE numero_seguro_social = '" . $cadena . "'";
+            $resultado = $database->num_rows($query);
+            break;
+        case 'correo':
+            $query     = "SELECT correo_electronico FROM empleados WHERE correo_electronico = '" . $cadena . "'";
+            $resultado = $database->num_rows($query);
+            break;
+    }
+    if ($resultado == 0) {
         return 'no_existe';
     } else {
         return 'existe';

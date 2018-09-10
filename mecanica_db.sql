@@ -11,11 +11,28 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 08/09/2018 12:01:38
+ Date: 09/09/2018 19:40:17
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for articulos
+-- ----------------------------
+DROP TABLE IF EXISTS `articulos`;
+CREATE TABLE `articulos`  (
+  `id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT COMMENT 'id incrementable de articulos',
+  `identificador` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'identificador del articulo a inventariar',
+  `id_modelo` int(11) NULL DEFAULT NULL COMMENT 'id del modelo a inventariar',
+  `id_marca` int(11) NULL DEFAULT NULL COMMENT 'id de la marca a inventariar',
+  `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'id de la categoria a inventariar',
+  `numero_serie` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Numero de serie del articulo',
+  `stock` int(11) NULL DEFAULT NULL COMMENT 'cuantos articulos se van almacenar',
+  `comentarios` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'caja de comentarios',
+  `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha de registro',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for articulos_categoria
@@ -31,6 +48,20 @@ CREATE TABLE `articulos_categoria`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for articulos_marca
+-- ----------------------------
+DROP TABLE IF EXISTS `articulos_marca`;
+CREATE TABLE `articulos_marca`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Auto incrementable de tabla modelo',
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Nombre del modelo del articulo',
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Descripcion del modelo del arituclo',
+  `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha cuando se registro el modelo del articulo',
+  `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
+  `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for articulos_modelo
 -- ----------------------------
 DROP TABLE IF EXISTS `articulos_modelo`;
@@ -40,7 +71,7 @@ CREATE TABLE `articulos_modelo`  (
   `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Descripcion del modelo del arituclo',
   `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha cuando se registro el modelo del articulo',
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
-  `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
+  `id_marca` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que modelo pertenece',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -57,7 +88,35 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of bitacora_eventos
+-- ----------------------------
+INSERT INTO `bitacora_eventos` VALUES (1, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-08 12:16:56');
+INSERT INTO `bitacora_eventos` VALUES (2, 'E0001', '::1', 'Se agrego la categoría: Teclados por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-08 12:17:15');
+INSERT INTO `bitacora_eventos` VALUES (3, 'E0001', '::1', 'Se agrego el marca: DELL por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-08 12:18:53');
+INSERT INTO `bitacora_eventos` VALUES (4, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-08 12:35:20');
+INSERT INTO `bitacora_eventos` VALUES (5, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-08 12:35:32');
+INSERT INTO `bitacora_eventos` VALUES (6, 'E0001', '::1', 'Agregar sucursal', 'Agregar sucursal', '2018-09-08 12:37:29');
+INSERT INTO `bitacora_eventos` VALUES (7, 'E0001', '::1', 'Se agrego la categoría: Teclado por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-08 12:40:26');
+INSERT INTO `bitacora_eventos` VALUES (8, 'E0001', '::1', 'Se agrego el marca: DELL por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-08 12:40:47');
+INSERT INTO `bitacora_eventos` VALUES (9, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-08 17:05:43');
+INSERT INTO `bitacora_eventos` VALUES (10, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-08 21:24:45');
+INSERT INTO `bitacora_eventos` VALUES (11, 'E0001', '::1', 'Se agrego el modelo: xt-2530 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-08 21:28:10');
+INSERT INTO `bitacora_eventos` VALUES (12, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-08 21:28:52');
+INSERT INTO `bitacora_eventos` VALUES (13, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-09 12:09:12');
+INSERT INTO `bitacora_eventos` VALUES (14, 'E0001', '::1', 'Se agrego la categoría: Audifonos por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-09 12:51:40');
+INSERT INTO `bitacora_eventos` VALUES (15, 'E0001', '::1', 'Se agrego el marca: Logitech por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-09 12:53:41');
+INSERT INTO `bitacora_eventos` VALUES (16, 'E0001', '::1', 'Se agrego el modelo: G-35 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-09 12:54:06');
+INSERT INTO `bitacora_eventos` VALUES (17, 'E0001', '::1', 'Ocurrio un error al agregar el articulo:    con la cantidad de: 10 por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo-error', '2018-09-09 14:18:32');
+INSERT INTO `bitacora_eventos` VALUES (18, 'E0001', '::1', 'Ocurrio un error al agregar el articulo:    con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo-error', '2018-09-09 14:21:31');
+INSERT INTO `bitacora_eventos` VALUES (19, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclado DELL xt-2530 con la cantidad de: 10 por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-09 14:28:25');
+INSERT INTO `bitacora_eventos` VALUES (20, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclado DELL xt-2530 con la cantidad de: 10 por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-09 14:29:39');
+INSERT INTO `bitacora_eventos` VALUES (21, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-09 14:34:16');
+INSERT INTO `bitacora_eventos` VALUES (22, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-09 16:52:20');
+INSERT INTO `bitacora_eventos` VALUES (23, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-09 19:38:52');
+INSERT INTO `bitacora_eventos` VALUES (24, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclado DELL xt-2530 con la cantidad de: 3 por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-09 19:39:07');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
@@ -177,14 +236,11 @@ CREATE TABLE `sucursales`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Activo 1, inactivo 0',
   `nombre_sucursal` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT 'Nombre de la sucursal',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sucursales
 -- ----------------------------
-INSERT INTO `sucursales` VALUES (1, 'Tijuana', 'Domicilio conocido', '6644047203', '2018-08-25 16:59:56', 1, 'Matriz');
-INSERT INTO `sucursales` VALUES (2, 'Mexicali', 'Domicilio conocido', '123456789', '2018-08-26 21:34:40', 1, 'Sucursal');
-INSERT INTO `sucursales` VALUES (3, 'Tijuana', 'Otro domicilio', '8789654654654', '2018-08-26 21:35:12', 1, 'Sucursal');
-INSERT INTO `sucursales` VALUES (4, 'Ensenada', 'Calle 4ta', '66412345678', '2018-08-26 21:45:38', 1, 'Benitez');
+INSERT INTO `sucursales` VALUES (1, 'Tijuana', 'Domicilio Conocido', '(664) 111 1111', '2018-09-08 12:37:29', 1, 'Matriz');
 
 SET FOREIGN_KEY_CHECKS = 1;

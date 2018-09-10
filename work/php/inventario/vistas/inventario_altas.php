@@ -16,20 +16,44 @@
                <form class="form-horizontal form-label-left" id="inventarioForma" >
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="articuloNombre">Nombre</label>
-                        <input type="text" class="form-control" name="articuloNombre" id="articuloNombre">
+                        <label for="inventarioCategoria">Categoría</label>
+                        <select class="form-control" id="inventarioCategoria" name="inventarioCategoria">
+                           <option value="">Seleccione una categoría</option>
+                        </select>
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="articuloMarca">Marca</label>
-                        <input type="text" class="form-control" name="articuloMarca" id="articuloMarca">
+                        <label for="inventarioMarca">Marca</label>
+                        <select class="form-control" id="inventarioMarca" name="inventarioMarca">
+                           <option value="">Seleccione una marca</option>
+                        </select>
                      </div>
                   </div>
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="articuloModelo">Modelo</label>
-                        <input type="text" class="form-control" name="articuloModelo" id="articuloModelo">
+                        <label for="inventarioModelo">Modelo</label>
+                        <select class="form-control" id="inventarioModelo" name="inventarioModelo">
+                           <option value="">Seleccione una modelo</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="inventarioSerie">Número de serie</label>
+                        <input type="text" class="form-control" name="inventarioSerie" id="inventarioSerie">
+                     </div>
+                     </div> -->
+                  <div class="col-md-3 col-xs-12">
+                     <div class="form-group">
+                        <label for="inventarioCantidad">Cantidad</label>
+                        <input type="number" class="form-control" name="inventarioCantidad" id="inventarioCantidad" value="1">
+                     </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                     <div class="form-group">
+                        <label for="inventarioComentarios">Comentarios</label>
+                        <textarea class="form-control" name="inventarioComentarios" rows="4"></textarea>
                      </div>
                   </div>
                   <div class="col-xs-12">
@@ -44,4 +68,4 @@
       </div>
    </div>
 </div>
-<script src="work/js/sucursales/agregar_sucursal.js"></script>
+<script src="work/js/inventario/inventario_agregar.js"></script>
