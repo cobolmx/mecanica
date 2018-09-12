@@ -53,4 +53,9 @@ $(document).ready(function () {
         $('#main_area').load("work/php/inventario/vistas/modelo_altas.php");
         e.preventDefault();
     });
+    //asignar articulos
+    $("#inventarioAsignar").off('click').click(function (e) {        
+        $('#main_area').load("work/php/inventario/vistas/asignar_articulo.php");
+        e.preventDefault();
+    });
 });

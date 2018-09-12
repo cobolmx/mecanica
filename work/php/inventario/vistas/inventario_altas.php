@@ -38,18 +38,22 @@
                         </select>
                      </div>
                   </div>
-                  <!-- <div class="col-md-3 col-xs-12">
-                     <div class="form-group">
-                        <label for="inventarioSerie">Número de serie</label>
-                        <input type="text" class="form-control" name="inventarioSerie" id="inventarioSerie">
-                     </div>
-                     </div> -->
                   <div class="col-md-3 col-xs-12">
                      <div class="form-group">
-                        <label for="inventarioCantidad">Cantidad</label>
-                        <input type="number" class="form-control" name="inventarioCantidad" id="inventarioCantidad" value="1">
+                        <label for="inventarioSerie">Número de serie</label>
+                        <input type="text" class="form-control" name="inventarioSerie" id="inventarioSerie" style="text-transform:uppercase">
                      </div>
                   </div>
+                  <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="inventariolActivo">Activar</label>
+                     <select class="form-control" id="inventarioActivo" name="inventarioActivo">
+                        <option value="">Seleccione una opción</option>
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                     </select>
+                  </div>
+               </div>
                   <div class="col-md-12 col-xs-12">
                      <div class="form-group">
                         <label for="inventarioComentarios">Comentarios</label>

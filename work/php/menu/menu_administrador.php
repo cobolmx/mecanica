@@ -44,7 +44,7 @@
             <ul class="nav child_menu">
                <li><a href="#" id="inventarioAltas">Altas</a></li>
                <li><a href="#" id="inventarioModificaciones">Modificaciones</a></li>
-               <li><a href="#" id="inventarioAsignaciones">Asignaciones</a></li>               
+               <li><a href="#" id="inventarioAsignar">Asignar articulo</a></li>               
             </ul>
          </li>
       </ul>

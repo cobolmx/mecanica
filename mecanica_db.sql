@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 09/09/2018 19:40:17
+ Date: 11/09/2018 23:00:12
 */
 
 SET NAMES utf8mb4;
@@ -27,12 +27,20 @@ CREATE TABLE `articulos`  (
   `id_modelo` int(11) NULL DEFAULT NULL COMMENT 'id del modelo a inventariar',
   `id_marca` int(11) NULL DEFAULT NULL COMMENT 'id de la marca a inventariar',
   `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'id de la categoria a inventariar',
-  `numero_serie` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Numero de serie del articulo',
+  `numero_serie` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Numero de serie del articulo',
   `stock` int(11) NULL DEFAULT NULL COMMENT 'cuantos articulos se van almacenar',
   `comentarios` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'caja de comentarios',
   `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha de registro',
+  `disponible` int(11) NULL DEFAULT NULL COMMENT 'si esta disponible 1 = si, 0 = no',
+  `numero_empleado` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'llave foranea del empleado a quien se le asigna el articulo',
+  `activo` int(11) NULL DEFAULT NULL COMMENT 'Activo 1 = si, 0= no',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of articulos
+-- ----------------------------
+INSERT INTO `articulos` VALUES (0001, 'A', 1, 1, 1, '123456', NULL, 'mexicali', '2018-09-11 20:44:46', 1, NULL, 1);
 
 -- ----------------------------
 -- Table structure for articulos_categoria
@@ -45,7 +53,12 @@ CREATE TABLE `articulos_categoria`  (
   `activo` int(11) NULL DEFAULT NULL,
   `fecha_registro` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of articulos_categoria
+-- ----------------------------
+INSERT INTO `articulos_categoria` VALUES (1, 'Perifericos', 'Perifericos equipo de computo', 1, '2018-09-11 20:13:50');
 
 -- ----------------------------
 -- Table structure for articulos_marca
@@ -59,7 +72,12 @@ CREATE TABLE `articulos_marca`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
   `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of articulos_marca
+-- ----------------------------
+INSERT INTO `articulos_marca` VALUES (1, 'DELL', 'Dell incorporated', '2018-09-11 20:14:07', 1, 1);
 
 -- ----------------------------
 -- Table structure for articulos_modelo
@@ -73,7 +91,13 @@ CREATE TABLE `articulos_modelo`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
   `id_marca` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que modelo pertenece',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of articulos_modelo
+-- ----------------------------
+INSERT INTO `articulos_modelo` VALUES (1, 'E-24', 'teclado de alta calidad', '2018-09-11 20:14:57', 1, 1);
+INSERT INTO `articulos_modelo` VALUES (2, 'xt-2530', 'fdafa', '2018-09-11 20:21:23', 1, 1);
 
 -- ----------------------------
 -- Table structure for bitacora_eventos
@@ -88,7 +112,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -117,6 +141,22 @@ INSERT INTO `bitacora_eventos` VALUES (21, 'E0001', '::1', 'Cierre de sesión', 
 INSERT INTO `bitacora_eventos` VALUES (22, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-09 16:52:20');
 INSERT INTO `bitacora_eventos` VALUES (23, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-09 19:38:52');
 INSERT INTO `bitacora_eventos` VALUES (24, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclado DELL xt-2530 con la cantidad de: 3 por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-09 19:39:07');
+INSERT INTO `bitacora_eventos` VALUES (25, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-09 19:40:23');
+INSERT INTO `bitacora_eventos` VALUES (26, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-11 19:53:38');
+INSERT INTO `bitacora_eventos` VALUES (27, 'E0001', '::1', 'Se agrego la categoría: Perifericos por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-11 20:13:50');
+INSERT INTO `bitacora_eventos` VALUES (28, 'E0001', '::1', 'Se agrego el marca: DELL por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-11 20:14:07');
+INSERT INTO `bitacora_eventos` VALUES (29, 'E0001', '::1', 'Se agrego el modelo: E-24 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-11 20:14:57');
+INSERT INTO `bitacora_eventos` VALUES (30, 'E0001', '::1', 'Ocurrio un error al agregar el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo-error', '2018-09-11 20:15:22');
+INSERT INTO `bitacora_eventos` VALUES (31, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:16:08');
+INSERT INTO `bitacora_eventos` VALUES (32, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:16:27');
+INSERT INTO `bitacora_eventos` VALUES (33, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:18:41');
+INSERT INTO `bitacora_eventos` VALUES (34, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:19:07');
+INSERT INTO `bitacora_eventos` VALUES (35, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:20:01');
+INSERT INTO `bitacora_eventos` VALUES (36, 'E0001', '::1', 'Se agrego el modelo: xt-2530 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-11 20:21:23');
+INSERT INTO `bitacora_eventos` VALUES (37, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL xt-2530 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:21:54');
+INSERT INTO `bitacora_eventos` VALUES (38, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:41:44');
+INSERT INTO `bitacora_eventos` VALUES (39, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:44:46');
+INSERT INTO `bitacora_eventos` VALUES (40, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-11 22:59:48');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
