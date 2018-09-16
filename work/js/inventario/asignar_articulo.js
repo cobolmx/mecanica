@@ -1,5 +1,8 @@
 $(document).ready(function() {
   
+  $.get("work/php/inventario/obtener/obtener_categoria.php", function (data) {
+    $('#asignaCategoria').append(data);
+});
   $("#searchInfo").focus();
 
   /**Check for user login */

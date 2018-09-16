@@ -14,7 +14,7 @@ $update = [
     'salt' => $salt,
 ];
 $where_clause = array(
-    'CONCAT(identificador,id)' => $_SESSION['numero_empleado']
+    'CONCAT(identificador,id)' => $_SESSION['numero_empleado'],
 );
 $updated = $database->update('empleados', $update, $where_clause, 1);
 
@@ -24,7 +24,7 @@ if ($updated == '1') {
     $message = $_SESSION['nombre_empleado'] . ' acabas de actualizar tu contraseña';
     $data['data'] = array(
         'status' => 'success',
-        'message' => $message        
+        'message' => $message,
     );
     echo json_encode($data);
 } else {
@@ -32,5 +32,6 @@ if ($updated == '1') {
         'status' => 'error',
         'message' => 'Ocurrio un error al actualizar: ' . $updated,
     );
-    echo json_encode($data);    
+    echo json_encode($data);
 }
+?>
