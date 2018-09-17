@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 11/09/2018 23:00:12
+ Date: 16/09/2018 22:35:41
 */
 
 SET NAMES utf8mb4;
@@ -35,12 +35,14 @@ CREATE TABLE `articulos`  (
   `numero_empleado` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'llave foranea del empleado a quien se le asigna el articulo',
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Activo 1 = si, 0= no',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos
 -- ----------------------------
 INSERT INTO `articulos` VALUES (0001, 'A', 1, 1, 1, '123456', NULL, 'mexicali', '2018-09-11 20:44:46', 1, NULL, 1);
+INSERT INTO `articulos` VALUES (0002, 'A', 3, 2, 2, '963741', NULL, '', '2018-09-14 20:28:04', 1, NULL, 1);
+INSERT INTO `articulos` VALUES (0003, 'A', 4, 3, 2, '3322132131', NULL, '', '2018-09-14 20:32:16', 1, NULL, 1);
 
 -- ----------------------------
 -- Table structure for articulos_categoria
@@ -53,12 +55,14 @@ CREATE TABLE `articulos_categoria`  (
   `activo` int(11) NULL DEFAULT NULL,
   `fecha_registro` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos_categoria
 -- ----------------------------
 INSERT INTO `articulos_categoria` VALUES (1, 'Perifericos', 'Perifericos equipo de computo', 1, '2018-09-11 20:13:50');
+INSERT INTO `articulos_categoria` VALUES (2, 'Teclados', 'Teclados para computadoras', 1, '2018-09-14 20:22:59');
+INSERT INTO `articulos_categoria` VALUES (3, 'Monitores', 'Monitores para computadoras', 1, '2018-09-16 10:47:03');
 
 -- ----------------------------
 -- Table structure for articulos_marca
@@ -72,12 +76,14 @@ CREATE TABLE `articulos_marca`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
   `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que categoria pertenece',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos_marca
 -- ----------------------------
 INSERT INTO `articulos_marca` VALUES (1, 'DELL', 'Dell incorporated', '2018-09-11 20:14:07', 1, 1);
+INSERT INTO `articulos_marca` VALUES (2, 'Logitech', 'marca logitech', '2018-09-14 20:27:21', 1, 2);
+INSERT INTO `articulos_marca` VALUES (3, 'Microsoft', 'microsoft', '2018-09-14 20:31:41', 1, 2);
 
 -- ----------------------------
 -- Table structure for articulos_modelo
@@ -91,13 +97,15 @@ CREATE TABLE `articulos_modelo`  (
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Seleccionar si el articulo esta activo',
   `id_marca` int(11) NULL DEFAULT NULL COMMENT 'Referencia de que modelo pertenece',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos_modelo
 -- ----------------------------
 INSERT INTO `articulos_modelo` VALUES (1, 'E-24', 'teclado de alta calidad', '2018-09-11 20:14:57', 1, 1);
 INSERT INTO `articulos_modelo` VALUES (2, 'xt-2530', 'fdafa', '2018-09-11 20:21:23', 1, 1);
+INSERT INTO `articulos_modelo` VALUES (3, 'g-105', 'teclado mecanico con rgb', '2018-09-14 20:27:46', 1, 2);
+INSERT INTO `articulos_modelo` VALUES (4, 'xyz23', 'dfada', '2018-09-14 20:32:00', 1, 3);
 
 -- ----------------------------
 -- Table structure for bitacora_eventos
@@ -112,7 +120,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -157,6 +165,41 @@ INSERT INTO `bitacora_eventos` VALUES (37, 'E0001', '::1', 'Se agrego se agrego 
 INSERT INTO `bitacora_eventos` VALUES (38, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:41:44');
 INSERT INTO `bitacora_eventos` VALUES (39, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-11 20:44:46');
 INSERT INTO `bitacora_eventos` VALUES (40, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-11 22:59:48');
+INSERT INTO `bitacora_eventos` VALUES (41, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-12 21:00:47');
+INSERT INTO `bitacora_eventos` VALUES (42, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-12 21:27:32');
+INSERT INTO `bitacora_eventos` VALUES (43, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-14 20:05:24');
+INSERT INTO `bitacora_eventos` VALUES (44, 'E0001', '::1', 'Se agrego la categoría: Teclados por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-14 20:22:59');
+INSERT INTO `bitacora_eventos` VALUES (45, 'E0001', '::1', 'Se agrego el marca: Logitech por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-14 20:27:21');
+INSERT INTO `bitacora_eventos` VALUES (46, 'E0001', '::1', 'Se agrego el modelo: g-105 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-14 20:27:46');
+INSERT INTO `bitacora_eventos` VALUES (47, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclados Logitech g-105 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-14 20:28:04');
+INSERT INTO `bitacora_eventos` VALUES (48, 'E0001', '::1', 'Se agrego el marca: Microsoft por el usuario: Israel Rodríguez Sánchez', 'agregar-marca', '2018-09-14 20:31:41');
+INSERT INTO `bitacora_eventos` VALUES (49, 'E0001', '::1', 'Se agrego el modelo: xyz23 por el usuario: Israel Rodríguez Sánchez', 'agregar-modelo', '2018-09-14 20:32:00');
+INSERT INTO `bitacora_eventos` VALUES (50, 'E0001', '::1', 'Se agrego se agrego el articulo: Teclados Microsoft xyz23 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-09-14 20:32:16');
+INSERT INTO `bitacora_eventos` VALUES (51, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-16 10:17:13');
+INSERT INTO `bitacora_eventos` VALUES (52, 'E0001', '::1', 'Se agrego la categoría: Monitores por el usuario: Israel Rodríguez Sánchez', 'agregar-categoria', '2018-09-16 10:47:03');
+INSERT INTO `bitacora_eventos` VALUES (53, 'E0001', '192.168.0.4', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-16 12:48:27');
+INSERT INTO `bitacora_eventos` VALUES (54, 'E0001', '192.168.0.4', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-16 13:06:52');
+INSERT INTO `bitacora_eventos` VALUES (55, 'E0001', '192.168.0.4', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-16 13:20:50');
+INSERT INTO `bitacora_eventos` VALUES (56, 'E0001', '192.168.0.4', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-16 13:22:35');
+INSERT INTO `bitacora_eventos` VALUES (57, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:16:32');
+INSERT INTO `bitacora_eventos` VALUES (58, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:17:15');
+INSERT INTO `bitacora_eventos` VALUES (59, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:20:57');
+INSERT INTO `bitacora_eventos` VALUES (60, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:20:59');
+INSERT INTO `bitacora_eventos` VALUES (61, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:22:11');
+INSERT INTO `bitacora_eventos` VALUES (62, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:22:53');
+INSERT INTO `bitacora_eventos` VALUES (63, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:23:36');
+INSERT INTO `bitacora_eventos` VALUES (64, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:23:44');
+INSERT INTO `bitacora_eventos` VALUES (65, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:24:39');
+INSERT INTO `bitacora_eventos` VALUES (66, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:25:15');
+INSERT INTO `bitacora_eventos` VALUES (67, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:26:47');
+INSERT INTO `bitacora_eventos` VALUES (68, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:27:40');
+INSERT INTO `bitacora_eventos` VALUES (69, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:27:50');
+INSERT INTO `bitacora_eventos` VALUES (70, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:27:58');
+INSERT INTO `bitacora_eventos` VALUES (71, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:28:05');
+INSERT INTO `bitacora_eventos` VALUES (72, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:28:27');
+INSERT INTO `bitacora_eventos` VALUES (73, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:29:30');
+INSERT INTO `bitacora_eventos` VALUES (74, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:29:36');
+INSERT INTO `bitacora_eventos` VALUES (75, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-16 19:04:00');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
