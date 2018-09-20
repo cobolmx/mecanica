@@ -27,7 +27,6 @@ $(document).ready(function() {
         defaultContent:
           "<button class='btn btn-warning btn-xs btn-block' data-toggle='tooltip' data-placement='top' title='Tooltip on top'>" +
           "<i class='fa fa-pencil-square-o' aria-hidden='true' id='editar'></i> Editar categoría</button>"
-        //   "<button class='btn btn-danger btn-xs' id='eliminar'>" +"<i class='fa fa-ban' aria-hidden='true' ></i></button>"
       }
     ],
     columns: [
@@ -59,13 +58,13 @@ $(document).ready(function() {
       categoriaEditarActivo: "required"
     },
     messages: {
-      categoriaNombre: "Es obligatorio asignar un nombre",
-      categoriaDescripcion: "La descripción es obligatoria",
-      categoriaActivo: "Este campo es obligatorio!"
+      categoriaEditarNombre: "Es obligatorio asignar un nombre",
+      categoriaEditarDescripcion: "La descripción es obligatoria",
+      categoriaEditarActivo: "Este campo es obligatorio!"
     },
     submitHandler: function(form) {
       var dataString = $("#categoriaEditarForma").serialize();
-      $('#modalEditar').modal('toggle');
+      $("#modalEditar").modal("toggle");
       $.ajax({
         type: "POST",
         url: "work/php/inventario/actualiza/categoria_actualizar.php",
@@ -84,7 +83,7 @@ $(document).ready(function() {
                 }
               }).then(value => {
                 switch (value) {
-                  case "Continuar":                    
+                  case "Continuar":
                     $("#main_area").load(
                       "work/php/inventario/vistas/categoria_altas.php"
                     );

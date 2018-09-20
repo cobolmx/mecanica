@@ -14,11 +14,11 @@
          <div class="x_content">
             <div class="panel-body">
                <form class="form-horizontal form-label-left" id="marcaForma" >
-               <div class="col-md-3 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                      <div class="form-group">
                         <label for="marcaCategoria">Categoría</label>
                         <select class="form-control" id="marcaCategoria" name="marcaCategoria">
-                           <option value="">Seleccione una categoría</option>                           
+                           <option value="">Seleccione una categoría</option>
                         </select>
                      </div>
                   </div>
@@ -68,11 +68,12 @@
                <table class="table table-condensed " id="tablaListadoMarcas">
                   <thead>
                      <tr>
-                        <th class="col-md-2">Categoria</th>
-                        <th class="col-md-2">Nombre</th>
-                        <th class="col-md-4 text-center">Descripción</th>
-                        <th class="col-md-1 text-center">Activo</th>
-                        <th class="col-md-1 text-center">Fecha de registro</th>
+                        <th>Categoria</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Activo</th>
+                        <th>Fecha de registro</th>
+                        <th>Acción</th>
                      </tr>
                   </thead>
                   <tbody>                     
@@ -83,4 +84,56 @@
       </div>
    </div>
 </div>
+<!-- modal-->
+<div class="modal fade " id="modalEditar" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="modalTitulo"></h4>
+         </div>
+         <div class="modal-body">
+            <form class="form-horizontal form-label-left" id="marcaEditarForma" >
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="marcaEditarCategoria">Categoría</label>
+                     <select class="form-control" id="marcaEditarCategoria" name="marcaEditarCategoria">
+                        <option value="">Seleccione una categoría</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="marcaEditarNombre">Nombre</label>
+                     <input type="text" class="form-control" name="marcaEditarNombre" id="marcaEditarNombre">
+                  </div>
+               </div>
+               <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                     <label for="marcaEditarDescripcion">Descripción</label>
+                     <input type="text" class="form-control" name="marcaEditarDescripcion" id="marcaEditarDescripcion">
+                     <input type="hidden" class="form-control" name="marcaEditarId" id="marcaEditarId">
+                  </div>
+               </div>
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="marcaActivo">Activo</label>
+                     <select class="form-control" id="marcaEditarActivo" name="marcaEditarActivo">
+                        <option value="">Seleccione una opción</option>
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                     </select>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer" >
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-info" form='marcaEditarForma'><i class="fa fa-check" aria-hidden="true"></i> Aplicar cambios</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end modal -->
 <script src="work/js/inventario/marca_agregar.js"></script>

@@ -84,9 +84,8 @@
             </button>
             <h4 class="modal-title" id="modalTitulo"></h4>
          </div>
-         <form class="form-horizontal form-label-left" id="categoriaEditarForma" >
          <div class="modal-body">
-            <!-- <form class="form-horizontal form-label-left" id="categoriaEditarForma" > -->
+            <form class="form-horizontal form-label-left" id="categoriaEditarForma" >
                <div class="col-md-3 col-xs-12">
                   <div class="form-group">
                      <label for="categoriaEditarNombre">Nombre</label>
@@ -110,20 +109,13 @@
                      </select>
                   </div>
                </div>
-               <!-- <div class="col-xs-12">
-                  <button class="btn btn-info pull-right" type="submit">
-                  <span class="btn-label"><i class="fa fa-check" aria-hidden="true"></i>
-                  </span> Agregar categoría
-                  </button>
-                  </div> -->
-               <!-- </form> -->
+            </form>
          </div>
-         <div class="modal-footer">
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-         <button type="submit" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i> Aplicar cambios</button>
+         <div class="modal-footer" >
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-info" form='categoriaEditarForma'><i class="fa fa-check" aria-hidden="true"></i> Aplicar cambios</button>
          </div>
       </div>
-      </form>
    </div>
 </div>
 <!-- end modal -->
