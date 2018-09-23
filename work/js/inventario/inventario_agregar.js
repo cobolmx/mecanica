@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
   /**obtenemos el listado de las ciudades */
   $.get("work/php/inventario/obtener/obtener_categoria.php", function(data) {
     $("#inventarioCategoria").append(data);

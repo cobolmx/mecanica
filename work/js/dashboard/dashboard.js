@@ -1,4 +1,5 @@
 $(document).ready(function () { 
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     // var tablaSucursales =
      $('#listaSucursales').DataTable({
         responsive: true,

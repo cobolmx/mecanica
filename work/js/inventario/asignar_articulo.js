@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+  $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
   $.get("work/php/inventario/obtener/obtener_categoria.php", function (data) {
     $('#asignaCategoria').append(data);
 });

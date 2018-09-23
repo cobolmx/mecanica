@@ -84,8 +84,8 @@
                   <a>Marca<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                      <li class="sub_menu"><a href="#" id="marcaAltas">Agregar</a></li>
-                     <li><a href="#">Modidicar</a></li>
-                     <li><a href="#">Eliminar</a></li>
+                     <!-- <li><a href="#">Modidicar</a></li>
+                     <li><a href="#">Eliminar</a></li> -->
                      <li><a href="#">Listado</a></li>
                   </ul>
                </li>
@@ -93,8 +93,8 @@
                   <a>Modelo<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                      <li class="sub_menu"><a href="#" id="modeloAltas">Agregar</a></li>
-                     <li><a href="#">Modidicar</a></li>
-                     <li><a href="#">Eliminar</a></li>
+                     <!-- <li><a href="#">Modidicar</a></li>
+                     <li><a href="#">Eliminar</a></li> -->
                      <li><a href="#">Listado</a></li>
                   </ul>
                </li>

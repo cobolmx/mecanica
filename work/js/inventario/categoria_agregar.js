@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
   /**obtenemos el listado de categorias capturadas */
   var listaTabla = $("#tablaListadoCategoria").DataTable({
     responsive: true,

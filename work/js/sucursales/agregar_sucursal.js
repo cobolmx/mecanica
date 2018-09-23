@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     $.get("work/php/sucursales/obtener/obtener_ciudades.php", function (data) {        
         $('#sucursalCiudad').append(data);
     });    

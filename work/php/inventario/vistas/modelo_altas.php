@@ -68,11 +68,12 @@
                <table class="table table-condensed " id="tablaListadoModelos">
                   <thead>
                      <tr>
-                        <th class="col-md-2">Marca</th>
-                        <th class="col-md-2">Modelo</th>
-                        <th class="col-md-4 text-center">Descripción</th>
-                        <th class="col-md-1 text-center">Activo</th>
-                        <th class="col-md-1 text-center">Fecha de registro</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Descripción</th>
+                        <th>Activo</th>
+                        <th>Fecha de registro</th>
+                        <th>Acciones</th>
                      </tr>
                   </thead>
                   <tbody>                     
@@ -83,4 +84,56 @@
       </div>
    </div>
 </div>
+<!-- modal-->
+<div class="modal fade " id="modalEditar" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="modalTitulo"></h4>
+         </div>
+         <div class="modal-body">
+            <form class="form-horizontal form-label-left" id="modeloEditarForma" >
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="modeloEditarMarca">Marca</label>
+                     <select class="form-control" id="modeloEditarMarca" name="modeloEditarMarca">
+                        <option value="">Seleccione una marca</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="modeloEditarNombre">Nombre</label>
+                     <input type="text" class="form-control" name="modeloEditarNombre" id="modeloEditarNombre">
+                  </div>
+               </div>
+               <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                     <label for="modeloEditarDescripcion">Descripción</label>
+                     <input type="text" class="form-control" name="modeloEditarDescripcion" id="modeloEditarDescripcion">
+                     <input type="hidden" class="form-control" name="modeloEditarId" id="modeloEditarId">
+                  </div>
+               </div>
+               <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                     <label for="modeloActivo">Activo</label>
+                     <select class="form-control" id="modeloEditarActivo" name="modeloEditarActivo">
+                        <option value="">Seleccione una opción</option>
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                     </select>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer" >
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-info" form='modeloEditarForma'><i class="fa fa-check" aria-hidden="true"></i> Aplicar cambios</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end modal -->
 <script src="work/js/inventario/modelo_agregar.js"></script>

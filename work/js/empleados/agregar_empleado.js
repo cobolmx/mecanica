@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     /**obtenemos el listado de las ciudades */
     $.get("work/php/sucursales/obtener/obtener_ciudades.php", function (data) {
         $('#empleadoCiudad').append(data);

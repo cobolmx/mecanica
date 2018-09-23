@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     $('#btnActualiza').prop('disabled', true);
     $('#verPdfAntecedentes,#verPdfAntidoping').prop('disabled', true);
     /**obtenemos el listado de las ciudades */
@@ -14,7 +15,27 @@ $(document).ready(function () {
             $('#empleadoSucursal').append(data);
         });
     });
-    // $('#tablaDocumentos').find('tr').remove().end();
+    /**
+     * TYPEHEAD SEARCH
+     */
+    $.typeahead({
+        input: ".js-typeahead",
+        order: "asc",
+        source: {
+            groupName: {
+                // Ajax Request
+                ajax: {
+                    url: "work/php/empleados/obtener/demo_search.php"
+                }
+            }
+        },
+        callback: {
+            onClickBefore: function () { 
+                console.log("data");
+             }
+        }
+    });
+     /**END */
     /**mascaras para los numero de telefono y seguro social */
     $('.mascara-telefono').inputmask('(999) 999 9999');
     $('#empleadoNss').inputmask('NSS:99-99-99-9999-9');

@@ -4,18 +4,37 @@
    </div>
    <div class="title_right">
       <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
-         <form  class="form-horizontal form-label-left" id="searchForm" >
-            <div class="input-group">
+      <form id="form-user_v1" name="form-user_v1">
+      <div class="typeahead__container">
+        <div class="typeahead__field">
+            <div class="typeahead__query">
+                <input class="js-typeahead" name="user_v1[query]" type="search" placeholder="Search" autocomplete="off">
+            </div>
+            <div class="typeahead__button">
+                <button class="btn btn-success" type="submit">
+                    <!-- <i class="typeahead__search-icon"></i> -->
+                    <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>
+               </span>
+                </button>
+            </div>
+        </div>
+    </div>             
+     
+</form>
+        <!-- <form  class="form-horizontal form-label-left" id="searchForm" > -->
+        
+            <!-- <div class="input-group">
                <input type="text" class="form-control" placeholder="Buscar por NSS, RFC..." name="searchInfo" id="searchInfo">
                <span class="input-group-btn">
                <button class="btn btn-success" type="submit">
                <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>
                </span>
-               Buscar</button>
+               </button>
                </span>
-            </div>
+               </div> -->
+         <!-- </form> -->
       </div>
-      </form>
+      <!-- </form> -->
    </div>
 </div>
 <div class="clearfix"></div>
@@ -182,7 +201,7 @@
                                  <td><strong>Carta antecedentes penales</strong></td>
                                  <td><button id="verPdfAntecedentes" class="btn btn-success btn-xs btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td>
                                  <td>
-                                    <div class="form-group">                                
+                                    <div class="form-group">
                                        <label class="btn-bs-file btn btn-xs btn-warning btn-block">
                                        Subir carta antecedentes
                                        <input type="file" class="form-control" name="empleadoAntecedentes" id="empleadoAntecedentes" accept="application/pdf">
@@ -194,10 +213,10 @@
                                  <td><strong>Carta Antidoping</strong></td>
                                  <td><button id="verPdfAntidoping" class="btn btn-success btn-xs btn-block " ><i class="fa fa-eye" aria-hidden="true"></i> Ver documento</button></td>
                                  <td>
-                                    <div class="form-group">                                                           
-                                       <label class="btn-bs-file btn btn-xs btn-warning btn-block"> 
+                                    <div class="form-group">
+                                       <label class="btn-bs-file btn btn-xs btn-warning btn-block">
                                        Subir carta antidoping
-                                       <input type="file" class="form-control" name="empleadoAntidoping" id="empleadoAntidoping" accept="application/pdf"> 
+                                       <input type="file" class="form-control" name="empleadoAntidoping" id="empleadoAntidoping" accept="application/pdf">
                                        </label>
                                     </div>
                                  </td>

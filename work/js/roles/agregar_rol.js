@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    
+    $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
     $('#rolNombre').focus();
-
     /**Check for user login */
     $("#rolForma").validate({
         debug: true,
