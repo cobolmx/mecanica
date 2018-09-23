@@ -3,38 +3,20 @@
       <h3>Modificar información de empleado</h3>
    </div>
    <div class="title_right">
-      <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
-      <form id="form-user_v1" name="form-user_v1">
-      <div class="typeahead__container">
-        <div class="typeahead__field">
-            <div class="typeahead__query">
-                <input class="js-typeahead" name="user_v1[query]" type="search" placeholder="Search" autocomplete="off">
-            </div>
-            <div class="typeahead__button">
-                <button class="btn btn-success" type="submit">
-                    <!-- <i class="typeahead__search-icon"></i> -->
-                    <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>
-               </span>
-                </button>
-            </div>
-        </div>
-    </div>             
-     
-</form>
-        <!-- <form  class="form-horizontal form-label-left" id="searchForm" > -->
-        
-            <!-- <div class="input-group">
-               <input type="text" class="form-control" placeholder="Buscar por NSS, RFC..." name="searchInfo" id="searchInfo">
+      <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">     
+        <form  class="form-horizontal form-label-left" id="searchForm" >        
+            <div class="input-group">
+               <input type="text" class="form-control" placeholder="Buscar por NSS, RFC..." name="searchInfo" id="searchInfo" autocomplete="off">
                <span class="input-group-btn">
                <button class="btn btn-success" type="submit">
                <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>
                </span>
                </button>
                </span>
-               </div> -->
-         <!-- </form> -->
+               </div>
+        </form>
       </div>
-      <!-- </form> -->
+      
    </div>
 </div>
 <div class="clearfix"></div>

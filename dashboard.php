@@ -32,7 +32,7 @@
     <!-- file input -->  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <!-- typehead -->
-    <link href="vendors/jquery.typehead/dist/jquery.typeahead.min.css" rel="stylesheet">
+    
 
     <!-- Custom Theme Style -->
     <!-- <link href="build/css/custom.min.css" rel="stylesheet"> -->
@@ -270,7 +270,7 @@
     <script src="vendors/file-upload/fileinput.min.js"></script>
     <script src="vendors/file-upload/locales/es.js"></script>
     <!-- type head -->
-    <script src="vendors/jquery.typehead/dist/jquery.typeahead.min.js"></script>
+    <script src="vendors/jquery.typehead/bootstrap3-typeahead.min.js"></script>
     <!-- carga menus-->
     <script src="work/js/menus/carga_menus.js"></script>
     <!-- dashboard miscelanea -->
