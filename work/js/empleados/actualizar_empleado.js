@@ -28,17 +28,17 @@ $(document).ready(function() {
   /**
    * TYPEHEAD SEARCH
    */
-  $("#searchInfo").typeahead({
-    source: function(query, result) {          
+  $("#search").typeahead({
+    source: function(query, result) {
       $.ajax({
         url: "work/php/empleados/obtener/demo_search.php",
         method: "POST",
         data: { query: query },
         dataType: "json",
-        success: function(data) {            
-          result(              
-            //   console.log(data.nombre),
+        success: function(data) {
+          result(
             $.map(data, function(item) {
+              $("#searchInfo").val(data.numero_empleado);
               return item;
             })
           );
@@ -60,7 +60,7 @@ $(document).ready(function() {
     debug: false,
     errorClass: "text-danger parsley-error",
     rules: {
-      searchInfo: {
+      search: {
         required: true
       }
     },

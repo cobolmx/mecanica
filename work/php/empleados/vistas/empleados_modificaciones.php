@@ -6,7 +6,8 @@
       <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">     
         <form  class="form-horizontal form-label-left" id="searchForm" >        
             <div class="input-group">
-               <input type="text" class="form-control" placeholder="Buscar por NSS, RFC..." name="searchInfo" id="searchInfo" autocomplete="off">
+               <input type="text" class="form-control" placeholder="Buscar por nombre de empleado" name="search" id="search" autocomplete="off">
+               <input type="hidden" name="searchInfo" id="searchInfo">
                <span class="input-group-btn">
                <button class="btn btn-success" type="submit">
                <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>

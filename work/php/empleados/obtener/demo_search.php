@@ -11,7 +11,7 @@ $number = $database->num_rows($query);
 if ($number >= 1) {
     foreach ($results as $row) {
         $data = [
-         'numero_empleado' => $row['numero_empleado'],  
+         'numero_empleado' => $row['numero_empleado'],
          'nombre' =>  html_entity_decode($row['nombre_completo'], ENT_QUOTES, "UTF-8")                   
         ];
     }
