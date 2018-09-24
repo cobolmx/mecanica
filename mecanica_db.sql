@@ -11,7 +11,7 @@
  Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 16/09/2018 22:35:41
+ Date: 23/09/2018 17:08:42
 */
 
 SET NAMES utf8mb4;
@@ -120,7 +120,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 128 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -200,6 +200,58 @@ INSERT INTO `bitacora_eventos` VALUES (72, 'E0001', '::1', 'Israel Rodríguez S�
 INSERT INTO `bitacora_eventos` VALUES (73, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:29:30');
 INSERT INTO `bitacora_eventos` VALUES (74, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-16 14:29:36');
 INSERT INTO `bitacora_eventos` VALUES (75, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-16 19:04:00');
+INSERT INTO `bitacora_eventos` VALUES (76, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-19 20:44:24');
+INSERT INTO `bitacora_eventos` VALUES (77, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:44:13');
+INSERT INTO `bitacora_eventos` VALUES (78, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:45:35');
+INSERT INTO `bitacora_eventos` VALUES (79, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:55:49');
+INSERT INTO `bitacora_eventos` VALUES (80, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:55:59');
+INSERT INTO `bitacora_eventos` VALUES (81, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:57:44');
+INSERT INTO `bitacora_eventos` VALUES (82, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 21:57:56');
+INSERT INTO `bitacora_eventos` VALUES (83, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-19 22:01:18');
+INSERT INTO `bitacora_eventos` VALUES (84, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-19 22:24:32');
+INSERT INTO `bitacora_eventos` VALUES (85, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-19 22:24:41');
+INSERT INTO `bitacora_eventos` VALUES (86, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-19 22:24:46');
+INSERT INTO `bitacora_eventos` VALUES (87, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-19 22:24:51');
+INSERT INTO `bitacora_eventos` VALUES (88, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-19 22:25:13');
+INSERT INTO `bitacora_eventos` VALUES (89, 'E0001', '::1', 'Inicio de sesion fallida, el número de empleado /  contraseña son incorrectos', 'Inicio de sesion', '2018-09-22 08:46:57');
+INSERT INTO `bitacora_eventos` VALUES (90, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-22 08:47:03');
+INSERT INTO `bitacora_eventos` VALUES (91, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-22 08:51:51');
+INSERT INTO `bitacora_eventos` VALUES (92, 'E0001', '::1', 'Inicio de sesion fallida, el número de empleado /  contraseña son incorrectos', 'Inicio de sesion', '2018-09-22 08:51:57');
+INSERT INTO `bitacora_eventos` VALUES (93, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-22 08:52:03');
+INSERT INTO `bitacora_eventos` VALUES (94, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:29:36');
+INSERT INTO `bitacora_eventos` VALUES (95, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:30:04');
+INSERT INTO `bitacora_eventos` VALUES (96, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:31:45');
+INSERT INTO `bitacora_eventos` VALUES (97, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:34:46');
+INSERT INTO `bitacora_eventos` VALUES (98, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:36:08');
+INSERT INTO `bitacora_eventos` VALUES (99, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:37:19');
+INSERT INTO `bitacora_eventos` VALUES (100, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:37:33');
+INSERT INTO `bitacora_eventos` VALUES (101, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:39:52');
+INSERT INTO `bitacora_eventos` VALUES (102, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:40:02');
+INSERT INTO `bitacora_eventos` VALUES (103, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:40:11');
+INSERT INTO `bitacora_eventos` VALUES (104, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:46:01');
+INSERT INTO `bitacora_eventos` VALUES (105, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-09-22 09:47:46');
+INSERT INTO `bitacora_eventos` VALUES (106, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-22 09:47:58');
+INSERT INTO `bitacora_eventos` VALUES (107, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:48:19');
+INSERT INTO `bitacora_eventos` VALUES (108, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:49:28');
+INSERT INTO `bitacora_eventos` VALUES (109, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:51:16');
+INSERT INTO `bitacora_eventos` VALUES (110, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:52:41');
+INSERT INTO `bitacora_eventos` VALUES (111, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:53:00');
+INSERT INTO `bitacora_eventos` VALUES (112, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:53:25');
+INSERT INTO `bitacora_eventos` VALUES (113, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:53:58');
+INSERT INTO `bitacora_eventos` VALUES (114, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:54:04');
+INSERT INTO `bitacora_eventos` VALUES (115, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:55:02');
+INSERT INTO `bitacora_eventos` VALUES (116, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 09:55:26');
+INSERT INTO `bitacora_eventos` VALUES (117, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 10:27:15');
+INSERT INTO `bitacora_eventos` VALUES (118, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 10:28:21');
+INSERT INTO `bitacora_eventos` VALUES (119, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una categoria', 'Actualizar categoria', '2018-09-22 10:28:56');
+INSERT INTO `bitacora_eventos` VALUES (120, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-22 10:29:09');
+INSERT INTO `bitacora_eventos` VALUES (121, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar una marca', 'Actualizar marca', '2018-09-22 10:29:17');
+INSERT INTO `bitacora_eventos` VALUES (122, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 10:29:44');
+INSERT INTO `bitacora_eventos` VALUES (123, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 10:30:24');
+INSERT INTO `bitacora_eventos` VALUES (124, 'E0001', '::1', 'Israel Rodríguez Sánchez acabas de actualizar un modelo', 'Actualizar modelo', '2018-09-22 10:30:29');
+INSERT INTO `bitacora_eventos` VALUES (125, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-23 15:12:28');
+INSERT INTO `bitacora_eventos` VALUES (126, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-23 15:55:54');
+INSERT INTO `bitacora_eventos` VALUES (127, 'E0001', '::1', 'Agrego un empleado al sistema: Camelia Gonzalez Perez', 'Agregar empleado', '2018-09-23 16:49:46');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
@@ -280,12 +332,14 @@ CREATE TABLE `empleados`  (
   `fecha_expiracion` date NULL DEFAULT NULL COMMENT 'Fecha cuando expira el contrato',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`, `identificador`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of empleados
 -- ----------------------------
 INSERT INTO `empleados` VALUES (0001, 'E', 'Israel', 'Rodr&iacute;guez', 'S&aacute;nchez', 'irodrigu@gmail.com', '(664) 404 7203', '(664) 404 7203', '(664) 404 7203', '2018-08-30 21:35:43', 1, '30528f068bcfa2dfafb2f1a6ebcaa28f85ff8e94a79ed52d079c589eb78ed691', '3bba8d155137568', 'Administrador', 'Matriz', 'Tijuana', 'ROSI-770426-S38', 'NSS:11-11-11-1111-1', 'fdafadfa2233', '2018-08-30', 'images/user.png', 0, 1, 'conocido 1234', 'Matriz', '', NULL, NULL, '2019-08-30');
+INSERT INTO `empleados` VALUES (0002, 'E', 'Lucero Margarita', 'Cruz', 'Anaya', 'lucero.cruz.anaya@gmail.com', '(664) 404 4040', '(654) 654 6546', '(546) 546 5446', '2018-09-23 15:55:53', 1, 'ae39d5b8cf2345f26b789870d263143181e9d8ac3b07bd3511afe32de25bbf34', '51a49db3179f7f38', 'Administrador', NULL, 'Tijuana', 'DFDF-564654-891', 'NSS:65-46-54-9812-3', 'fdfa', '2018-09-23', 'images/user.png', 0, 0, 'conocido', 'Matriz', 'documentos/antecedentes_no_penales/E0002/', 'documentos/contrato/E0002', 'documentos/antidoping/E0002/', '2019-09-23');
+INSERT INTO `empleados` VALUES (0003, 'E', 'Camelia', 'Gonzalez', 'Perez', 'cgonzalezp@gmail.com', '(546) 546 5464', '(654) 654 6546', '(654) 654 6546', '2018-09-23 16:49:46', 1, '5cbc2ddfed3d85849109e0049773497490b40abbc6e683b6a5c0aaf50c65313d', '70f21cc341a59ef9', 'Administrador', NULL, 'Tijuana', 'FDAF-521321-121', 'NSS:14-12-24-6465-4', '', '2018-09-23', 'images/user.png', 0, 0, 'dfadfadf', 'Matriz', 'documentos/antecedentes_no_penales/E0003/', 'documentos/contrato/E0003', 'documentos/antidoping/E0003/', '2019-09-23');
 
 -- ----------------------------
 -- Table structure for roles
