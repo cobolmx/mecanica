@@ -31,7 +31,7 @@ $(document).ready(function() {
   $("#search").typeahead({
     source: function(query, result) {
       $.ajax({
-        url: "work/php/empleados/obtener/demo_search.php",
+        url: "work/php/empleados/obtener/busqueda_empleado.php",
         method: "POST",
         data: { query: query },
         dataType: "json",

@@ -4,17 +4,18 @@
    </div>
    <div class="title_right">
       <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
-         <form  class="form-horizontal form-label-left" id="searchForm" >
+      <form  class="form-horizontal form-label-left" id="searchForm" >        
             <div class="input-group">
-               <input type="text" class="form-control" placeholder="Buscar empleado" name="searchInfo" id="searchInfo">
+               <input type="text" class="form-control" placeholder="Buscar por nombre de empleado" name="search" id="search" autocomplete="off">
+               <input type="hidden" name="searchInfo" id="searchInfo">
                <span class="input-group-btn">
                <button class="btn btn-success" type="submit">
                <span class="btn-label"><i class="fa fa-search" aria-hidden="true"></i>
                </span>
-               Buscar</button>
+               </button>
                </span>
-            </div>
-      </div>
+               </div>
+        </form>
       </form>
    </div>
 </div>
@@ -50,17 +51,7 @@
                      <label for="modeloDescripcion">Descripción</label>
                      <input type="text" class="form-control" name="modeloDescripcion" id="modeloDescripcion">
                   </div>
-               </div>
-               <!-- <div class="col-md-3 col-xs-12">
-                  <div class="form-group">
-                     <label for="categorialActivo">Activar</label>
-                     <select class="form-control" id="modeloActivo" name="modeloActivo">
-                        <option value="">Seleccione una opción</option>
-                        <option value="1">Sí</option>
-                        <option value="0">No</option>
-                     </select>
-                  </div>
-                  </div> -->
+               </div>             
                <div class="col-xs-12">
                   <button class="btn btn-info pull-right" type="submit">
                   <span class="btn-label"><i class="fa fa-check" aria-hidden="true"></i>
