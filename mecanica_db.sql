@@ -3,15 +3,15 @@
 
  Source Server         : hal-9000
  Source Server Type    : MariaDB
- Source Server Version : 100309
+ Source Server Version : 100310
  Source Host           : localhost:3306
  Source Schema         : mecanica_db
 
  Target Server Type    : MariaDB
- Target Server Version : 100309
+ Target Server Version : 100310
  File Encoding         : 65001
 
- Date: 23/09/2018 17:08:42
+ Date: 08/10/2018 22:21:54
 */
 
 SET NAMES utf8mb4;
@@ -28,21 +28,20 @@ CREATE TABLE `articulos`  (
   `id_marca` int(11) NULL DEFAULT NULL COMMENT 'id de la marca a inventariar',
   `id_categoria` int(11) NULL DEFAULT NULL COMMENT 'id de la categoria a inventariar',
   `numero_serie` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Numero de serie del articulo',
-  `stock` int(11) NULL DEFAULT NULL COMMENT 'cuantos articulos se van almacenar',
   `comentarios` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'caja de comentarios',
   `fecha_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha de registro',
   `disponible` int(11) NULL DEFAULT NULL COMMENT 'si esta disponible 1 = si, 0 = no',
-  `numero_empleado` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'llave foranea del empleado a quien se le asigna el articulo',
   `activo` int(11) NULL DEFAULT NULL COMMENT 'Activo 1 = si, 0= no',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of articulos
 -- ----------------------------
-INSERT INTO `articulos` VALUES (0001, 'A', 1, 1, 1, '123456', NULL, 'mexicali', '2018-09-11 20:44:46', 1, NULL, 1);
-INSERT INTO `articulos` VALUES (0002, 'A', 3, 2, 2, '963741', NULL, '', '2018-09-14 20:28:04', 1, NULL, 1);
-INSERT INTO `articulos` VALUES (0003, 'A', 4, 3, 2, '3322132131', NULL, '', '2018-09-14 20:32:16', 1, NULL, 1);
+INSERT INTO `articulos` VALUES (0001, 'A', 1, 1, 1, '123456', 'mexicali', '2018-09-11 20:44:46', 1, 1);
+INSERT INTO `articulos` VALUES (0002, 'A', 3, 2, 2, '963741', '', '2018-09-14 20:28:04', 1, 1);
+INSERT INTO `articulos` VALUES (0003, 'A', 4, 3, 2, '3322132131', '', '2018-09-14 20:32:16', 1, 1);
+INSERT INTO `articulos` VALUES (0004, 'A', 1, 1, 1, '987654', 'este es nuevo', '2018-10-08 21:23:38', 1, 1);
 
 -- ----------------------------
 -- Table structure for articulos_categoria
@@ -63,6 +62,20 @@ CREATE TABLE `articulos_categoria`  (
 INSERT INTO `articulos_categoria` VALUES (1, 'Perifericos', 'Perifericos equipo de computo', 1, '2018-09-11 20:13:50');
 INSERT INTO `articulos_categoria` VALUES (2, 'Teclados', 'Teclados para computadoras', 1, '2018-09-14 20:22:59');
 INSERT INTO `articulos_categoria` VALUES (3, 'Monitores', 'Monitores para computadoras', 1, '2018-09-16 10:47:03');
+
+-- ----------------------------
+-- Table structure for articulos_empleado
+-- ----------------------------
+DROP TABLE IF EXISTS `articulos_empleado`;
+CREATE TABLE `articulos_empleado`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero_empleado` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `status` int(11) NULL DEFAULT NULL,
+  `fecha_entrega` datetime(0) NULL DEFAULT NULL,
+  `fecha_retorno` datetime(0) NULL DEFAULT NULL,
+  `id_articulo` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for articulos_marca
@@ -120,7 +133,7 @@ CREATE TABLE `bitacora_eventos`  (
   `fecha_hora_registro` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha y hora del registro',
   PRIMARY KEY (`id`, `numero_empleado`) USING BTREE,
   INDEX `numero_empleado`(`numero_empleado`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 128 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 137 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bitacora_eventos
@@ -252,6 +265,15 @@ INSERT INTO `bitacora_eventos` VALUES (124, 'E0001', '::1', 'Israel Rodríguez S
 INSERT INTO `bitacora_eventos` VALUES (125, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-09-23 15:12:28');
 INSERT INTO `bitacora_eventos` VALUES (126, 'E0001', '::1', 'Agrego un empleado al sistema: Lucero Margarita Cruz Anaya', 'Agregar empleado', '2018-09-23 15:55:54');
 INSERT INTO `bitacora_eventos` VALUES (127, 'E0001', '::1', 'Agrego un empleado al sistema: Camelia Gonzalez Perez', 'Agregar empleado', '2018-09-23 16:49:46');
+INSERT INTO `bitacora_eventos` VALUES (128, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-10-04 16:20:08');
+INSERT INTO `bitacora_eventos` VALUES (129, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-10-04 20:32:28');
+INSERT INTO `bitacora_eventos` VALUES (130, 'E0001', '::1', 'Inicio de sesion fallida, el número de empleado /  contraseña son incorrectos', 'Inicio de sesion', '2018-10-07 20:16:58');
+INSERT INTO `bitacora_eventos` VALUES (131, 'E0001', '::1', 'Inicio de sesion fallida, el número de empleado /  contraseña son incorrectos', 'Inicio de sesion', '2018-10-07 20:17:05');
+INSERT INTO `bitacora_eventos` VALUES (132, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-10-07 20:17:22');
+INSERT INTO `bitacora_eventos` VALUES (133, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-10-07 20:18:19');
+INSERT INTO `bitacora_eventos` VALUES (134, 'E0001', '::1', 'Inicio de sesion correcta', 'Inicio de sesion', '2018-10-08 21:15:11');
+INSERT INTO `bitacora_eventos` VALUES (135, 'E0001', '::1', 'Se agrego se agrego el articulo: Perifericos DELL E-24 con la cantidad de:  por el usuario: Israel Rodríguez Sánchez', 'agregar-articulo', '2018-10-08 21:23:38');
+INSERT INTO `bitacora_eventos` VALUES (136, 'E0001', '::1', 'Cierre de sesión', 'Cierre de sesión', '2018-10-08 22:21:01');
 
 -- ----------------------------
 -- Table structure for carta_antecentes_penales
